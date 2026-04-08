@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Templates — The Russian Method</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;600;700;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:  #0d1b2a;
+  --blue:  #1a4fa0;
+  --gold:  #c9963a;
+  --gold2: #e8b95a;
+  --cream: #faf7f1;
+  --paper: #f3efe6;
+  --border:#e0dbd0;
+  --muted: #6a7080;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--cream);
+  color: #1c1c1c;
+  min-height: 100vh;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--navy);
+  padding: 10px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(201,150,58,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.topbar-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.5px;
+}
+.topbar-brand strong { color: var(--gold); }
+.topbar-tag {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, var(--navy) 0%, #1a2e50 60%, var(--blue) 100%);
+  padding: 52px 32px 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.kicker-line { width: 28px; height: 1px; background: var(--gold); }
+.kicker-text { font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4.5vw, 48px);
+  font-weight: 600;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.hero h1 em { font-style: italic; color: var(--gold2); }
+.hero-sub { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+/* ── MAIN ── */
+.page { max-width: 800px; margin: 0 auto; padding: 48px 24px 80px; }
+
+/* ── TEMPLATE CARD ── */
+.template-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.template-header {
+  background: var(--navy);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.template-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.template-icon { font-size: 20px; }
+.template-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+}
+.template-desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 2px;
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.copy-btn:hover { background: var(--gold2); transform: translateY(-1px); }
+.copy-btn.copied {
+  background: #2e7d32;
+  color: white;
+}
+
+/* ── EMAIL PREVIEW ── */
+.email-meta {
+  padding: 16px 24px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  gap: 6px;
+}
+.email-meta-row {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+}
+.email-meta-label {
+  font-weight: 700;
+  color: var(--muted);
+  width: 60px;
+  flex-shrink: 0;
+}
+.email-meta-value { color: #333; }
+.email-meta-value.subject { font-weight: 700; color: var(--navy); }
+
+.email-body {
+  padding: 24px 28px;
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: #2a2a2a;
+  white-space: pre-wrap;
+  font-family: 'Nunito', sans-serif;
+  border: none;
+  outline: none;
+  width: 100%;
+  resize: none;
+  background: white;
+  min-height: 10px;
+}
+
+/* ── LINKS BOX ── */
+.links-box {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 22px 24px;
+  margin-bottom: 32px;
+}
+.links-box-title {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.link-row:last-child { border-bottom: none; }
+.link-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  width: 160px;
+  flex-shrink: 0;
+}
+.link-url {
+  font-size: 12px;
+  color: var(--blue);
+  word-break: break-all;
+  flex: 1;
+  font-family: monospace;
+}
+.link-copy {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.link-copy:hover { border-color: var(--blue); color: var(--blue); }
+.link-copy.copied { border-color: #2e7d32; color: #2e7d32; }
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 36px 0;
+}
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.divider span { color: var(--gold); font-size: 16px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  padding: 24px 20px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+footer strong { color: var(--gold); }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #1b5e20;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0;
+  transition: all 0.3s;
+  pointer-events: none;
+  z-index: 999;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-brand"><strong>The Russian Method</strong> · mentorinrussian.com</div>
+  <div class="topbar-tag">Email Templates</div>
+</div>
+
+<div class="hero">
+  <div class="hero-kicker">
+    <div class="kicker-line"></div>
+    <div class="kicker-text">Outreach Tools</div>
+    <div class="kicker-line"></div>
+  </div>
+  <h1>Email Templates<br><em>Ready to Send</em></h1>
+  <p class="hero-sub">Copy any template with one click and personalise the name. That's it.</p>
+</div>
+
+<div class="page">
+
+  <!-- Quick Links -->
+  <div class="links-box">
+    <div class="links-box-title">📎 Quick Reference — Key Links</div>
+    <div class="link-row">
+      <div class="link-label">Why the Method Works</div>
+      <div class="link-url" id="link-1">https://alexmentorusa-beep.github.io/russian-method-docs/Why_Adults_Can_Learn_Russian_Like_Children.html</div>
+      <button class="link-copy" onclick="copyLink('link-1', this)">Copy</button>
+    </div>
+    <div class="link-row">
+      <div class="link-label">Trial Lesson · $5</div>
+      <div class="link-url" id="link-2">https://alexmentorusa-beep.github.io/russian-method-docs/Trial_Lesson_Preview.html</div>
+      <button class="link-copy" onclick="copyLink('link-2', this)">Copy</button>
+    </div>
+    <div class="link-row">
+      <div class="link-label">Free Consultation</div>
+      <div class="link-url" id="link-3">https://calendly.com/alex-mentor-usa/30min</div>
+      <button class="link-copy" onclick="copyLink('link-3', this)">Copy</button>
+    </div>
+    <div class="link-row">
+      <div class="link-label">Full Library</div>
+      <div class="link-url" id="link-4">https://alexmentorusa-beep.github.io/russian-method-docs/</div>
+      <button class="link-copy" onclick="copyLink('link-4', this)">Copy</button>
+    </div>
+  </div>
+
+  <div class="divider"><span>◆</span></div>
+
+  <!-- Template 1: Cold / New prospect -->
+  <div class="template-card">
+    <div class="template-header">
+      <div class="template-title">
+        <div class="template-icon">✉️</div>
+        <div>
+          <div class="template-name">New Prospect</div>
+          <div class="template-desc">First contact — someone curious about learning Russian</div>
+        </div>
+      </div>
+      <button class="copy-btn" onclick="copyTemplate('email-1', this)">
+        📋 Copy Email
+      </button>
+    </div>
+    <div class="email-meta">
+      <div class="email-meta-row">
+        <div class="email-meta-label">Subject:</div>
+        <div class="email-meta-value subject">Learning Russian — a different approach</div>
+      </div>
+    </div>
+    <div class="email-body" id="email-1">Hi [Name],
+
+Thank you for your interest in learning Russian!
+
+I'd like to share something before we dive in — a short read that explains the science behind the approach I use, and why it works differently from traditional language classes:
+
+👉 https://alexmentorusa-beep.github.io/russian-method-docs/Why_Adults_Can_Learn_Russian_Like_Children.html
+
+The method is based on how the brain actually acquires language — not how we were taught to study it in school. It's a meaningful difference, and the page explains it clearly.
+
+At the bottom you'll find two options: a $5 trial lesson you can do on your own schedule, or a free 30-minute consultation if you'd like to talk first.
+
+Looking forward to hearing from you!
+
+Alexander
+mentorinrussian.com</div>
+  </div>
+
+  <!-- Template 2: After consultation -->
+  <div class="template-card">
+    <div class="template-header">
+      <div class="template-title">
+        <div class="template-icon">🗓️</div>
+        <div>
+          <div class="template-name">After Consultation</div>
+          <div class="template-desc">Follow-up after a free 30-minute call</div>
+        </div>
+      </div>
+      <button class="copy-btn" onclick="copyTemplate('email-2', this)">
+        📋 Copy Email
+      </button>
+    </div>
+    <div class="email-meta">
+      <div class="email-meta-row">
+        <div class="email-meta-label">Subject:</div>
+        <div class="email-meta-value subject">Great talking with you — your first lesson</div>
+      </div>
+    </div>
+    <div class="email-body" id="email-2">Hi [Name],
+
+It was a pleasure talking with you today!
+
+As we discussed, the best next step is to experience the method firsthand. Here is the link to your trial lesson — everything you need is on that page:
+
+👉 https://alexmentorusa-beep.github.io/russian-method-docs/Trial_Lesson_Preview.html
+
+The lesson is $5 via PayPal and you'll receive your access link by email shortly after payment. You can work through it at any time, at your own pace — there's no deadline and no pressure.
+
+Any questions at all, just reply to this email.
+
+Looking forward to your first steps in Russian!
+
+Alexander
+mentorinrussian.com</div>
+  </div>
+
+  <!-- Template 3: Trial lesson access -->
+  <div class="template-card">
+    <div class="template-header">
+      <div class="template-title">
+        <div class="template-icon">🎓</div>
+        <div>
+          <div class="template-name">Trial Lesson Access</div>
+          <div class="template-desc">Sent after $5 payment is confirmed</div>
+        </div>
+      </div>
+      <button class="copy-btn" onclick="copyTemplate('email-3', this)">
+        📋 Copy Email
+      </button>
+    </div>
+    <div class="email-meta">
+      <div class="email-meta-row">
+        <div class="email-meta-label">Subject:</div>
+        <div class="email-meta-value subject">Your Russian lesson is ready 🎧</div>
+      </div>
+    </div>
+    <div class="email-body" id="email-3">Hi [Name],
+
+Thank you — your payment is confirmed and your first lesson is ready!
+
+Here is your lesson link:
+👉 https://alexmentorusa-beep.github.io/russian-method-docs/Russian_Lesson_1_Love.html
+
+And here is the practice assignment that goes with it:
+👉 https://alexmentorusa-beep.github.io/russian-method-docs/Practice_Assignment_1.html
+
+I recommend reading the assignment first so you know exactly how to approach the lesson. Then follow the 5 steps — they will guide you through the whole process.
+
+Take your time. There is no rush. The lesson will be there whenever you are ready.
+
+If you have any questions or want to discuss your experience after completing the lesson, feel free to book another free consultation:
+👉 https://calendly.com/alex-mentor-usa/30min
+
+Enjoy your first steps in Russian!
+
+Alexander
+mentorinrussian.com</div>
+  </div>
+
+  <!-- Template 4: Preply -->
+  <div class="template-card">
+    <div class="template-header">
+      <div class="template-title">
+        <div class="template-icon">💬</div>
+        <div>
+          <div class="template-name">Preply Message</div>
+          <div class="template-desc">Short message for the Preply platform chat</div>
+        </div>
+      </div>
+      <button class="copy-btn" onclick="copyTemplate('email-4', this)">
+        📋 Copy Message
+      </button>
+    </div>
+    <div class="email-meta">
+      <div class="email-meta-row">
+        <div class="email-meta-label">Platform:</div>
+        <div class="email-meta-value subject">Preply Chat</div>
+      </div>
+    </div>
+    <div class="email-body" id="email-4">Hi [Name]! Thanks for reaching out.
+
+Before we book a lesson, I'd love for you to read a short page that explains the method I use — it's a science-based immersion approach that works very differently from traditional Russian classes:
+
+https://alexmentorusa-beep.github.io/russian-method-docs/Why_Adults_Can_Learn_Russian_Like_Children.html
+
+You'll also find a $5 trial lesson there if you'd like to try it on your own first.
+
+Looking forward to working with you!</div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">✓ Copied to clipboard!</div>
+
+<footer>
+  <strong>The Russian Method</strong> · mentorinrussian.com<br>
+  Internal use — Alexander
+</footer>
+
+<script>
+function copyTemplate(id, btn) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    showToast();
+    setTimeout(() => {
+      btn.innerHTML = '📋 Copy Email';
+      btn.classList.remove('copied');
+    }, 2500);
+  });
+}
+
+function copyLink(id, btn) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copied';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+function showToast() {
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+</script>
+</body>
+</html>
