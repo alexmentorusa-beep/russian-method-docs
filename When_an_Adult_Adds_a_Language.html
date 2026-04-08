@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When an Adult Adds a Language, It's One Brain, Two Systems</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.75;
+    color: #1a1a1a;
+    background: #f9f6f0;
+    min-height: 100vh;
+  }
+
+  /* Top banner */
+  .banner {
+    background: #1a1a2e;
+    color: #c9a84c;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* Main container */
+  .page {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 60px 30px 80px;
+  }
+
+  /* Source label */
+  .source-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .source-label::before,
+  .source-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #c9a84c;
+  }
+  .source-label span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888;
+    white-space: nowrap;
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* Section label */
+  .section {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 18px;
+  }
+
+  /* Title */
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #0d0d1a;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  /* Subtitle / Deck */
+  .deck {
+    font-size: 20px;
+    font-weight: 300;
+    color: #444;
+    line-height: 1.5;
+    margin-bottom: 32px;
+    font-style: italic;
+    border-left: 3px solid #c9a84c;
+    padding-left: 18px;
+  }
+
+  /* Byline area */
+  .byline-block {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    border-top: 1px solid #e0dbd2;
+    border-bottom: 1px solid #e0dbd2;
+    margin-bottom: 40px;
+  }
+  .author-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a4fa0 0%, #0d2d6b 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .byline-info {
+    flex: 1;
+  }
+  .byline-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #1a1a2e;
+  }
+  .byline-date {
+    font-size: 13px;
+    color: #888;
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+  }
+  .journal-badge {
+    background: #1a1a2e;
+    color: #c9a84c;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    font-family: 'Playfair Display', serif;
+    white-space: nowrap;
+  }
+
+  /* Drop cap for first paragraph */
+  .article-body p:first-of-type::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    float: left;
+    line-height: 0.75;
+    margin: 8px 10px 0 0;
+    color: #1a4fa0;
+  }
+
+  /* Article body */
+  .article-body p {
+    margin-bottom: 1.4em;
+    color: #222;
+    font-weight: 300;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    margin: 40px -20px;
+    padding: 28px 36px;
+    background: #1a1a2e;
+    color: #f0e6cc;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.5;
+    position: relative;
+  }
+  .pull-quote::before {
+    content: '\201C';
+    font-size: 80px;
+    color: #c9a84c;
+    line-height: 0;
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    opacity: 0.6;
+  }
+  .pull-quote p {
+    padding-left: 28px;
+    color: #f0e6cc !important;
+  }
+  .pull-quote cite {
+    display: block;
+    padding-left: 28px;
+    margin-top: 12px;
+    font-size: 13px;
+    font-style: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c9a84c;
+  }
+
+  /* Key finding box */
+  .finding-box {
+    background: #eef3fb;
+    border-left: 4px solid #1a4fa0;
+    padding: 22px 26px;
+    margin: 32px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .finding-box .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #1a4fa0;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .finding-box p {
+    font-size: 16px;
+    color: #1a2a4a;
+    line-height: 1.6;
+    margin: 0 !important;
+  }
+
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 44px 0;
+  }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #d9d2c8; }
+  .divider span { color: #c9a84c; font-size: 18px; }
+
+  /* Footer */
+  footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 2px solid #1a1a2e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-pub {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #1a1a2e;
+    letter-spacing: 1px;
+  }
+  .footer-note {
+    font-size: 12px;
+    color: #999;
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">Neuroscience &amp; Language Research</div>
+
+<div class="page">
+
+  <div class="source-label">
+    <span>The New York Times — Science</span>
+  </div>
+
+  <div class="section">Brain &amp; Language</div>
+
+  <h1>When an Adult Adds a Language, It's One Brain, Two Systems</h1>
+
+  <div class="deck">
+    New imaging research reveals that second languages learned in adulthood
+    occupy a separate neural territory — raising profound questions about
+    how the brain acquires and stores human speech.
+  </div>
+
+  <div class="byline-block">
+    <div class="author-avatar">SB</div>
+    <div class="byline-info">
+      <div class="byline-name">Sandra Blakeslee</div>
+      <div class="byline-date">July 15, 1997 &nbsp;·&nbsp; The New York Times</div>
+    </div>
+    <div class="journal-badge">Nature · 1997</div>
+  </div>
+
+  <div class="article-body">
+
+    <p>As thousands of teenagers who have struggled to engrave high school French on recalcitrant neurons might have guessed, a new study has found that second languages are stored differently in the human brain depending on when they are learned.</p>
+
+    <p>Babies who learn two languages simultaneously, and apparently effortlessly, have a single brain region for generating complex speech, researchers say. But people who learn a second language in adolescence or adulthood possess two such brain regions — one for each language.</p>
+
+    <div class="finding-box">
+      <div class="label">Key Finding</div>
+      <p>The study, published in the journal <em>Nature</em>, sheds new light on how the brain organizes language in infancy, why some brain regions appear immutable after childhood while others remain flexible, and why languages are harder to learn later in life.</p>
+    </div>
+
+    <p>There have always been strong hints that the brain can use separate regions for first and second languages, said Dr. Michael Posner, a psychologist at the University of Oregon in Eugene. Bilingual epilepsy patients may, during seizures, lose the ability to speak one language and not another. A stroke victim can permanently lose the ability to speak French but retain English or another language.</p>
+
+    <div class="pull-quote">
+      <p>Are the languages fused? Do they prime one another? Is one translated by another?</p>
+      <cite>— Dr. Michael Posner, University of Oregon</cite>
+    </div>
+
+    <p>The new study shows for the first time that two languages can be mapped in common neural tissue, Dr. Posner said, adding that it is "very helpful for understanding bilingualism."</p>
+
+    <div class="divider"><span>◆</span></div>
+
+    <p>The research was carried out by Dr. Joy Hirsch, head of Memorial Sloan-Kettering Hospital's functional M.R.I. Laboratory, and her graduate student, Karl Kim. Functional magnetic resonance imaging is a relatively new, noninvasive brain imaging technique that can pinpoint exactly which parts of the brain are active during cognitive tasks such as talking, seeing, waving an arm or daydreaming. Brain surgeons at the hospital are now using the technique to identify critical brain regions before removing a tumor or other abnormality.</p>
+
+    <p>Of these critical regions, language is perhaps at the top of the list, said Dr. Philip H. Gutin, the hospital's chief of neurosurgery. Some functions such as seeing and hearing are located in both brain hemispheres. When a tumor forms, surgeons can cut out tissue and not do great harm because the other side of the brain will take over. "But language is a high-rent district," Dr. Gutin said. Some high-level aspects of language tend to be found only on one side of the brain — by removing a spot of tissue smaller than an eraser, a surgeon could destroy a person's ability to speak or understand English.</p>
+
+    <div class="divider"><span>◆</span></div>
+
+    <p>To explore where languages lie in the brain, Dr. Hirsch recruited 12 healthy bilingual people from New York City. Ten different languages were represented in the group. Half had learned two languages in infancy. The other half began learning a second language around age 11 and had acquired fluency by 19 after living in a country where the language was spoken.</p>
+
+    <p>With their heads inside the M.R.I. machine, subjects thought silently about what they had done the day before using complex sentences — first in one language, then in the other. The machine detected increases in blood flow, indicating where in the brain this thinking took place.</p>
+
+    <p>Aspects of language ability are distributed all over the brain, Dr. Hirsch said. But there are high-level, executive regions usually localized on the left side of the brain. One is <strong>Wernicke's area</strong>, devoted to understanding the meaning of words and the semantics of spoken language. Another is <strong>Broca's area</strong>, dedicated to the execution of speech and deep grammatical aspects of language.</p>
+
+    <div class="finding-box">
+      <div class="label">The Result</div>
+      <p>None of the 12 bilinguals had two separate Wernicke's areas — Spanish semantics blended with English semantics in the same region. But there were dramatic differences in Broca's areas. Early bilinguals had one unified Broca's region for both languages; late bilinguals showed two distinct, adjacent Broca's areas — one per language.</p>
+    </div>
+
+    <p>This implies that the brain uses different strategies for learning languages depending on age, Dr. Hirsch said. A baby learns to talk using all faculties — hearing, vision, touch, and movement — which may feed into hardwired circuits like Broca's area. Once cells in this region become tuned to one or more languages, they become fixed. If two languages are acquired at this time, they become intermingled.</p>
+
+    <p>But people who learn a second language in high school have to acquire new skills for generating the complex speech sounds of the new tongue, which may explain why a second language is harder to learn. Broca's area is already dedicated to the native tongue, and so an ancillary Broca's region is created. Wernicke's area, which handles the simpler semantic aspects of language, can still overlap.</p>
+
+  </div>
+
+  <footer>
+    <div class="footer-pub">The New York Times · Science Desk</div>
+    <div class="footer-note">Originally published July 15, 1997. Reproduced for educational reference.</div>
+  </footer>
+
+</div>
+</body>
+</html>
