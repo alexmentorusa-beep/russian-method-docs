@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trial Lesson — The Russian Method</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:  #0d1b2a;
+  --blue:  #1a4fa0;
+  --gold:  #c9963a;
+  --gold2: #e8b95a;
+  --cream: #faf7f1;
+  --paper: #f3efe6;
+  --text:  #1c1c1c;
+  --muted: #6a7080;
+  --border:#e0dbd0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text);
+  background: var(--cream);
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--navy);
+  padding: 10px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(201,150,58,0.2);
+}
+.topbar-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.5px;
+}
+.topbar-brand strong { color: var(--gold); }
+.topbar-back {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 1px;
+  padding: 7px 18px;
+  border: 1px solid rgba(201,150,58,0.4);
+  border-radius: 3px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.topbar-back:hover {
+  background: rgba(201,150,58,0.12);
+  border-color: var(--gold);
+  color: var(--gold2);
+  transform: translateX(-2px);
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, var(--navy) 0%, #1a2e50 60%, var(--blue) 100%);
+  padding: 64px 32px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.kicker-line { width: 28px; height: 1px; background: var(--gold); }
+.kicker-text {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 600;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.hero h1 em { font-style: italic; color: var(--gold2); }
+.hero-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.55);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── PRICE BADGE ── */
+.price-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 15px;
+  padding: 10px 24px;
+  border-radius: 30px;
+  margin-top: 28px;
+  letter-spacing: 0.5px;
+}
+.price-badge .price { font-size: 26px; font-family: 'Cormorant Garamond', serif; }
+
+/* ── MAIN ── */
+.page { max-width: 740px; margin: 0 auto; padding: 52px 28px 80px; }
+
+/* ── WHAT YOU GET ── */
+.section-kicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 3.5vw, 34px);
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 28px;
+}
+
+.what-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+  margin-bottom: 44px;
+}
+.what-item {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 22px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.what-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.what-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.what-content h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.what-content p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 40px 0;
+}
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.divider span { color: var(--gold); font-size: 16px; }
+
+/* ── HOW IT WORKS ── */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 44px;
+}
+@media (max-width: 580px) { .steps { grid-template-columns: 1fr; } }
+
+.step-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 22px 18px;
+  text-align: center;
+  position: relative;
+}
+.step-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+  border-radius: 8px 8px 0 0;
+}
+.step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+.step-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.step-card p {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ── NOTE ── */
+.note {
+  background: #eef3fb;
+  border-left: 4px solid var(--blue);
+  padding: 18px 22px;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 44px;
+}
+.note p {
+  font-size: 15.5px;
+  color: #1a2a4a;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── PAYMENT BLOCK ── */
+.payment-block {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 40px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.payment-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold));
+}
+.payment-block h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 10px;
+}
+.payment-block .sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+.payment-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.btn-pay {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 15px 32px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 16px rgba(201,150,58,0.35);
+}
+.btn-pay:hover { background: var(--gold2); transform: translateY(-2px); }
+.btn-pay .pay-icon { font-size: 20px; }
+
+.btn-consult {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 15px 32px;
+  border-radius: 3px;
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,0.3);
+  transition: all 0.2s;
+}
+.btn-consult:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: white;
+  transform: translateY(-2px);
+}
+
+.payment-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  font-style: italic;
+  margin-top: 6px;
+}
+.payment-guarantee {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+}
+.payment-guarantee .icon { font-size: 16px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  padding: 28px 20px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+footer strong { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-brand"><strong>The Russian Method</strong> · mentorinrussian.com</div>
+  <a href="Why_Adults_Can_Learn_Russian_Like_Children.html" class="topbar-back">← Back</a>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-kicker">
+    <div class="kicker-line"></div>
+    <div class="kicker-text">Trial Lesson</div>
+    <div class="kicker-line"></div>
+  </div>
+  <h1>Your First Step Into<br><em>Real Russian</em></h1>
+  <p class="hero-sub">One lesson. One word. The beginning of a genuine language center in your brain.</p>
+  <div class="price-badge">
+    <span class="price">$5</span>
+    <span>· One-time · Instant access</span>
+  </div>
+</div>
+
+<!-- Main -->
+<div class="page">
+
+  <!-- What you get -->
+  <div class="section-kicker">What's Included</div>
+  <h2>Everything You Need to Experience the Method</h2>
+
+  <ul class="what-list">
+    <li class="what-item">
+      <div class="what-icon">🎧</div>
+      <div class="what-content">
+        <h4>Professional Audio Narration</h4>
+        <p>The lesson text is recorded by a native Russian speaker at a pace designed for clear perception — slower than natural conversation, but natural in rhythm and pronunciation. You hear real Russian from the very first minute.</p>
+      </div>
+    </li>
+    <li class="what-item">
+      <div class="what-icon">📖</div>
+      <div class="what-content">
+        <h4>Bilingual Lesson Text</h4>
+        <p>The full lesson is displayed side by side in Russian and English, with a toggle to switch between Russian-only, English-only, or both. Key phrases are highlighted to draw your attention to the building blocks of the language.</p>
+      </div>
+    </li>
+    <li class="what-item">
+      <div class="what-icon">📋</div>
+      <div class="what-content">
+        <h4>Step-by-Step Practice Assignment</h4>
+        <p>A clear, structured guide walks you through exactly how to work with the lesson using the immersion method — from first listening through simultaneous repetition to a final self-check. No guesswork. No confusion.</p>
+      </div>
+    </li>
+    <li class="what-item">
+      <div class="what-icon">🕐</div>
+      <div class="what-content">
+        <h4>Learn on Your Own Schedule</h4>
+        <p>The lesson is yours to access at any time, as many times as you like. There is no deadline, no live session to attend, and no pressure. Work through it at whatever pace feels right for you.</p>
+      </div>
+    </li>
+  </ul>
+
+  <div class="divider"><span>◆</span></div>
+
+  <!-- How it works -->
+  <div class="section-kicker">After Payment</div>
+  <h2>How It Works</h2>
+
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h4>Pay $5 via PayPal</h4>
+      <p>Secure payment. PayPal never shares your card details with the seller.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h4>Receive Your Link</h4>
+      <p>You will receive a direct link to the lesson by email — typically within a few hours.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h4>Start Learning</h4>
+      <p>Open the lesson in any browser, follow the assignment, and experience the method firsthand.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <p>💡 <strong>About the lesson:</strong> Lesson 1 is built around the word <em>любовь</em> — Love. It introduces you to two characters, Oleg and Maria, through a short dialogue and a series of phrases. Simple, warm, and surprisingly effective as a first encounter with Russian.</p>
+  </div>
+
+  <!-- Payment block -->
+  <div class="payment-block">
+    <h3>Ready to Begin?</h3>
+    <p class="sub">Choose how you'd like to take the next step.<br>Both paths lead to the same place — fluency.</p>
+    <div class="payment-buttons">
+      <a href="https://www.paypal.com/ncp/payment/ECDJTSRMZ4FKU" target="_blank" class="btn-pay">
+        <span class="pay-icon">💳</span>
+        Start for $5 — PayPal
+      </a>
+      <a href="https://calendly.com/alex-mentor-usa/30min" target="_blank" class="btn-consult">
+        📅 Book a Free Consultation
+      </a>
+    </div>
+    <p class="payment-note">PayPal is accepted worldwide and never shares your card details with the seller.</p>
+    <div class="payment-guarantee">
+      <span class="icon">🔒</span>
+      <span>Secure payment · Instant confirmation · No subscription</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <strong>The Russian Method</strong> · mentorinrussian.com<br>
+  Questions? <a href="https://calendly.com/alex-mentor-usa/30min" target="_blank" style="color: var(--gold); text-decoration: none;">Book a free consultation</a>
+</footer>
+
+</body>
+</html>
