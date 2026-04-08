@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Assignment — Lesson 1 · The Russian Method</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;600;700;800&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --navy: #0D2D6B; --blue: #1A4FA0; --gold: #C9963A; --gold2: #ffd080; --cream: #faf7f1; --border: #d8dff0; }
+body { font-family: 'Nunito', sans-serif; background: var(--cream); min-height: 100vh; line-height: 1.7; color: #1c1c1c; }
+.topbar { background: #0a1520; padding: 10px 28px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(201,150,58,0.2); position: sticky; top: 0; z-index: 100; }
+.topbar-brand { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: rgba(255,255,255,0.7); letter-spacing: 0.5px; }
+.topbar-brand strong { color: var(--gold); }
+.topbar-back { font-size: 14px; font-weight: 700; color: var(--gold); text-decoration: none; letter-spacing: 1px; padding: 7px 18px; border: 1px solid rgba(201,150,58,0.4); border-radius: 3px; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+.topbar-back:hover { background: rgba(201,150,58,0.12); border-color: var(--gold); color: var(--gold2); transform: translateX(-2px); }
+.hero { background: linear-gradient(135deg, #1A4FA0 0%, #0D2D6B 100%); padding: 48px 32px 40px; text-align: center; position: relative; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.hero-kicker { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.kicker-line { width: 24px; height: 1px; background: var(--gold); }
+.kicker-text { font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4.5vw, 46px); font-weight: 600; color: white; line-height: 1.2; margin-bottom: 10px; }
+.hero h1 em { font-style: italic; color: var(--gold2); }
+.hero-sub { font-size: 15px; color: rgba(255,255,255,0.5); }
+.page { max-width: 760px; margin: 0 auto; padding: 44px 24px 72px; }
+.intro-box { background: white; border-left: 4px solid var(--blue); border-radius: 0 8px 8px 0; padding: 18px 22px; margin-bottom: 32px; font-size: 16px; color: #333; line-height: 1.7; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.steps { display: grid; gap: 14px; margin-bottom: 40px; }
+.step { display: flex; gap: 18px; align-items: flex-start; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 18px 20px; box-shadow: 0 1px 6px rgba(0,0,0,0.04); transition: transform 0.2s, box-shadow 0.2s; }
+.step:hover { transform: translateX(3px); box-shadow: 0 4px 14px rgba(0,0,0,0.08); }
+.step.step-key { border-color: var(--gold); background: #fffbf3; }
+.step-num { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--navy)); color: white; font-size: 1.05em; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.step.step-key .step-num { background: linear-gradient(135deg, var(--gold), #a07020); }
+.step-title { font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+.step.step-key .step-title { color: #7A5000; }
+.step-text { font-size: 15.5px; color: #444; line-height: 1.72; }
+.tip { display: block; margin-top: 12px; padding: 11px 15px; background: #fff8ee; border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0; color: #7A5000; font-size: 15px; font-style: italic; line-height: 1.6; }
+.remember { background: linear-gradient(135deg, var(--blue) 0%, var(--navy) 100%); border-radius: 8px; padding: 22px 26px; color: rgba(255,255,255,0.9); font-size: 15.5px; line-height: 1.65; text-align: center; margin-bottom: 40px; }
+.remember strong { color: var(--gold2); }
+.bottom-nav { display: flex; gap: 14px; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 2px solid var(--border); }
+.btn-back { display: inline-flex; align-items: center; gap: 8px; background: white; color: var(--navy); font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; padding: 13px 24px; border-radius: 4px; text-decoration: none; border: 2px solid var(--border); transition: all 0.2s; }
+.btn-back:hover { border-color: var(--blue); color: var(--blue); transform: translateX(-3px); }
+.btn-consult { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--gold), #a07020); color: white; font-weight: 800; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; padding: 13px 24px; border-radius: 4px; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 14px rgba(201,150,58,0.35); }
+.btn-consult:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,150,58,0.45); }
+footer { background: #1A1410; color: rgba(255,255,255,0.5); text-align: center; padding: 22px 20px; font-size: 12px; line-height: 1.8; }
+footer strong { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-brand"><strong>The Russian Method</strong> · mentorinrussian.com</div>
+  <a href="Russian_Lesson_1_Love.html" class="topbar-back">← Back to Lesson</a>
+</div>
+
+<div class="hero">
+  <div class="hero-kicker">
+    <div class="kicker-line"></div>
+    <div class="kicker-text">Lesson 1 · Love</div>
+    <div class="kicker-line"></div>
+  </div>
+  <h1>Practice Assignment<br><em>How to Work With This Lesson</em></h1>
+  <p class="hero-sub">Follow the steps below in order · No memorization required</p>
+</div>
+
+<div class="page">
+
+  <div class="intro-box">
+    This lesson is designed for <strong>independent self-study</strong> at any time convenient for you.
+    There is no need to memorize anything. Your goal is to <strong>experience</strong> the language —
+    not to study it. Follow the steps below in order.
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Listen Once — Just Listen</div>
+        <div class="step-text">Press play and listen to the full recording without doing anything else.
+        Don't look at the text yet. Let the sounds of Russian wash over you.
+        Notice the rhythm, the melody, the feeling of the words.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Read and Visualize</div>
+        <div class="step-text">Switch to <strong>English mode</strong> and read the text
+        without pronouncing the words — and try to visualize the story given.
+        See the people, the situation, the emotion. Make it real in your mind.</div>
+      </div>
+    </div>
+
+    <div class="step step-key">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">⭐ Simultaneous Repetition — The Core Exercise</div>
+        <div class="step-text">This is the heart of the method. Switch to <strong>Russian only</strong> mode.
+        Press play and <strong>repeat out loud simultaneously with the narrator</strong>,
+        staying 1–2 words behind. Follow the Russian text with your eyes.
+        Do not pause the recording.
+        <br><br>
+        If you miss words — that is completely normal at first.
+        With each repetition you will catch more and more.
+        Repeat the full recording <strong>as many times as necessary</strong>
+        until it feels natural and effortless.
+        <span class="tip">💡 Engage your senses as you repeat — picture Oleg and Maria,
+        feel the warmth of the word <em>любовь</em>, let yourself smile.
+        The more you feel, the deeper the language takes root.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-title">Eyes Closed — Trust Yourself</div>
+        <div class="step-text">Do a few more repetitions with your <strong>eyes closed</strong>.
+        Don't worry about perfection. Let the phrases come as they come.
+        This is where the language begins its journey from your conscious mind
+        to your subconscious speech center.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-title">Final Check</div>
+        <div class="step-text">Switch to <strong>English only</strong> mode.
+        Read each English phrase and try to say it in Russian out loud —
+        without looking at the Russian text.
+        If a phrase comes naturally, without effort — it is yours.
+        If not, go back to Step 3 for those phrases.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="remember">
+    <strong>Remember:</strong> You are not trying to memorize.
+    You are training your brain to respond automatically —
+    exactly the way you learned your own language as a child.
+  </div>
+
+  <div class="bottom-nav">
+    <a href="Russian_Lesson_1_Love.html" class="btn-back">← Back to Lesson</a>
+    <a href="https://calendly.com/alex-mentor-usa/30min" target="_blank" class="btn-consult">
+      📅 Book a Free Consultation
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <strong>The Russian Method</strong> · mentorinrussian.com · Lesson 1 — Love
+</footer>
+
+</body>
+</html>
