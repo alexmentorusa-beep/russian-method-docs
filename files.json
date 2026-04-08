@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "title": "When an Adult Adds a Language",
+    "subtitle": "It's One Brain, Two Systems",
+    "author": "Sandra Blakeslee",
+    "source": "The New York Times",
+    "date": "July 15, 1997",
+    "category": "Neuroscience",
+    "tag": "Popular Science",
+    "description": "A groundbreaking article explaining how second languages learned in adulthood occupy a separate region of the brain compared to languages acquired in infancy.",
+    "file": "When_an_Adult_Adds_a_Language.html",
+    "color": "#1a4fa0"
+  },
+  {
+    "id": 2,
+    "title": "Distinct Cortical Areas Associated with Native and Second Languages",
+    "subtitle": "Original fMRI Research — Nature, 1997",
+    "author": "Kim, Relkin, Lee & Hirsch",
+    "source": "Nature · Vol 388",
+    "date": "July 10, 1997",
+    "category": "Neuroscience",
+    "tag": "Peer-Reviewed",
+    "description": "The original Nature paper demonstrating via fMRI that Broca's area contains spatially distinct regions for native and second languages acquired in adulthood.",
+    "file": "Distinct_Cortical_Areas_Nature_1997.html",
+    "color": "#0d2d6b"
+  },
+  {
+    "id": 3,
+    "title": "Russian Lesson 1 — Love",
+    "subtitle": "Immersive Introduction to Russian",
+    "author": "Alexander",
+    "source": "The Russian Method",
+    "date": "2025",
+    "category": "Russian Lessons",
+    "tag": "Lesson",
+    "description": "First lesson of The Russian Method course. An immersive approach to learning Russian without translation — building a genuine second language center in the brain.",
+    "file": "Russian_Lesson_1_Love.html",
+    "color": "#c9963a"
+  }
+]
