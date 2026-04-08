@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "title": "Why Adults Can Learn Russian Like Children Do",
+    "subtitle": "The Science Behind the Method",
+    "author": "The Russian Method",
+    "source": "mentorinrussian.com",
+    "date": "2025",
+    "category": "The Method",
+    "tag": "Start Here",
+    "description": "A science-based explanation of why traditional language learning fails and how the immersion approach replicates the way children naturally acquire language. Includes neuroscience research and practical principles.",
+    "file": "Why_Adults_Can_Learn_Russian_Like_Children.html",
+    "color": "#1a4fa0"
+  },
+  {
+    "id": 2,
+    "title": "Trial Lesson — Lesson 1: Love",
+    "subtitle": "Your First Step Into Real Russian · $5",
+    "author": "The Russian Method",
+    "source": "mentorinrussian.com",
+    "date": "2025",
+    "category": "Russian Lessons",
+    "tag": "Trial · $5",
+    "description": "Everything included in the trial lesson: professional audio narration, bilingual lesson text with language toggle, and a step-by-step practice assignment. Learn at your own pace, any time.",
+    "file": "Trial_Lesson_Preview.html",
+    "color": "#c9963a"
+  },
+  {
+    "id": 3,
+    "title": "Lesson 1 — Love",
+    "subtitle": "Любовь · First Immersion Lesson",
+    "author": "Alexander",
+    "source": "The Russian Method",
+    "date": "2025",
+    "category": "Russian Lessons",
+    "tag": "Lesson",
+    "description": "First lesson of The Russian Method. Audio narration by a professional speaker, bilingual text with Russian/English toggle. Features Oleg and Maria in a warm dialogue built around the word любовь — Love.",
+    "file": "Russian_Lesson_1_Love.html",
+    "color": "#0d2d6b"
+  },
+  {
+    "id": 4,
+    "title": "Practice Assignment — Lesson 1",
+    "subtitle": "5 Steps to Automatic Speech",
+    "author": "Alexander",
+    "source": "The Russian Method",
+    "date": "2025",
+    "category": "Russian Lessons",
+    "tag": "Assignment",
+    "description": "Step-by-step practice guide for Lesson 1. From first listening through simultaneous repetition to a final self-check. Designed to move Russian from conscious effort to automatic, subconscious speech.",
+    "file": "Practice_Assignment_1.html",
+    "color": "#1b5e20"
+  },
+  {
+    "id": 5,
+    "title": "Distinct Cortical Areas Associated with Native and Second Languages",
+    "subtitle": "Original fMRI Research — Nature, 1997",
+    "author": "Kim, Relkin, Lee & Hirsch",
+    "source": "Nature · Vol 388",
+    "date": "July 10, 1997",
+    "category": "Neuroscience",
+    "tag": "Peer-Reviewed",
+    "description": "The original Nature paper demonstrating via fMRI that Broca's area contains spatially distinct regions for native and second languages acquired in adulthood.",
+    "file": "Distinct_Cortical_Areas_Nature_1997.html",
+    "color": "#1a237e"
+  },
+  {
+    "id": 6,
+    "title": "When an Adult Adds a Language",
+    "subtitle": "It's One Brain, Two Systems",
+    "author": "Sandra Blakeslee",
+    "source": "The New York Times",
+    "date": "July 15, 1997",
+    "category": "Neuroscience",
+    "tag": "Popular Science",
+    "description": "A groundbreaking article explaining how second languages learned in adulthood occupy a separate region of the brain compared to languages acquired in infancy.",
+    "file": "When_an_Adult_Adds_a_Language.html",
+    "color": "#37474f"
+  }
+]
