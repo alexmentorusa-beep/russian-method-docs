@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Russian Method — Reading Library</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:    #0d1b2a;
+  --navy2:   #1a2e45;
+  --blue:    #1a4fa0;
+  --gold:    #c9963a;
+  --gold2:   #e8b95a;
+  --cream:   #faf7f1;
+  --text:    #1c1c1c;
+  --muted:   #7a8090;
+  --border:  #e2ddd5;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  padding: 70px 40px 60px;
+  text-align: center;
+}
+
+/* Geometric background pattern */
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(201,150,58,0.04) 40px,
+      rgba(201,150,58,0.04) 41px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(201,150,58,0.04) 40px,
+      rgba(201,150,58,0.04) 41px
+    );
+}
+
+/* Gold arc decoration */
+header::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 160px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,150,58,0.2);
+  pointer-events: none;
+}
+
+.header-inner { position: relative; z-index: 1; }
+
+.site-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  animation: fadeDown 0.6s ease both;
+}
+.eyebrow-line {
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+}
+.eyebrow-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.site-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 300;
+  color: white;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 6px;
+  animation: fadeDown 0.7s ease 0.1s both;
+}
+.site-title em {
+  font-style: italic;
+  color: var(--gold2);
+}
+
+.site-subtitle {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+  animation: fadeDown 0.7s ease 0.2s both;
+}
+
+.header-description {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: rgba(255,255,255,0.65);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+  animation: fadeDown 0.7s ease 0.3s both;
+}
+
+/* ── FILTER BAR ── */
+.filter-bar {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.filter-btn {
+  padding: 16px 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.filter-btn:hover { color: var(--navy); }
+.filter-btn.active {
+  color: var(--blue);
+  border-bottom-color: var(--gold);
+}
+
+.filter-count {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* ── MAIN ── */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 52px 32px 80px;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* ── CARDS GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.10);
+}
+
+/* Card accent bar */
+.card-accent {
+  height: 4px;
+  width: 100%;
+}
+
+.card-body {
+  padding: 26px 26px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.card-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+  background: var(--cream);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.card-category {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.card-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.card-description {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.65;
+  font-weight: 300;
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.card-footer {
+  padding: 14px 26px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fdfcfa;
+}
+
+.card-author {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.card-author strong {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.card-source {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.read-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-decoration: none;
+  padding: 8px 14px;
+  border: 1px solid rgba(26,79,160,0.2);
+  border-radius: 2px;
+  transition: all 0.2s;
+  background: white;
+}
+.read-btn:hover {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+}
+.read-btn svg { width: 12px; height: 12px; }
+
+/* ── EMPTY STATE ── */
+.empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--muted);
+  display: none;
+}
+.empty.visible { display: block; }
+.empty-icon { font-size: 48px; margin-bottom: 16px; }
+.empty h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--navy); margin-bottom: 8px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 32px 20px;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.8;
+}
+footer strong { color: var(--gold); font-weight: 600; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  header { padding: 50px 20px 44px; }
+  main { padding: 36px 16px 60px; }
+  .filter-bar { padding: 0 16px; }
+  .cards-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <div class="site-eyebrow">
+      <div class="eyebrow-line"></div>
+      <div class="eyebrow-text">mentorinrussian.com</div>
+      <div class="eyebrow-line"></div>
+    </div>
+    <h1 class="site-title">The Russian Method<br><em>Reading Library</em></h1>
+    <div class="site-subtitle">Curated Resources for Students</div>
+    <p class="header-description">Articles, research, and lesson materials selected to support your journey into the Russian language.</p>
+  </div>
+</header>
+
+<!-- Filter bar -->
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">
+    All <span class="filter-count" id="count-all">0</span>
+  </button>
+  <button class="filter-btn" data-filter="The Method">
+    The Method <span class="filter-count" id="count-method">0</span>
+  </button>
+  <button class="filter-btn" data-filter="Russian Lessons">
+    Lessons <span class="filter-count" id="count-lessons">0</span>
+  </button>
+  <button class="filter-btn" data-filter="Neuroscience">
+    Neuroscience <span class="filter-count" id="count-neuro">0</span>
+  </button>
+</div>
+
+<!-- Main -->
+<main>
+  <div class="section-header">
+    <h2 class="section-title">Library</h2>
+    <span class="section-count" id="visible-count"></span>
+  </div>
+
+  <div class="cards-grid" id="cards-grid"></div>
+  <div class="empty" id="empty-state">
+    <div class="empty-icon">📚</div>
+    <h3>No documents found</h3>
+    <p>Try selecting a different category.</p>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <strong>The Russian Method</strong> · mentorinrussian.com<br>
+  Materials curated for educational use by Alexander
+</footer>
+
+<script>
+  let allDocs = [];
+  let activeFilter = 'all';
+
+  async function loadDocs() {
+    try {
+      const res = await fetch('files.json');
+      allDocs = await res.json();
+      renderCards(allDocs);
+      updateCounts();
+    } catch(e) {
+      document.getElementById('cards-grid').innerHTML =
+        '<p style="color:#999;padding:40px 0;">Could not load documents.</p>';
+    }
+  }
+
+  function renderCards(docs) {
+    const grid = document.getElementById('cards-grid');
+    const empty = document.getElementById('empty-state');
+    const visibleCount = document.getElementById('visible-count');
+
+    if (!docs.length) {
+      grid.innerHTML = '';
+      empty.classList.add('visible');
+      visibleCount.textContent = '0 documents';
+      return;
+    }
+
+    empty.classList.remove('visible');
+    visibleCount.textContent = `${docs.length} document${docs.length !== 1 ? 's' : ''}`;
+
+    grid.innerHTML = docs.map((doc, i) => `
+      <a class="card" href="${doc.file}" target="_blank" style="animation-delay:${i * 0.08}s" data-category="${doc.category}">
+        <div class="card-accent" style="background:${doc.color}"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-tag">${doc.tag}</span>
+            <span class="card-category">${doc.category}</span>
+          </div>
+          <div class="card-title">${doc.title}</div>
+          <div class="card-subtitle">${doc.subtitle}</div>
+          <div class="card-description">${doc.description}</div>
+        </div>
+        <div class="card-footer">
+          <div>
+            <div class="card-author"><strong>${doc.author}</strong></div>
+            <div class="card-source">${doc.source} · ${doc.date}</div>
+          </div>
+          <span class="read-btn">
+            Read
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 6h8M6 2l4 4-4 4"/>
+            </svg>
+          </span>
+        </div>
+      </a>
+    `).join('');
+  }
+
+  function updateCounts() {
+    document.getElementById('count-all').textContent = allDocs.length;
+    document.getElementById('count-method').textContent =
+      allDocs.filter(d => d.category === 'The Method').length;
+    document.getElementById('count-lessons').textContent =
+      allDocs.filter(d => d.category === 'Russian Lessons').length;
+    document.getElementById('count-neuro').textContent =
+      allDocs.filter(d => d.category === 'Neuroscience').length;
+  }
+
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      const filtered = activeFilter === 'all'
+        ? allDocs
+        : allDocs.filter(d => d.category === activeFilter);
+      renderCards(filtered);
+    });
+  });
+
+  loadDocs();
+</script>
+</body>
+</html>
