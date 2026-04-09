@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zoom Consultation Script · The Russian Method · Alexander</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #0C1A3A;
+  --navy2:     #0A1228;
+  --card:      #162040;
+  --card2:     #1C2C50;
+  --gold:      #C9963A;
+  --gold2:     #E4B865;
+  --blue:      #4A82D4;
+  --blue2:     #2A5298;
+  --text:      #D4E2F4;
+  --dim:       #7A90B8;
+  --muted:     #4A5E80;
+  --spoken-bg: #192850;
+  --dir-bg:    #0E1E38;
+  --tip-bg:    #261C04;
+  --red:       #C0392B;
+  --green:     #27AE60;
+  --r:         10px;
+  --r-sm:      7px;
+}
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+html, body { height:100%; overflow:hidden; font-family:'DM Sans',system-ui,sans-serif; background:var(--navy); color:var(--text); }
+body { display:flex; flex-direction:column; }
+
+/* TOP BAR */
+#topbar { flex-shrink:0; height:52px; background:var(--navy2); border-bottom:1px solid rgba(201,150,58,0.2); display:flex; align-items:center; padding:0 16px; gap:10px; z-index:20; }
+#menu-btn { background:none; border:none; color:var(--gold); font-size:20px; cursor:pointer; padding:4px 6px; flex-shrink:0; }
+#topbar-title { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:700; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1; min-width:0; }
+#topbar-step { font-size:11px; color:var(--dim); flex-shrink:0; }
+#timer { font-size:14px; font-weight:700; color:var(--gold2); font-variant-numeric:tabular-nums; flex-shrink:0; }
+#timer-btn { background:rgba(201,150,58,0.12); border:1px solid rgba(201,150,58,0.3); color:var(--gold); font-size:11px; padding:4px 10px; border-radius:12px; cursor:pointer; flex-shrink:0; font-family:'DM Sans',sans-serif; }
+#timer-btn:hover { background:rgba(201,150,58,0.22); }
+#btn-children { background:rgba(192,57,43,0.15); border:1px solid rgba(192,57,43,0.4); color:#E07070; font-size:11px; font-weight:500; padding:5px 11px; border-radius:16px; cursor:pointer; font-family:'DM Sans',sans-serif; flex-shrink:0; white-space:nowrap; }
+#btn-children:hover { background:rgba(192,57,43,0.28); }
+#progress-wrap { width:80px; height:3px; background:rgba(255,255,255,0.07); border-radius:2px; overflow:hidden; flex-shrink:0; }
+#progress-fill { height:100%; background:linear-gradient(90deg,var(--blue2),var(--blue)); border-radius:2px; transition:width 0.4s ease; }
+
+/* BODY */
+#body { flex:1; display:flex; overflow:hidden; min-height:0; }
+
+/* SIDEBAR */
+#sidebar { width:230px; flex-shrink:0; background:var(--navy2); border-right:1px solid rgba(201,150,58,0.15); overflow-y:auto; display:flex; flex-direction:column; transition:width 0.28s ease,opacity 0.2s; }
+#sidebar.hidden { width:0; overflow:hidden; opacity:0; }
+.nav-group { padding:8px 0; }
+.nav-group-label { font-size:9.5px; letter-spacing:1.4px; font-weight:600; color:var(--muted); padding:6px 16px 4px; text-transform:uppercase; }
+.nav-item { display:flex; align-items:center; gap:10px; padding:8px 16px; cursor:pointer; font-size:12.5px; color:var(--dim); border-left:3px solid transparent; transition:all 0.15s; line-height:1.3; }
+.nav-item:hover { background:rgba(74,130,212,0.07); color:var(--text); }
+.nav-item.active { color:var(--gold); border-left-color:var(--gold); background:rgba(201,150,58,0.07); }
+.nav-icon { font-size:14px; flex-shrink:0; }
+
+/* MAIN */
+#main { flex:1; display:flex; flex-direction:column; min-width:0; overflow:hidden; }
+#scene-wrap { flex:1; overflow-y:auto; padding:24px 28px 16px; min-height:0; }
+.scene { display:none; }
+.scene.active { display:block; animation:fadeIn 0.28s ease; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+/* Scene header */
+.scene-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(201,150,58,0.1); border:1px solid rgba(201,150,58,0.22); border-radius:20px; padding:3px 12px; font-size:10.5px; color:var(--gold); font-weight:600; letter-spacing:0.4px; margin-bottom:10px; text-transform:uppercase; }
+.scene-badge .dot { width:5px; height:5px; background:var(--gold); border-radius:50%; }
+.scene-title { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; color:var(--gold2); margin-bottom:3px; line-height:1.2; }
+.scene-sub { font-size:12.5px; color:var(--dim); margin-bottom:20px; font-style:italic; }
+
+/* Content blocks */
+.spoken { background:var(--spoken-bg); border-left:3px solid var(--blue); border-radius:0 var(--r-sm) var(--r-sm) 0; padding:12px 16px 12px 38px; margin:8px 0; font-style:italic; font-size:14.5px; line-height:1.75; color:#C4D6EE; position:relative; }
+.spoken::before { content:'🗣'; position:absolute; left:10px; top:12px; font-size:13px; font-style:normal; }
+.question { background:#0E2030; border-left:3px solid var(--gold); border-radius:0 var(--r-sm) var(--r-sm) 0; padding:12px 16px 12px 38px; margin:8px 0; font-style:italic; font-size:14.5px; line-height:1.75; color:#E4D4A0; position:relative; }
+.question::before { content:'❓'; position:absolute; left:10px; top:12px; font-size:13px; font-style:normal; }
+.dir { background:var(--dir-bg); border-radius:var(--r-sm); padding:9px 14px; margin:8px 0; font-size:12.5px; color:var(--dim); font-style:italic; }
+.tip { background:var(--tip-bg); border:1px solid rgba(201,150,58,0.25); border-radius:var(--r-sm); padding:10px 14px; margin:10px 0; font-size:13px; color:#D4A840; line-height:1.6; }
+.sublabel { font-size:11px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin:18px 0 6px; }
+.div { border:none; border-top:1px solid rgba(255,255,255,0.07); margin:18px 0; }
+
+/* Email box */
+.email-box { background:#0A1E10; border:1px solid rgba(39,174,96,0.3); border-radius:var(--r-sm); padding:14px 16px; margin:12px 0; }
+.email-box-title { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#5DD890; margin-bottom:10px; }
+.email-row { display:flex; align-items:center; gap:10px; margin:6px 0; }
+.email-label { font-size:12px; color:var(--dim); width:160px; flex-shrink:0; }
+.email-addr { font-size:13px; color:#8DEDB0; font-weight:600; }
+
+/* Checkboxes */
+.check-grid { display:grid; gap:8px; margin:12px 0; }
+.check-item { display:flex; align-items:flex-start; gap:10px; background:var(--card); border-radius:var(--r-sm); padding:10px 14px; cursor:pointer; transition:background 0.15s; }
+.check-item:hover { background:var(--card2); }
+.check-item input[type=checkbox] { width:16px; height:16px; margin-top:2px; accent-color:var(--gold); flex-shrink:0; cursor:pointer; }
+.check-label { font-size:13.5px; color:var(--text); line-height:1.5; }
+.check-sub { font-size:11.5px; color:var(--dim); margin-top:2px; }
+
+/* Notes */
+.notes-wrap { margin:10px 0; }
+.notes-label { font-size:11px; color:var(--dim); margin-bottom:5px; text-transform:uppercase; letter-spacing:1px; }
+.notes-field { width:100%; background:var(--card); border:1px solid rgba(255,255,255,0.08); border-radius:var(--r-sm); padding:10px 12px; color:var(--text); font-size:13.5px; font-family:'DM Sans',sans-serif; resize:vertical; min-height:60px; outline:none; transition:border 0.2s; }
+.notes-field:focus { border-color:rgba(201,150,58,0.4); }
+.notes-line { min-height:38px; resize:none; }
+
+/* Branch cards */
+.branch-grid { display:grid; gap:12px; margin:16px 0; }
+.branch-card { background:var(--card); border:1px solid rgba(255,255,255,0.08); border-radius:var(--r); padding:16px 18px; cursor:pointer; transition:all 0.2s; }
+.branch-card:hover { transform:translateX(4px); }
+.branch-card.green { border-left:4px solid var(--green); }
+.branch-card.green:hover { border-color:var(--green); background:var(--card2); }
+.branch-card.red { border-left:4px solid var(--red); }
+.branch-card.red:hover { border-color:var(--red); background:var(--card2); }
+.branch-card.gold { border-left:4px solid var(--gold); }
+.branch-card.gold:hover { border-color:var(--gold); background:var(--card2); }
+.branch-title { font-size:14px; font-weight:600; color:var(--text); margin-bottom:4px; }
+.branch-desc { font-size:12px; color:var(--dim); line-height:1.5; }
+
+/* Accordions */
+.acc { border:1px solid rgba(255,255,255,0.07); border-radius:var(--r-sm); margin:8px 0; overflow:hidden; }
+.acc-hdr { width:100%; background:var(--card); border:none; padding:11px 14px; text-align:left; color:var(--dim); font-size:13px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:background 0.15s; font-family:'DM Sans',sans-serif; }
+.acc-hdr:hover,.acc-hdr.open { background:var(--card2); color:var(--text); }
+.acc-arrow { font-size:10px; transition:transform 0.2s; }
+.acc-hdr.open .acc-arrow { transform:rotate(90deg); }
+.acc-body { display:none; padding:12px 14px; border-top:1px solid rgba(255,255,255,0.06); }
+.acc-body.open { display:block; }
+
+/* Bottom bar */
+#bottombar { flex-shrink:0; height:56px; background:var(--navy2); border-top:1px solid rgba(255,255,255,0.07); display:flex; align-items:center; padding:0 16px; gap:10px; }
+.btn { padding:9px 20px; border-radius:8px; border:none; font-size:13px; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all 0.18s; }
+.btn-back { background:rgba(255,255,255,0.05); color:var(--dim); }
+.btn-back:hover { background:rgba(255,255,255,0.1); color:var(--text); }
+.btn-next { background:var(--blue2); color:white; }
+.btn-next:hover { background:var(--blue); }
+.btn-gold { background:var(--gold); color:var(--navy2); }
+.btn-gold:hover { background:var(--gold2); }
+.spacer { flex:1; }
+#dyn-btns { display:flex; gap:8px; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topbar">
+  <button id="menu-btn" onclick="toggleSidebar()">☰</button>
+  <div id="topbar-title">Открытие</div>
+  <div id="topbar-step">Шаг 1 из 10</div>
+  <div class="spacer"></div>
+  <div id="timer">00:00</div>
+  <button id="timer-btn" onclick="toggleTimer()">▶ Старт</button>
+  <button id="btn-children" onclick="goTo('children')">⚠️ Дети</button>
+  <div id="progress-wrap"><div id="progress-fill" style="width:10%"></div></div>
+</div>
+
+<!-- BODY -->
+<div id="body">
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+  <div class="nav-group">
+    <div class="nav-group-label">Основной поток</div>
+    <div class="nav-item active" id="nav-opening"    onclick="goTo('opening')"><span class="nav-icon">👋</span>1. Открытие</div>
+    <div class="nav-item"        id="nav-background" onclick="goTo('background')"><span class="nav-icon">🌍</span>2. Бэкграунд</div>
+    <div class="nav-item"        id="nav-experience" onclick="goTo('experience')"><span class="nav-icon">📚</span>3. Опыт с русским</div>
+    <div class="nav-item"        id="nav-goals"      onclick="goTo('goals')"><span class="nav-icon">🎯</span>4. Цели и мотивация</div>
+    <div class="nav-item"        id="nav-commitment" onclick="goTo('commitment')"><span class="nav-icon">⏰</span>5. Время и готовность</div>
+    <div class="nav-item"        id="nav-fitcheck"   onclick="goTo('fitcheck')"><span class="nav-icon">🔍</span>6. Оценка студента</div>
+    <div class="nav-item"        id="nav-method"     onclick="goTo('method')"><span class="nav-icon">🧠</span>7. Метод погружения</div>
+    <div class="nav-item"        id="nav-offer"      onclick="goTo('offer')"><span class="nav-icon">💎</span>8. Предложение</div>
+    <div class="nav-item"        id="nav-objections" onclick="goTo('objections')"><span class="nav-icon">🛡️</span>9. Вопросы/возражения</div>
+    <div class="nav-item"        id="nav-close"      onclick="goTo('close')"><span class="nav-icon">🏁</span>10. Завершение</div>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group-label">Ветки</div>
+    <div class="nav-item" id="nav-close-yes"   onclick="goTo('close-yes')"><span class="nav-icon">✅</span>Да — берём!</div>
+    <div class="nav-item" id="nav-close-maybe" onclick="goTo('close-maybe')"><span class="nav-icon">🤔</span>Подумаю</div>
+    <div class="nav-item" id="nav-close-no"    onclick="goTo('close-no')"><span class="nav-icon">🙏</span>Не сейчас</div>
+    <div class="nav-item" id="nav-notfit"      onclick="goTo('notfit')"><span class="nav-icon">⛔</span>Не подходит</div>
+    <div class="nav-item" id="nav-children"    onclick="goTo('children')"><span class="nav-icon">🧒</span>Запрос на детей</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+<div id="scene-wrap">
+
+<!-- 1. OPENING -->
+<div class="scene active" id="scene-opening">
+  <div class="scene-badge"><div class="dot"></div>Шаг 1 · 0–2 мин</div>
+  <div class="scene-title">👋 Открытие</div>
+  <div class="scene-sub">Студент уже заинтересован — начни тепло и уверенно</div>
+
+  <div class="spoken">Hi! Can you see and hear me okay? Great!</div>
+  <div class="spoken">Could you tell me how to pronounce your name correctly?</div>
+  <div class="dir">Повтори имя правильно. Это сразу создаёт доверие.</div>
+  <div class="spoken">Welcome, [Name]! Nice to meet you — thank you for taking the time today. I really appreciate it.</div>
+
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">💬 Small talk — если чувствуешь что нужно <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">How's your day going? Where are you joining from today?</div>
+      <div class="dir">Максимум 1–2 минуты. Студент пришёл с интересом — не трать его время.</div>
+    </div>
+  </div>
+
+  <div class="spoken">So — I'd love to start by just getting to know you a little. Tell me about yourself — where are you based, and what brings you to Russian?</div>
+  <div class="dir">Открытый вопрос — дай студенту говорить. Слушай, не перебивай.</div>
+</div>
+
+<!-- 2. BACKGROUND -->
+<div class="scene" id="scene-background">
+  <div class="scene-badge"><div class="dot"></div>Шаг 2 · 2–6 мин</div>
+  <div class="scene-title">🌍 Бэкграунд студента</div>
+  <div class="scene-sub">Локация и языки — важно для понимания потенциала</div>
+
+  <div class="notes-wrap">
+    <div class="notes-label">📍 Локация</div>
+    <input class="notes-field notes-line" placeholder="Город, страна...">
+  </div>
+
+  <div class="question">And what's your native language? Do you happen to speak any other languages besides English?</div>
+  <div class="dir">Внимательно слушай. Знание нескольких языков — огромный плюс.</div>
+
+  <div class="notes-wrap">
+    <div class="notes-label">🗣 Языки студента</div>
+    <input class="notes-field notes-line" placeholder="Родной язык, другие языки...">
+  </div>
+
+  <div class="tip">💡 Если говорит на нескольких языках: <em>"That's actually a real advantage — people who already speak more than one language often find the immersion method more intuitive. Your brain already knows how to build a new language center."</em></div>
+
+  <div class="check-grid">
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">🌐 Говорит на 2+ языках</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">✈️ Жил в нескольких странах</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">🏠 Многоязычная среда дома / на работе</div></div></label>
+  </div>
+</div>
+
+<!-- 3. EXPERIENCE -->
+<div class="scene" id="scene-experience">
+  <div class="scene-badge"><div class="dot"></div>Шаг 3 · 6–10 мин</div>
+  <div class="scene-title">📚 Опыт с русским языком</div>
+  <div class="scene-sub">Что уже пробовал? Это покажет с чем придётся работать</div>
+
+  <div class="question">Have you tried learning Russian before — or is this a completely fresh start?</div>
+
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">✅ Уже пробовал учить русский <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="question">What did you try — classes, apps, self-study?</div>
+      <div class="question">What worked, and what didn't?</div>
+      <div class="dir">Если упоминает Duolingo, грамматику, перевод — запомни. Это идеальный мостик к объяснению метода позже.</div>
+      <div class="tip">💡 <em>"That's actually a very common experience — and what you're describing is exactly why traditional methods often don't lead to fluency. We'll talk about that in a moment."</em></div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">🆕 Полный ноль / с нуля <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">That's actually perfect — starting fresh means no habits to unlearn. You'll go straight into the method the right way from day one.</div>
+    </div>
+  </div>
+
+  <div class="sublabel">Текущий уровень</div>
+  <div class="check-grid">
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">🟥 Абсолютный ноль</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">🟨 Несколько слов / фраз</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">🟩 Базовый уровень</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">📱 Пробовал приложения (Duolingo и др.)</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">🏫 Брал уроки раньше</div></div></label>
+  </div>
+</div>
+
+<!-- 4. GOALS -->
+<div class="scene" id="scene-goals">
+  <div class="scene-badge"><div class="dot"></div>Шаг 4 · 10–15 мин</div>
+  <div class="scene-title">🎯 Цели и мотивация</div>
+  <div class="scene-sub">Самый важный раздел — слушай, не перебивай</div>
+
+  <div class="question">So — what's drawing you to Russian? What's the story behind this?</div>
+  <div class="dir">Дай студенту говорить. Не торопи. Это самая ценная часть разговора.</div>
+
+  <div class="check-grid">
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">💼 Бизнес / работа</div><div class="check-sub">Коллеги, клиенты, деловые поездки</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">❤️ Личные связи</div><div class="check-sub">Партнёр, семья, друзья говорят по-русски</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">✈️ Путешествия</div><div class="check-sub">Россия и другие русскоязычные страны</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">🎭 Культура / хобби</div><div class="check-sub">Литература, кино, музыка, история</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">🧩 Личный вызов</div><div class="check-sub">"Хочу доказать себе, что могу"</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">🌱 Другое</div></div></label>
+  </div>
+
+  <div class="notes-wrap">
+    <div class="notes-label">📝 Ключевые детали мотивации</div>
+    <textarea class="notes-field" placeholder="Запиши — пригодится в закрытии..."></textarea>
+  </div>
+
+  <div class="question">If you imagine yourself a year from now — what would success look like? What would you love to be able to do in Russian?</div>
+  <div class="dir">Эмоциональный вопрос. Студент сам формулирует свою мечту.</div>
+  <div class="tip">💡 Запомни ответ! Используй в закрытии: <em>"You mentioned you want to [их слова] — that's exactly what this method is designed to get you to."</em></div>
+</div>
+
+<!-- 5. COMMITMENT -->
+<div class="scene" id="scene-commitment">
+  <div class="scene-badge"><div class="dot"></div>Шаг 5 · 15–18 мин</div>
+  <div class="scene-title">⏰ Время и готовность</div>
+  <div class="scene-sub">Реалистично — без давления</div>
+
+  <div class="question">How much time could you realistically dedicate to Russian each day?</div>
+
+  <div class="spoken">In my experience, to pick up the language quickly and successfully, you should be putting in anywhere from 45 minutes to 2 hours of practice every day. Is that workable?</div>
+
+  <div class="check-grid">
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">⚡ Меньше 45 минут в день</div><div class="check-sub">Прогресс будет — но медленнее</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">✅ 45 мин — 1 час в день</div><div class="check-sub">Хорошо — стабильный прогресс</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">🚀 1–2 часа в день</div><div class="check-sub">Отлично — быстрые результаты</div></div></label>
+  </div>
+
+  <div class="spoken">One of the things people really appreciate about this approach is that lessons are self-paced — you work whenever it suits you. Morning, evening, weekend. No fixed schedule, no pressure.</div>
+</div>
+
+<!-- 6. FIT CHECK -->
+<div class="scene" id="scene-fitcheck">
+  <div class="scene-badge"><div class="dot"></div>Шаг 6 · 18–20 мин</div>
+  <div class="scene-title">🔍 Оценка студента</div>
+  <div class="scene-sub">Честно с собой — подходит этот студент?</div>
+
+  <div class="dir">На основе разговора — проверь:</div>
+  <div class="check-grid">
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">Мотивирован — знает зачем ему русский</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">Взрослый — метод для взрослых</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">Есть время — хотя бы 45 минут в день</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">Открыт к новому подходу</div></div></label>
+    <label class="check-item"><input type="checkbox"><div><div class="check-label">Нет "красных флагов"</div></div></label>
+  </div>
+
+  <div class="sublabel">Куда идём?</div>
+  <div class="branch-grid">
+    <div class="branch-card green" onclick="goTo('method')">
+      <div class="branch-title">✅ Студент подходит — продолжаем</div>
+      <div class="branch-desc">Мотивирован, есть время, взрослый → объясняем метод и делаем предложение</div>
+    </div>
+    <div class="branch-card red" onclick="goTo('notfit')">
+      <div class="branch-title">⛔ Студент не подходит</div>
+      <div class="branch-desc">Нет времени / ребёнок / ожидания не совпадают → мягкий выход</div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. METHOD -->
+<div class="scene" id="scene-method">
+  <div class="scene-badge"><div class="dot"></div>Шаг 7 · 20–24 мин</div>
+  <div class="scene-title">🧠 Метод погружения</div>
+  <div class="scene-sub">Студент уже заинтересован — коротко, ярко, убедительно</div>
+
+  <div class="spoken">From everything you've just told me, I think this would work really well for you. So let me tell you about my method.</div>
+
+  <div class="sublabel">Традиционный подход — и почему он не работает</div>
+  <div class="spoken">Most people learn a foreign language the same way. They go to class, memorize word lists, drill grammar rules, do exercises — and after months or even years of that, they still freeze up the moment someone actually speaks to them in real life.</div>
+  <div class="spoken">That happens because the traditional approach treats language like a subject — like math or history. It builds a system of rules and translations in your head. So every time you hear a Russian word, your brain first finds the English equivalent, checks the grammar rule, constructs the sentence — and by the time all that is done, the moment has passed. It feels slow, unnatural, exhausting.</div>
+
+  <div class="sublabel">Мой подход — как это работает на самом деле</div>
+  <div class="spoken">My method works completely differently. We don't study Russian — we acquire it. There's no translation, no grammar tables, no memorization. Instead, we build a separate Russian language center directly in your brain — one that operates independently, without going through English at all.</div>
+  <div class="spoken">The core technique is simultaneous repetition with visualization. You hear a phrase in Russian, you see it, and at the same moment you picture the meaning as a real image or scene in your mind — not a word in English. You repeat it out loud almost simultaneously with the recording. Your brain starts connecting sound directly to meaning, bypassing translation entirely.</div>
+  <div class="spoken">Over time, Russian stops feeling like a foreign language you're decoding — and starts feeling like a second mode your brain naturally switches into. You think in Russian. You respond in Russian. Without effort.</div>
+
+  <div class="sublabel">Почему это работает для взрослых</div>
+  <div class="spoken">A lot of people believe adults can't learn languages the way children do. That's not quite true. Children acquire language naturally because they have no choice — they're immersed, they can't translate, they just absorb. Adults can do the same thing, but we need a structured method that deliberately bypasses the translation habit we've already built. That's exactly what this method does.</div>
+  <div class="spoken">Most of my students reach a confident conversational level in six months to a year. Not because they work harder, but because they work in the right direction.</div>
+
+  <hr class="div">
+  <div class="sublabel">Моя история</div>
+  <div class="spoken">I know this method works — because I've lived it. When I moved to the United States, I had zero English. None. And yet within six months, I reached an advanced level — not by memorizing vocabulary lists or grinding through grammar books, but by using the exact same immersive approach I now teach. That experience is what inspired me to help other adults do the same thing with Russian.</div>
+
+  <div class="question">Does that make sense — the difference between memorizing and actually acquiring a language?</div>
+
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">🔬 Если студент хочет больше науки <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">There's actually a study published in Nature in 1997 that used brain imaging to show exactly this. Adults who learn a second language build a completely separate speech center in the brain — distinct from their native language. Once properly developed, it works just as automatically. That's what we're building together.</div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">📱 Если упоминал Duolingo / грамматические курсы <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">What you described with [Duolingo / the grammar course] is a perfect example of the memory approach. You learned, then you forgot. That's not your fault — that's exactly how that method works. It's designed for memory, not for speech.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. OFFER -->
+<div class="scene" id="scene-offer">
+  <div class="scene-badge"><div class="dot"></div>Шаг 8 · 24–27 мин</div>
+  <div class="scene-title">💎 Предложение</div>
+  <div class="scene-sub">Чётко, уверенно — без давления</div>
+
+  <div class="spoken">So — here's what I'd suggest as a first step. Before committing to anything, try the method yourself. I have a trial lesson — Lesson 1 — that you can do completely on your own, at any time that works for you.</div>
+  <div class="spoken">It's $5. One lesson, full access, step-by-step instructions. You'll hear real Russian from a professional narrator, you'll work through the immersion exercises, and you'll feel the difference firsthand — not because I told you it works, but because you experienced it yourself.</div>
+
+  <div class="dir">Пауза 3–5 секунд. Дай студенту переварить. Не заполняй тишину.</div>
+
+  <div class="spoken">Once you're happy — and I'm confident you will be — I offer a package of 10 lessons for $150 — that's $15 per lesson. You receive each lesson and its assignment by email. You go through them in your own time, record yourself completing the exercise, and send it back to me. I review everything, give you detailed personal feedback, and send you the next lesson. Simple, effective, and built entirely around you. And of course we can meet on Zoom as necessary.</div>
+  <div class="spoken">Right after our call I'll send you the payment link to your email. Please write down my address so you know where to look for it — and if it doesn't arrive in a few minutes, check your spam folder: mentor@MentorInRussian.com</div>
+
+  <div class="dir">Всё. Жди реакции студента.</div>
+  <div class="question">How does that sound to you?</div>
+</div>
+
+<!-- 9. OBJECTIONS -->
+<div class="scene" id="scene-objections">
+  <div class="scene-badge"><div class="dot"></div>Шаг 9 · 27–29 мин</div>
+  <div class="scene-title">🛡️ Вопросы и возражения</div>
+  <div class="scene-sub">Сначала слушай — потом отвечай</div>
+
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">💰 "$150 — это много / почему такая цена?" <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">That's $15 per lesson — well below the market rate for private tutoring, especially with a method this structured. You're not just getting conversation practice — you're getting a complete system. But start with the $5 trial first. If it resonates, then we talk about the package.</div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">🤔 "Мне нужно подумать" <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">Of course — and I completely respect that. Can I ask what's making you pause? Is it the method, the investment, the timing — or something else? I'd rather talk it through now than have you leave with an unanswered question.</div>
+      <div class="dir">Слушай. Затем:</div>
+      <div class="spoken">Here's what I'd suggest — start with the $5 trial. You're not committing to anything beyond five dollars. You're giving yourself a chance to feel it firsthand. That's a pretty low-risk way to find your answer.</div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">⏰ "У меня мало времени" <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">That's one of the best things about this approach — there's no fixed schedule. The trial lesson is there whenever you are — morning, evening, weekend. Even 45 minutes a day is enough to make real progress. And if you continue, the pace is always yours.</div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">🔒 "Безопасно ли платить через PayPal?" <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">Absolutely — PayPal has built-in buyer protection, and they never share your card details with me as the seller. It's one of the reasons I chose it specifically — it works safely for students anywhere in the world.</div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">🤷 "Как я знаю, что метод работает?" <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">Honest answer — you don't know yet. And you shouldn't have to take my word for it. That's exactly why the $5 trial exists. Do the lesson. Notice what happens when you repeat Russian and actually picture what you're saying, instead of translating. You'll know.</div>
+      <div class="spoken">I'll say this too — I used this method myself. I moved to the United States with zero English and reached an advanced level in six months. Not because I'm exceptional, but because the method works with how the brain actually learns.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 10. CLOSE — BRANCH -->
+<div class="scene" id="scene-close">
+  <div class="scene-badge"><div class="dot"></div>Шаг 10 · 29–30 мин</div>
+  <div class="scene-title">🏁 Завершение</div>
+  <div class="scene-sub">Как реагирует студент?</div>
+
+  <div class="branch-grid">
+    <div class="branch-card green" onclick="goTo('close-yes')">
+      <div class="branch-title">✅ "Да, давай попробуем!"</div>
+      <div class="branch-desc">Готов к пробному уроку или сразу к пакету</div>
+    </div>
+    <div class="branch-card gold" onclick="goTo('close-maybe')">
+      <div class="branch-title">🤔 "Мне нужно немного подумать"</div>
+      <div class="branch-desc">Заинтересован, но не готов решить прямо сейчас</div>
+    </div>
+    <div class="branch-card red" onclick="goTo('close-no')">
+      <div class="branch-title">🙏 "Спасибо, но не сейчас"</div>
+      <div class="branch-desc">Отказывается — завершаем тепло и с уважением</div>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSE YES -->
+<div class="scene" id="scene-close-yes">
+  <div class="scene-badge" style="background:rgba(39,174,96,0.1);border-color:rgba(39,174,96,0.3);color:#5DD890;"><div class="dot" style="background:#5DD890"></div>Закрытие — Да</div>
+  <div class="scene-title" style="color:#5DD890;">✅ Студент готов!</div>
+  <div class="scene-sub">Уверенно — конкретный следующий шаг</div>
+
+  <div class="spoken">Wonderful — I'm really glad to hear that! I think you're going to find this genuinely different from anything you've tried before.</div>
+  <div class="spoken">Let's get your details sorted right now while we're together.</div>
+
+  <div class="sublabel">📧 Обмен email</div>
+  <div class="question">Could you share your email with me so I can send you the payment link and lesson access?</div>
+  <div class="notes-wrap">
+    <div class="notes-label">Email студента</div>
+    <input class="notes-field notes-line" placeholder="student@email.com">
+  </div>
+
+  <div class="email-box">
+    <div class="email-box-title">📤 Мои контакты для студента</div>
+    <div class="email-row">
+      <div class="email-label">Оплата / ссылка на урок:</div>
+      <div class="email-addr">mentor@MentorInRussian.com</div>
+    </div>
+    <div class="email-row">
+      <div class="email-label">Быстрая связь / вопросы:</div>
+      <div class="email-addr">alex.mentor.usa@gmail.com</div>
+    </div>
+  </div>
+
+  <div class="spoken">Here are my two email addresses — please save them. You'll receive the payment link and lesson access from mentor@MentorInRussian.com. And for any quick questions, you can always reach me at alex.mentor.usa@gmail.com.</div>
+  <div class="spoken">Any last questions before we wrap up?</div>
+  <div class="dir">Ответь на вопросы. Затем:</div>
+  <div class="spoken">It was a real pleasure talking with you today, [Name]. I'm genuinely looking forward to working together. Check your inbox — you'll hear from me very shortly!</div>
+  <div class="spoken">And here's your very first Russian word — до свидания — that means "goodbye"! 😄</div>
+  <div class="tip">💡 После звонка — немедленно отправь Newsletter 3 со ссылками на Trial Lesson и PayPal.</div>
+</div>
+
+<!-- CLOSE MAYBE -->
+<div class="scene" id="scene-close-maybe">
+  <div class="scene-badge" style="background:rgba(201,150,58,0.1);border-color:rgba(201,150,58,0.3);color:var(--gold);"><div class="dot"></div>Закрытие — Возможно</div>
+  <div class="scene-title" style="color:var(--gold2);">🤔 Студент думает</div>
+  <div class="scene-sub">Без давления — оставь дверь открытой</div>
+
+  <div class="spoken">I completely understand — and I appreciate your honesty. There's absolutely no rush.</div>
+  <div class="spoken">Here's what I'll do — I'll send you a link to a page that explains the method in more detail, with the science behind it. Read it when you have a quiet moment. If it resonates, the $5 trial is right there waiting — no deadline, no pressure.</div>
+
+  <div class="sublabel">📧 Обмен email</div>
+  <div class="question">Could you share your email with me so I can send you the materials?</div>
+  <div class="notes-wrap">
+    <div class="notes-label">Email студента</div>
+    <input class="notes-field notes-line" placeholder="student@email.com">
+  </div>
+
+  <div class="email-box">
+    <div class="email-box-title">📤 Мои контакты для студента</div>
+    <div class="email-row">
+      <div class="email-label">Материалы / ссылки:</div>
+      <div class="email-addr">mentor@MentorInRussian.com</div>
+    </div>
+    <div class="email-row">
+      <div class="email-label">Быстрая связь / вопросы:</div>
+      <div class="email-addr">alex.mentor.usa@gmail.com</div>
+    </div>
+  </div>
+
+  <div class="spoken">Please save both of these — mentor@MentorInRussian.com is where I'll send the materials, and you can reach me anytime at alex.mentor.usa@gmail.com if any questions come up.</div>
+  <div class="spoken">It was genuinely lovely meeting you today, [Name]. I hope we get to work together — and either way, I wish you all the best on your Russian journey!</div>
+  <div class="tip">💡 После звонка — отправь Newsletter 1 со ссылкой на "Why Adults Can Learn Russian". Через день — Newsletter 2 с $5 приглашением.</div>
+</div>
+
+<!-- CLOSE NO -->
+<div class="scene" id="scene-close-no">
+  <div class="scene-badge" style="background:rgba(192,57,43,0.1);border-color:rgba(192,57,43,0.3);color:#E07070;"><div class="dot" style="background:#E07070"></div>Закрытие — Нет</div>
+  <div class="scene-title" style="color:#E07070;">🙏 Не сейчас</div>
+  <div class="scene-sub">С уважением и теплом — без обид</div>
+
+  <div class="spoken">I really appreciate you being upfront with me — that means a lot. And I'm genuinely glad we had this conversation.</div>
+  <div class="spoken">If anything changes down the road — the timing, the circumstances, or just curiosity — please don't hesitate to reach out. The door is always open.</div>
+  <div class="spoken">May I send you one short read about the method — completely free, no strings attached? It might be useful someday, even if not right now.</div>
+
+  <div class="sublabel">📧 Если согласен — запиши email</div>
+  <div class="notes-wrap">
+    <div class="notes-label">Email студента</div>
+    <input class="notes-field notes-line" placeholder="student@email.com">
+  </div>
+
+  <div class="email-box">
+    <div class="email-box-title">📤 Мои контакты для студента</div>
+    <div class="email-row">
+      <div class="email-label">Материалы / контакт:</div>
+      <div class="email-addr">mentor@MentorInRussian.com</div>
+    </div>
+    <div class="email-row">
+      <div class="email-label">Быстрая связь:</div>
+      <div class="email-addr">alex.mentor.usa@gmail.com</div>
+    </div>
+  </div>
+
+  <div class="spoken">Wishing you all the very best, [Name] — and good luck with your Russian, wherever the journey takes you. До свидания! 😊</div>
+  <div class="tip">💡 Если дал email — отправь Newsletter 1 после звонка.</div>
+</div>
+
+<!-- NOT FIT -->
+<div class="scene" id="scene-notfit">
+  <div class="scene-badge" style="background:rgba(192,57,43,0.12);border-color:rgba(192,57,43,0.3);color:#E07070;"><div class="dot" style="background:#E07070"></div>Особая ситуация</div>
+  <div class="scene-title" style="color:#E07070;">⛔ Студент не подходит</div>
+  <div class="scene-sub">Честно, кратко, с уважением</div>
+
+  <div class="spoken">I really appreciate you taking the time to speak with me today — and I want to be completely honest with you, because I think that's more respectful than just taking your money.</div>
+  <div class="spoken">Based on what you've shared, I'm not sure my method would be the right fit for you right now — and I wouldn't feel good about moving forward if I didn't genuinely believe I could deliver results for you.</div>
+
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">⏰ Причина: недостаточно времени <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">This method works best with consistent daily practice — at least 45 minutes a day. With your current schedule, I'm worried you wouldn't get the results you deserve. That wouldn't be fair to you.</div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">🎯 Причина: цели не совпадают <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">What you're looking for sounds like [specific need]. My immersion method is built for spoken fluency from scratch — it might not be the most efficient path to your specific goal. I'd rather point you in the right direction than take you on and underdeliver.</div>
+    </div>
+  </div>
+
+  <div class="spoken">I'd genuinely love to see you find the right fit. Thank you so much for the conversation today — it was a real pleasure meeting you. I wish you every success!</div>
+</div>
+
+<!-- CHILDREN -->
+<div class="scene" id="scene-children">
+  <div class="scene-badge" style="background:rgba(192,57,43,0.12);border-color:rgba(192,57,43,0.3);color:#E07070;"><div class="dot" style="background:#E07070"></div>Особая ситуация</div>
+  <div class="scene-title" style="color:#E07070;">🧒 Запрос на занятия с детьми</div>
+  <div class="scene-sub">Тепло, без осуждения, с уважением к выбору родителя</div>
+
+  <div class="spoken">Thank you so much for choosing me — I really appreciate your interest!</div>
+  <div class="spoken">But I do need to be upfront with you — my method is specifically designed for adult learners. The way it works is built around how the adult brain processes and acquires language, so unfortunately it's not the right fit for children.</div>
+  <div class="spoken">I wouldn't want to take you on as a student and not deliver the results you're hoping for — that wouldn't be fair to your child or to you.</div>
+  <div class="spoken">I'd recommend looking for a tutor who specializes in teaching kids — there are some wonderful ones out there who use age-appropriate, play-based approaches that work really well for younger learners.</div>
+  <div class="spoken">I wish your child all the best on their Russian journey — it's a beautiful language and a wonderful gift to give them!</div>
+</div>
+
+</div><!-- /scene-wrap -->
+
+<!-- BOTTOM BAR -->
+<div id="bottombar">
+  <button class="btn btn-back" onclick="goBack()">← Назад</button>
+  <div class="spacer"></div>
+  <div id="dyn-btns"></div>
+</div>
+
+</div><!-- /main -->
+</div><!-- /body -->
+
+<script>
+const SCENES = [
+  {id:'opening',     title:'Открытие',          step:'Шаг 1 из 10', pct:10},
+  {id:'background',  title:'Бэкграунд',         step:'Шаг 2 из 10', pct:20},
+  {id:'experience',  title:'Опыт с русским',    step:'Шаг 3 из 10', pct:30},
+  {id:'goals',       title:'Цели и мотивация',  step:'Шаг 4 из 10', pct:40},
+  {id:'commitment',  title:'Время и готовность',step:'Шаг 5 из 10', pct:50},
+  {id:'fitcheck',    title:'Оценка студента',   step:'Шаг 6 из 10', pct:60},
+  {id:'method',      title:'Метод погружения',  step:'Шаг 7 из 10', pct:70},
+  {id:'offer',       title:'Предложение',       step:'Шаг 8 из 10', pct:80},
+  {id:'objections',  title:'Вопросы/возражения',step:'Шаг 9 из 10', pct:90},
+  {id:'close',       title:'Завершение',        step:'Шаг 10 из 10',pct:100},
+  {id:'close-yes',   title:'Да — берём!',       step:'✅ Ветка',     pct:100},
+  {id:'close-maybe', title:'Подумаю',           step:'🤔 Ветка',     pct:100},
+  {id:'close-no',    title:'Не сейчас',         step:'🙏 Ветка',     pct:100},
+  {id:'notfit',      title:'Не подходит',       step:'⛔ Ветка',     pct:60},
+  {id:'children',    title:'Запрос на детей',   step:'⚠️ Особая',   pct:0},
+];
+
+const NEXT = {
+  opening:'background', background:'experience', experience:'goals',
+  goals:'commitment', commitment:'fitcheck',
+  method:'offer', offer:'objections', objections:'close',
+};
+
+const EXTRA_BTNS = {
+  fitcheck:'',
+  close:'',
+  'close-yes':  '<button class="btn btn-gold" onclick="goTo(\'opening\')">↩ Новый звонок</button>',
+  'close-maybe':'<button class="btn btn-gold" onclick="goTo(\'opening\')">↩ Новый звонок</button>',
+  'close-no':   '<button class="btn btn-gold" onclick="goTo(\'opening\')">↩ Новый звонок</button>',
+  notfit:       '<button class="btn btn-back" style="color:var(--dim)" onclick="goTo(\'opening\')">↩ Новый звонок</button>',
+  children:     '<button class="btn btn-back" style="color:var(--dim)" onclick="goTo(\'opening\')">↩ Начать заново</button>',
+};
+
+let cur='opening', hist=[];
+
+function goTo(id){
+  if(id===cur)return;
+  document.getElementById('scene-'+cur)?.classList.remove('active');
+  document.getElementById('nav-'+cur)?.classList.remove('active');
+  hist.push(cur); cur=id;
+  const el=document.getElementById('scene-'+id);
+  if(el){el.classList.remove('active');void el.offsetWidth;el.classList.add('active');}
+  document.getElementById('nav-'+id)?.classList.add('active');
+  const sc=SCENES.find(s=>s.id===id);
+  if(sc){
+    document.getElementById('topbar-title').textContent=sc.title;
+    document.getElementById('topbar-step').textContent=sc.step;
+    document.getElementById('progress-fill').style.width=sc.pct+'%';
+  }
+  renderBtns(id);
+  document.getElementById('scene-wrap').scrollTo({top:0,behavior:'smooth'});
+}
+
+function goBack(){
+  if(!hist.length)return;
+  const prev=hist.pop();
+  document.getElementById('scene-'+cur)?.classList.remove('active');
+  document.getElementById('nav-'+cur)?.classList.remove('active');
+  cur=prev;
+  document.getElementById('scene-'+prev)?.classList.add('active');
+  document.getElementById('nav-'+prev)?.classList.add('active');
+  const sc=SCENES.find(s=>s.id===prev);
+  if(sc){
+    document.getElementById('topbar-title').textContent=sc.title;
+    document.getElementById('topbar-step').textContent=sc.step;
+    document.getElementById('progress-fill').style.width=sc.pct+'%';
+  }
+  renderBtns(prev);
+  document.getElementById('scene-wrap').scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderBtns(id){
+  const d=document.getElementById('dyn-btns');
+  if(EXTRA_BTNS[id]!==undefined){d.innerHTML=EXTRA_BTNS[id];}
+  else if(NEXT[id]){d.innerHTML=`<button class="btn btn-next" onclick="goTo('${NEXT[id]}')">Далее →</button>`;}
+  else{d.innerHTML='';}
+}
+
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('hidden');
+}
+function toggleAcc(btn){
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+
+// Timer
+let timerInterval=null, timerSeconds=0, timerRunning=false;
+function toggleTimer(){
+  if(timerRunning){
+    clearInterval(timerInterval);
+    timerRunning=false;
+    document.getElementById('timer-btn').textContent='▶ Продолжить';
+  } else {
+    timerInterval=setInterval(()=>{
+      timerSeconds++;
+      const m=String(Math.floor(timerSeconds/60)).padStart(2,'0');
+      const s=String(timerSeconds%60).padStart(2,'0');
+      document.getElementById('timer').textContent=m+':'+s;
+      const t=document.getElementById('timer');
+      if(timerSeconds>=1800) t.style.color='#E07070';
+      else if(timerSeconds>=1500) t.style.color='#E4B865';
+      else t.style.color='var(--gold2)';
+    },1000);
+    timerRunning=true;
+    document.getElementById('timer-btn').textContent='⏸ Пауза';
+  }
+}
+
+renderBtns('opening');
+</script>
+</body>
+</html>
