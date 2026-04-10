@@ -1,0 +1,285 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T1GD43HJLV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-T1GD43HJLV');
+</script>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  .pa-wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    font-family: 'Nunito', sans-serif;
+    color: #0d1b2a;
+    background: #faf7f1;
+  }
+
+  /* HERO */
+  .pa-hero {
+    background: linear-gradient(135deg, #0D2D6B 0%, #1a4fa0 100%);
+    border-radius: 12px;
+    padding: 48px 40px;
+    margin-bottom: 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pa-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(201,150,58,0.12);
+  }
+  .pa-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(201,150,58,0.08);
+  }
+  .pa-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C9963A;
+    margin-bottom: 14px;
+  }
+  .pa-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: #faf7f1;
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+  }
+  .pa-hero p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(250,247,241,0.85);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* BLOCKS */
+  .pa-block {
+    background: #fff;
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 16px rgba(13,29,107,0.07);
+    position: relative;
+  }
+  .pa-block-number {
+    position: absolute;
+    top: -18px;
+    left: 36px;
+    background: #0D2D6B;
+    color: #faf7f1;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+  }
+  .pa-block h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #0D2D6B;
+    margin: 8px 0 6px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #C9963A;
+    display: inline-block;
+  }
+  .pa-block-tagline {
+    font-size: 14px;
+    font-style: italic;
+    color: #1a4fa0;
+    margin: 0 0 20px 0;
+    line-height: 1.6;
+  }
+  .pa-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+    counter-reset: step-counter;
+  }
+  .pa-steps li {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #2a3a4a;
+    padding: 12px 0 12px 48px;
+    position: relative;
+    border-bottom: 1px solid rgba(201,150,58,0.18);
+    counter-increment: step-counter;
+  }
+  .pa-steps li:last-child { border-bottom: none; }
+  .pa-steps li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 28px; height: 28px;
+    background: #1a4fa0;
+    color: #faf7f1;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ASSIGNMENT BOX */
+  .pa-assignment {
+    background: linear-gradient(135deg, #0D2D6B 0%, #1a4fa0 100%);
+    border-radius: 8px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .pa-assignment-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .pa-assignment-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(250,247,241,0.92);
+    margin: 0;
+  }
+  .pa-assignment-text strong {
+    color: #e8b95a;
+    font-weight: 600;
+  }
+
+  /* CLOSING NOTE */
+  .pa-closing {
+    background: linear-gradient(135deg, #0D2D6B 0%, #1a4fa0 100%);
+    border-radius: 12px;
+    padding: 36px 40px;
+    text-align: center;
+    margin-top: 12px;
+  }
+  .pa-closing p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: #e8b95a;
+    margin: 0 0 8px 0;
+    line-height: 1.6;
+  }
+  .pa-closing span {
+    font-size: 14px;
+    color: rgba(250,247,241,0.7);
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 600px) {
+    .pa-wrap { padding: 32px 20px; }
+    .pa-hero { padding: 36px 24px; }
+    .pa-hero h1 { font-size: 30px; }
+    .pa-block { padding: 28px 20px; }
+    .pa-closing { padding: 28px 24px; }
+  }
+</style>
+
+<div class="pa-wrap">
+
+  <!-- HERO -->
+  <div class="pa-hero">
+    <div class="pa-eyebrow">The Russian Method — Lesson [N]</div>
+    <h1>Practice Assignment — [Topic]</h1>
+    <p>Work through each block in order — each one builds on the previous. Take your time, be patient with yourself, and trust the process. The goal is not perfection — it's consistent repetition.</p>
+  </div>
+
+  <!-- BLOCK 1 -->
+  <div class="pa-block">
+    <div class="pa-block-number">Block 1</div>
+    <h2>Listen &amp; Repeat</h2>
+    <p class="pa-block-tagline">This block trains your ear and begins building your Russian sound system. You are not memorizing — you are absorbing.</p>
+    <ol class="pa-steps">
+      <li>Read the text in <strong>English mode</strong> — visualize everything you read as vivid mental images. Do not pronounce anything aloud.</li>
+      <li>Switch to <strong>Russian mode</strong>. Start the audio. Follow the Russian text with your eyes and repeat simultaneously with the speaker — don't worry about your pronunciation, just follow.</li>
+      <li>Keep repeating with the speaker until it starts to feel easy and natural.</li>
+      <li>Close your eyes. With the audio still playing, repeat <strong>5–6 more times</strong>.</li>
+    </ol>
+    <div class="pa-assignment">
+      <div class="pa-assignment-icon">🎥</div>
+      <p class="pa-assignment-text"><strong>Your assignment:</strong> Record a short video of your best, most confident repetition and share it in the Telegram group.</p>
+    </div>
+  </div>
+
+  <!-- BLOCK 2 -->
+  <div class="pa-block">
+    <div class="pa-block-number">Block 2</div>
+    <h2>Write &amp; Build</h2>
+    <p class="pa-block-tagline">This block activates your memory and begins turning passive vocabulary into something you own.</p>
+    <ol class="pa-steps">
+      <li>Start the audio and repeat with the speaker as in Block 1 — without stopping the recording, <strong>write down every Russian word</strong> that comes to mind as you listen.</li>
+      <li>Repeat this drill <strong>5–6 times</strong>, writing down new words each time.</li>
+      <li>Use your collected words to build <strong>2–3 short sentences</strong> in Russian. They don't have to be perfect.</li>
+      <li>Read your sentences aloud.</li>
+    </ol>
+    <div class="pa-assignment">
+      <div class="pa-assignment-icon">💬</div>
+      <p class="pa-assignment-text"><strong>Your assignment:</strong> Share in the Telegram group — what came naturally, what felt difficult, and where you got stuck.</p>
+    </div>
+  </div>
+
+  <!-- BLOCK 3 -->
+  <div class="pa-block">
+    <div class="pa-block-number">Block 3</div>
+    <h2>Speed Up</h2>
+    <p class="pa-block-tagline">This block builds fluency and automatism. When words flow fast, they stop being translated — they become instinct.</p>
+    <ol class="pa-steps">
+      <li>Take the sentences you built in Block 2.</li>
+      <li>Say the first sentence <strong>slowly and clearly</strong>. Then again — a little faster. Then faster again.</li>
+      <li>Keep going until it sounds like one flowing word.</li>
+      <li>Repeat with each of your sentences.</li>
+    </ol>
+    <div class="pa-assignment">
+      <div class="pa-assignment-icon">🎙️</div>
+      <p class="pa-assignment-text"><strong>Your assignment:</strong> Record yourself during this exercise and share the audio in the Telegram group.</p>
+    </div>
+  </div>
+
+  <!-- BLOCK 4 -->
+  <div class="pa-block">
+    <div class="pa-block-number">Block 4</div>
+    <h2>Tell Your Story</h2>
+    <p class="pa-block-tagline">This block is where everything comes together. You are no longer repeating — you are speaking.</p>
+    <ol class="pa-steps">
+      <li>Write a short story <strong>(3–5 sentences)</strong> using words and phrases from the lesson. It can be simple — even silly. Just make it yours.</li>
+      <li>Read your story aloud several times until it flows.</li>
+      <li>Share how the lesson felt — what surprised you, what clicked, what still feels foggy.</li>
+    </ol>
+    <div class="pa-assignment">
+      <div class="pa-assignment-icon">📝</div>
+      <p class="pa-assignment-text"><strong>Your assignment:</strong> Post your story and your impressions in the Telegram group.</p>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="pa-closing">
+    <p>Отличная работа. See you in the next lesson.</p>
+    <span>THE RUSSIAN METHOD</span>
+  </div>
+
+</div>

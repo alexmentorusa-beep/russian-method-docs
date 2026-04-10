@@ -1,0 +1,384 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T1GD43HJLV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-T1GD43HJLV');
+</script>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  .ip1-wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    font-family: 'Nunito', sans-serif;
+    color: #0d1b2a;
+    background: #faf7f1;
+  }
+  .ip1-hero {
+    background: linear-gradient(135deg, #0D2D6B 0%, #1a4fa0 100%);
+    border-radius: 12px;
+    padding: 52px 40px;
+    margin-bottom: 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .ip1-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(201,150,58,0.12);
+  }
+  .ip1-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(201,150,58,0.08);
+  }
+  .ip1-eyebrow {
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C9963A;
+    margin-bottom: 16px;
+  }
+  .ip1-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #faf7f1;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+  }
+  .ip1-hero p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(250,247,241,0.85);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .ip1-hero em {
+    color: #e8b95a;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .ip1-section {
+    margin-bottom: 44px;
+  }
+  .ip1-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #0D2D6B;
+    margin: 0 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #C9963A;
+    display: inline-block;
+  }
+  .ip1-section p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #2a3a4a;
+    margin: 0 0 16px 0;
+  }
+  .ip1-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .ip1-bullets li {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #2a3a4a;
+    padding: 10px 0 10px 32px;
+    position: relative;
+    border-bottom: 1px solid rgba(201,150,58,0.2);
+  }
+  .ip1-bullets li:last-child { border-bottom: none; }
+  .ip1-bullets li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: #C9963A;
+    font-size: 12px;
+    top: 13px;
+  }
+  .ip1-principles {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 4px;
+  }
+  .ip1-principle {
+    background: #fff;
+    border-left: 4px solid #C9963A;
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    box-shadow: 0 2px 12px rgba(13,29,107,0.07);
+  }
+  .ip1-principle h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #0D2D6B;
+    margin: 0 0 8px 0;
+  }
+  .ip1-principle p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #2a3a4a;
+    margin: 0;
+  }
+  .ip1-ritual {
+    background: linear-gradient(135deg, #0D2D6B 0%, #1a4fa0 100%);
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin-bottom: 44px;
+  }
+  .ip1-ritual h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #faf7f1;
+    margin: 0 0 16px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #C9963A;
+    display: inline-block;
+  }
+  .ip1-ritual p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(250,247,241,0.88);
+    margin: 0 0 16px 0;
+  }
+  .ip1-ritual-steps {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  .ip1-ritual-steps li {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(250,247,241,0.88);
+    padding: 8px 0 8px 28px;
+    position: relative;
+    border-bottom: 1px solid rgba(201,150,58,0.25);
+  }
+  .ip1-ritual-steps li:last-child { border-bottom: none; }
+  .ip1-ritual-steps li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #C9963A;
+  }
+  .ip1-phrase-block {
+    background: rgba(0,0,0,0.25);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .ip1-phrase-block p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: #e8b95a;
+    margin: 0 0 10px 0;
+    line-height: 1.6;
+  }
+  .ip1-phrase-block p:last-child { margin-bottom: 0; }
+  .ip1-ritual-note {
+    font-size: 14px !important;
+    font-weight: 600;
+    color: #e8b95a !important;
+    margin-top: 16px !important;
+    letter-spacing: 0.5px;
+  }
+  .ip1-dictionary {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 44px;
+    box-shadow: 0 2px 16px rgba(13,29,107,0.08);
+  }
+  .ip1-dictionary h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #0D2D6B;
+    margin: 0 0 16px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #C9963A;
+    display: inline-block;
+  }
+  .ip1-dictionary p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #2a3a4a;
+    margin: 0 0 16px 0;
+  }
+  .ip1-dict-steps {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0 0;
+    counter-reset: dict-counter;
+  }
+  .ip1-dict-steps li {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #2a3a4a;
+    padding: 12px 0 12px 44px;
+    position: relative;
+    border-bottom: 1px solid rgba(201,150,58,0.2);
+    counter-increment: dict-counter;
+  }
+  .ip1-dict-steps li:last-child { border-bottom: none; }
+  .ip1-dict-steps li::before {
+    content: counter(dict-counter);
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 28px; height: 28px;
+    background: #0D2D6B;
+    color: #faf7f1;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Nunito', sans-serif;
+  }
+  .ip1-dict-note {
+    font-style: italic;
+    color: #1a4fa0 !important;
+    font-weight: 600;
+    margin-top: 16px !important;
+  }
+  .ip1-cta {
+    background: linear-gradient(135deg, #0D2D6B 0%, #1a4fa0 100%);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+  }
+  .ip1-cta h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #faf7f1;
+    margin: 0 0 12px 0;
+  }
+  .ip1-cta p {
+    font-size: 16px;
+    color: rgba(250,247,241,0.85);
+    margin: 0 0 8px 0;
+    line-height: 1.7;
+  }
+  .ip1-cta em {
+    color: #e8b95a;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+  }
+  @media (max-width: 600px) {
+    .ip1-wrap { padding: 32px 20px; }
+    .ip1-hero { padding: 36px 24px; }
+    .ip1-hero h1 { font-size: 32px; }
+    .ip1-ritual { padding: 28px 24px; }
+    .ip1-dictionary { padding: 24px 20px; }
+    .ip1-cta { padding: 28px 24px; }
+  }
+</style>
+
+<div class="ip1-wrap">
+
+  <!-- HERO -->
+  <div class="ip1-hero">
+    <div class="ip1-eyebrow">The Russian Method — Part 1</div>
+    <h1>Welcome to Your Russian Journey</h1>
+    <p>This is not a course where you memorize grammar rules and vocabulary lists. This is an immersion experience — designed to build a separate language center that controls Russian <em>in your brain</em>, the same way you built your native language as a child. Not by memorizing. By absorbing.</p>
+  </div>
+
+  <!-- WHAT PART 1 DOES -->
+  <div class="ip1-section">
+    <h2>What Part 1 will do for you</h2>
+    <p>Part 1 consists of 10 lessons. Each lesson has a short text, an audio recording, and a practice assignment with four blocks of exercises. Together they develop all four language skills: listening, speaking, reading and writing.</p>
+    <ul class="ip1-bullets">
+      <li>Train your ear to recognize and process Russian sounds naturally</li>
+      <li>Build your first blocks of automatic vocabulary — words you feel, not translate</li>
+      <li>Begin developing real fluency through rhythm, repetition and immersion</li>
+      <li>Connect you with a community of learners on the same journey</li>
+    </ul>
+  </div>
+
+  <!-- THREE PRINCIPLES -->
+  <div class="ip1-section">
+    <h2>Three principles to keep in mind</h2>
+    <div class="ip1-principles">
+      <div class="ip1-principle">
+        <h3>1. Don't translate — visualize.</h3>
+        <p>When you hear or read Russian, create mental images. Let your brain build direct connections between the Russian word and the reality it represents — with no English in between.</p>
+      </div>
+      <div class="ip1-principle">
+        <h3>2. Repetition is not failure — it's the method.</h3>
+        <p>You will repeat the same text many times. This is not because you are slow. This is because repetition is how language enters the brain permanently.</p>
+      </div>
+      <div class="ip1-principle">
+        <h3>3. Progress is not always visible — but it is always happening.</h3>
+        <p>Some days will feel easy. Some days will feel like nothing is sticking. Trust the process. Your brain is working even when it doesn't feel like it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRE-LESSON RITUAL -->
+  <div class="ip1-ritual">
+    <h2>The Pre-Lesson Ritual</h2>
+    <p>Before each lesson you will watch a short video. This is not a warm-up exercise — it is a conscious mental switch.</p>
+    <p>Here is what is actually happening: your brain has spent years operating in English. Every time you sit down to learn Russian, your English language center is already active — filtering, translating, analyzing. The ritual interrupts that pattern. It signals to your brain that a different mode is beginning.</p>
+    <p>By choosing a Russian name and speaking those words out loud, you are doing something precise and intentional: you are temporarily stepping out of your English identity and into the role of a Russian speaker. A child. Someone who absorbs without judgment, without translation, without resistance.</p>
+    <p>This is not a metaphor. It is a practical tool — and it works because your brain responds to the context you give it. Give it Russian context, and it will begin to build a Russian response.</p>
+    <ul class="ip1-ritual-steps">
+      <li>Choose your Russian name — <strong>Oleg</strong>, <strong>Maria</strong>, or any other Russian name you like.</li>
+      <li>Say the following out loud before every lesson:</li>
+    </ul>
+    <div class="ip1-phrase-block">
+      <p>Я не говорю сейчас по-английски.</p>
+      <p>Моё имя Олег. / Моё имя Мария.</p>
+      <p>Я — ребёнок.</p>
+      <p>Однако, я быстро расту.</p>
+      <p>Я учу русский язык.</p>
+    </div>
+    <p class="ip1-ritual-note">Do it every time. Without exception.</p>
+  </div>
+
+  <!-- DICTIONARIES -->
+  <div class="ip1-dictionary">
+    <h2>A Note on Dictionaries</h2>
+    <p>If you encounter a word you don't understand, here is exactly what to do:</p>
+    <ol class="ip1-dict-steps">
+      <li>Look the word up and read the translation or explanation.</li>
+      <li>Do not say the translation aloud in your native language — not even quietly.</li>
+      <li>Instead, focus on the images and associations that arise as you read the explanation. Let the meaning form as a picture, not as an English word.</li>
+      <li>Go back to the Russian sentence containing that word and repeat it — again and again — until the unfamiliar word begins to feel connected to your own associations.</li>
+    </ol>
+    <p class="ip1-dict-note">This is how unknown words stop being foreign. They don't get translated — they get absorbed.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="ip1-cta">
+    <h2>You are ready.</h2>
+    <p>Open Lesson 1, watch the ritual video, and begin.</p>
+    <p><em>Удачи — Good luck. You won't need much of it.</em></p>
+  </div>
+
+</div>
