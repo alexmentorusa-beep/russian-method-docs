@@ -705,7 +705,7 @@ hr.div { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 18p
 </div><!-- /main -->
 </div><!-- /body -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const SCENES = [
   { id:'opening',        title:'Открытие',             step:'Шаг 1 из 12',  pct:8   },
   { id:'story',          title:'История студента',      step:'Шаг 2 из 12',  pct:17  },
@@ -757,4 +757,53 @@ function goTo(id) {
   if (sc) {
     document.getElementById('topbar-title').textContent = sc.title;
     document.getElementById('topbar-step').textContent  = sc.step;
-    document.getElement
+    document.getElementById('progress-fill').style.width = sc.pct + '%';
+  }
+  renderBtns(id);
+  document.getElementById('scene-wrap').scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goBack() {
+  if (!hist.length) return;
+  const prev = hist.pop();
+  document.getElementById('scene-' + cur)?.classList.remove('active');
+  document.getElementById('nav-'   + cur)?.classList.remove('active');
+  cur = prev;
+  document.getElementById('scene-' + prev)?.classList.add('active');
+  document.getElementById('nav-'   + prev)?.classList.add('active');
+  const sc = SCENES.find(s => s.id === prev);
+  if (sc) {
+    document.getElementById('topbar-title').textContent = sc.title;
+    document.getElementById('topbar-step').textContent  = sc.step;
+    document.getElementById('progress-fill').style.width = sc.pct + '%';
+  }
+  renderBtns(prev);
+  document.getElementById('scene-wrap').scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderBtns(id) {
+  const d = document.getElementById('dyn-btns');
+  if (EXTRA_BTNS[id] !== undefined) {
+    d.innerHTML = EXTRA_BTNS[id];
+  } else if (NEXT[id]) {
+    d.innerHTML = `<button class="btn btn-next" onclick="goTo('${NEXT[id]}')">Далее →</button>`;
+  } else {
+    d.innerHTML = '';
+  }
+}
+
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  sb.classList.toggle('hidden');
+  sb.classList.toggle('shown');
+}
+
+function toggleAcc(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+
+renderBtns('opening');
+</script>
+</body>
+</html>
