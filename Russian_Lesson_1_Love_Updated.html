@@ -1,0 +1,429 @@
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  .l1-wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    font-family: 'Nunito', sans-serif;
+    color: #0d1b2a;
+    background: #faf7f1;
+  }
+
+  /* HERO */
+  .l1-hero {
+    background: linear-gradient(135deg, #0D2D6B 0%, #1a4fa0 100%);
+    border-radius: 12px;
+    padding: 48px 40px;
+    margin-bottom: 36px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .l1-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(201,150,58,0.12);
+  }
+  .l1-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(201,150,58,0.08);
+  }
+  .l1-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C9963A;
+    margin-bottom: 14px;
+  }
+  .l1-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #faf7f1;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+  }
+  .l1-hero-sub {
+    font-size: 18px;
+    color: #e8b95a;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* RITUAL */
+  .l1-ritual {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 16px rgba(13,29,107,0.07);
+    border-left: 4px solid #C9963A;
+  }
+  .l1-ritual h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #0D2D6B;
+    margin: 0 0 8px 0;
+  }
+  .l1-ritual p {
+    font-size: 14px;
+    color: #6a7a8a;
+    margin: 0 0 20px 0;
+    font-style: italic;
+  }
+
+  /* AUDIO */
+  .l1-audio-block {
+    background: linear-gradient(135deg, #0D2D6B 0%, #1a4fa0 100%);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+  }
+  .l1-audio-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C9963A;
+    margin: 0 0 12px 0;
+  }
+  .l1-audio-hint {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  /* LANGUAGE TOGGLE */
+  .l1-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .l1-lang-sel {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .l1-btn {
+    padding: 9px 32px;
+    border: none;
+    background: transparent;
+    font-size: 0.92em;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 7px;
+    transition: all 0.22s;
+    color: #999;
+    font-family: 'Nunito', sans-serif;
+  }
+  .l1-btn.l1-active {
+    background: linear-gradient(135deg, #1A4FA0, #0D2D6B);
+    color: white;
+    box-shadow: 0 2px 8px rgba(26,79,160,0.35);
+  }
+  .l1-btn:hover { background: #e8ecf8; color: #1A4FA0; }
+  .l1-btn.l1-active:hover { background: linear-gradient(135deg, #1A4FA0, #0D2D6B); color: white; }
+
+  /* TEXT BLOCKS */
+  .l1-text-wrap {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(13,29,107,0.07);
+    margin-bottom: 28px;
+  }
+  .l1-col-heads { display:none !important; 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #f0f3ff;
+    border-bottom: 1px solid #c8d0e8;
+  }
+  .l1-col-ru, .l1-col-en {
+    padding: 10px 18px;
+    font-size: 0.75em;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #1A4FA0;
+  }
+  .l1-col-ru { border-right: 2px solid #c8d0e8; }
+  .l1-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #e8ecf8;
+    transition: background 0.18s;
+  }
+  .l1-block:last-child { border-bottom: none; }
+  .l1-block:hover { background: #f5f7ff; }
+  .l1-ru, .l1-en {
+    padding: 14px 18px;
+    font-size: 1.05em;
+    line-height: 1.75;
+    margin: 0;
+  }
+  .l1-ru { color: #1A1410; font-weight: 600; border-right: 2px solid #d0d8f0; }
+  .l1-en { color: #5A4A40; font-style: italic; }
+  .l1-block.l1-title {
+    background: linear-gradient(135deg, #1A4FA0 0%, #0D2D6B 100%);
+  }
+  .l1-block.l1-title:hover { background: linear-gradient(135deg, #1A4FA0 0%, #0D2D6B 100%); }
+  .l1-block.l1-title .l1-ru,
+  .l1-block.l1-title .l1-en {
+    color: white; font-size: 1.15em; font-weight: 900;
+    letter-spacing: 2px; text-transform: uppercase;
+    font-style: normal; border-right-color: rgba(255,255,255,0.2);
+  }
+  .l1-block.l1-quote { background: #fff8ee; }
+  .l1-block.l1-quote:hover { background: #fff3e0; }
+  .l1-block.l1-quote .l1-ru,
+  .l1-block.l1-quote .l1-en { font-style: italic; color: #7A5000; }
+  .l1-block.l1-key { background: #f0f5ff; }
+  .l1-block.l1-key .l1-ru { color: #0D2D6B; }
+  .l1-kp { background: #eef3ff; color: #0D2D6B; font-weight: 700; border-radius: 3px; padding: 0 3px; }
+  .l1-en .l1-kp { background: #e8f0ff; color: #0D2D6B; font-style: normal; }
+
+  /* LANGUAGE MODES */
+  .l1-view-ru .l1-col-heads { display:none !important;  grid-template-columns: 1fr; }
+  .l1-view-ru .l1-col-en { display: none; }
+  .l1-view-ru .l1-block { grid-template-columns: 1fr; }
+  .l1-view-ru .l1-ru { border-right: none; }
+  .l1-view-ru .l1-en { display: none; }
+  .l1-view-en .l1-col-heads { display:none !important;  grid-template-columns: 1fr; }
+  .l1-view-en .l1-col-ru { display: none; }
+  .l1-view-en .l1-block { grid-template-columns: 1fr; }
+  .l1-view-en .l1-ru { display: none; }
+
+  /* NEXT BUTTON */
+  .l1-next {
+    background: linear-gradient(135deg, #0D2D6B 0%, #1a4fa0 100%);
+    border-radius: 12px;
+    padding: 32px 40px;
+    text-align: center;
+  }
+  .l1-next p {
+    font-size: 15px;
+    color: rgba(250,247,241,0.8);
+    margin: 0 0 16px 0;
+    line-height: 1.6;
+  }
+  .l1-next-btn {
+    display: inline-block;
+    background: #C9963A;
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+  }
+  .l1-next-btn:hover { background: #e8b95a; }
+
+  @media (max-width: 600px) {
+    .l1-wrap { padding: 24px 16px; }
+    .l1-hero { padding: 32px 20px; }
+    .l1-hero h1 { font-size: 32px; }
+    .l1-ritual { padding: 24px 20px; }
+    .l1-audio-block { padding: 20px; }
+    .l1-col-heads, .l1-block { grid-template-columns: 1fr !important; }
+    .l1-col-en, .l1-en { display: none; }
+    .l1-ru { border-right: none !important; }
+    .l1-btn { padding: 8px 18px; font-size: 0.82em; }
+  }
+.l1-col-heads,.l2-col-heads,.l3-col-heads,.l4-col-heads,.l5-col-heads{display:none!important;}
+</style>
+
+<div class="l1-wrap">
+
+  <!-- HERO -->
+  <div class="l1-hero">
+    <div class="l1-eyebrow">Speak Russian — Lesson 1</div>
+    <h1>Любовь · Love</h1>
+    <p class="l1-hero-sub">Вы живёте, пока Вы любите.</p>
+  </div>
+
+  <!-- PRE-LESSON RITUAL -->
+  <div class="l1-ritual">
+    <h2>🕯️ Pre-Lesson Ritual</h2>
+    <p>Watch this short video before every lesson — it takes 30 seconds and prepares your brain for Russian.</p>
+
+    <div style="border-radius:10px;overflow:hidden;background:#0d1b2a;">
+      <iframe
+        width="100%" style="aspect-ratio:16/9;display:block;border:none;"
+        src="https://www.youtube.com/embed/o4Tx9BRIdvg?rel=0&modestbranding=1"
+        title="Pre-Lesson Ritual — The Russian Method"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div style="margin-top:14px;padding:12px 16px;background:rgba(201,150,58,0.08);border-left:3px solid #C9963A;border-radius:0 8px 8px 0;font-size:13px;color:#1a1a2e;line-height:1.6;">
+      После просмотра <strong>произнесите вслух</strong> фразы ритуала — по-русски, перед каждым уроком.
+    </div>
+
+    <div style="margin-top:14px;background:linear-gradient(135deg,#0D2D6B,#1a4fa0);border-radius:10px;padding:20px 24px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:#e8b95a;margin:0 0 8px 0;line-height:1.5;">Я не говорю сейчас по-английски.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:#e8b95a;margin:0 0 8px 0;line-height:1.5;">Моё имя Олег. &nbsp;/&nbsp; Моё имя Мария.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:#e8b95a;margin:0 0 8px 0;line-height:1.5;">Я — ребёнок.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:#e8b95a;margin:0 0 8px 0;line-height:1.5;">Однако, я быстро расту.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:#e8b95a;margin:0;line-height:1.5;">Я учу русский язык.</p>
+    </div>
+  </div>
+
+  <!-- AUDIO -->
+  <div class="l1-audio-block">
+    <p class="l1-audio-label">🎧 Lesson Audio — Listen & Follow</p>
+    <iframe width="100%" height="116" scrolling="no" frameborder="no" allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/alexander-sushko-896288742/lesson-one-love&color=%231A4FA0&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+      style="border-radius:8px; display:block;">
+    </iframe>
+    <p class="l1-audio-hint">Read the text while listening · Switch to Russian mode and repeat with the speaker</p>
+  </div>
+
+  <!-- LANGUAGE TOGGLE -->
+  <div class="l1-controls">
+    <div class="l1-lang-sel">
+      <button class="l1-btn" id="l1-btn-en" onclick="l1View('en')">English</button>
+      <button class="l1-btn l1-active" id="l1-btn-ru" onclick="l1View('ru')">Русский</button>
+    </div>
+  </div>
+
+  <!-- TEXT -->
+  <div class="l1-text-wrap">
+    <div class="l1-col-heads" id="l1-heads">
+      <div class="l1-col-ru">Русский</div>
+      <div class="l1-col-en">English</div>
+    </div>
+
+    <div id="l1-content" class="l1-view-ru">
+
+      <div class="l1-block l1-title">
+        <div class="l1-ru">Урок 1 · Слово: Любовь</div>
+        <div class="l1-en">Lesson 1 · Word: Love</div>
+      </div>
+
+      <div class="l1-block l1-quote">
+        <div class="l1-ru">«Первая любовь — это лишь маленькая глупость и колоссальное любопытство»
+          <span style="display:block;margin-top:6px;font-size:0.85em;font-weight:700;color:#9A6800;font-style:normal;">— Джордж Бернард Шоу</span>
+        </div>
+        <div class="l1-en">"First love is only a little foolishness and a lot of curiosity."
+          <span style="display:block;margin-top:6px;font-size:0.85em;font-weight:700;color:#9A6800;font-style:normal;">— George Bernard Shaw</span>
+        </div>
+      </div>
+
+      <div class="l1-block l1-key">
+        <div class="l1-ru">— Здравствуйте, <span class="l1-kp">меня зовут</span> Олег.</div>
+        <div class="l1-en">— Hello, <span class="l1-kp">my name is</span> Oleg.</div>
+      </div>
+
+      <div class="l1-block">
+        <div class="l1-ru">— Меня зовут Мария.</div>
+        <div class="l1-en">— And my name is Maria.</div>
+      </div>
+
+      <div class="l1-block l1-key">
+        <div class="l1-ru">— <span class="l1-kp">Я могу сосчитать до десяти:</span> один, два, три, четыре, пять, шесть, семь, восемь, девять, десять.</div>
+        <div class="l1-en">— <span class="l1-kp">I can count to ten:</span> one, two, three, four, five, six, seven, eight, nine, ten.</div>
+      </div>
+
+      <div class="l1-block l1-key">
+        <div class="l1-ru">— В этом уроке <span class="l1-kp">мы изучим</span> наше первое слово — <span class="l1-kp">ЛЮБОВЬ</span>.</div>
+        <div class="l1-en">— In this lesson <span class="l1-kp">we will learn</span> our first word — <span class="l1-kp">LOVE</span>.</div>
+      </div>
+
+      <div class="l1-block">
+        <div class="l1-ru">— <span class="l1-kp">Вместе с Вами мы отправимся</span> в замечательное путешествие, где мы больше узнаем о русской культуре, людях и их языке.</div>
+        <div class="l1-en">— <span class="l1-kp">Together we will go</span> on a wonderful journey where we will learn more about Russian culture, people, and their language.</div>
+      </div>
+
+      <div class="l1-block l1-key">
+        <div class="l1-ru">— <span class="l1-kp">Вы живёте, пока Вы любите.</span></div>
+        <div class="l1-en">— <span class="l1-kp">You live as long as you love.</span></div>
+      </div>
+
+      <div class="l1-block">
+        <div class="l1-ru">— Я люблю свою семью.</div>
+        <div class="l1-en">— I love my family.</div>
+      </div>
+
+      <div class="l1-block">
+        <div class="l1-ru">— Я люблю своих детей.</div>
+        <div class="l1-en">— I love my children.</div>
+      </div>
+
+      <div class="l1-block l1-key">
+        <div class="l1-ru">— Вы любите меня?</div>
+        <div class="l1-en">— Do you love me?</div>
+      </div>
+
+      <div class="l1-block">
+        <div class="l1-ru">— Да, я люблю Вас, потому что <span class="l1-kp">Вы — прекрасный человек</span> и у Вас <span class="l1-kp">любящее сердце.</span></div>
+        <div class="l1-en">— Yes, I do love you because <span class="l1-kp">you are a wonderful person</span> and <span class="l1-kp">you have a loving heart.</span></div>
+      </div>
+
+      <div class="l1-block">
+        <div class="l1-ru">— <span class="l1-kp">Вы хотите помочь каждому,</span> и каждый хочет помочь Вам.</div>
+        <div class="l1-en">— <span class="l1-kp">You want to help everybody,</span> and everybody wants to help you.</div>
+      </div>
+
+      <div class="l1-block l1-key">
+        <div class="l1-ru">— <span class="l1-kp">Олег и Мария любят друг друга.</span></div>
+        <div class="l1-en">— <span class="l1-kp">Oleg and Maria are in love.</span></div>
+      </div>
+
+      <div class="l1-block">
+        <div class="l1-ru">— <span class="l1-kp">Они собираются пожениться</span> в Мае.</div>
+        <div class="l1-en">— <span class="l1-kp">They want to get married</span> in May.</div>
+      </div>
+
+      <div class="l1-block l1-key">
+        <div class="l1-ru">— <span class="l1-kp">Мне нравится изучать</span> русский язык.</div>
+        <div class="l1-en">— <span class="l1-kp">I love learning</span> Russian.</div>
+      </div>
+
+      <div class="l1-block">
+        <div class="l1-ru">— Это <span class="l1-kp">помогает мне полюбить</span> мою новую страну — Россию.</div>
+        <div class="l1-en">— It <span class="l1-kp">helps me to love</span> my new country — Russia.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NEXT STEP -->
+  <div class="l1-next">
+    <p>Ready to practice? Open your <strong>Practice Assignment</strong> and follow the steps — it will guide you through the lesson from start to finish.</p>
+    <a class="l1-next-btn" href="https://mentorinrussian.com/Practice_Assignment_1.html">Practice Assignment — How to Work With This Lesson →</a>
+  </div>
+
+</div>
+
+<script>
+function l1View(mode) {
+  var c = document.getElementById('l1-content');
+  var h = document.getElementById('l1-heads');
+  c.classList.remove('l1-view-ru', 'l1-view-en');
+  h.style.gridTemplateColumns = mode === 'ru' || mode === 'en' ? '1fr' : '1fr 1fr';
+  if (mode === 'ru') { c.classList.add('l1-view-ru'); }
+  if (mode === 'en') { c.classList.add('l1-view-en'); }
+  document.getElementById('l1-btn-ru').classList.toggle('l1-active', mode === 'ru');
+  document.getElementById('l1-btn-en').classList.toggle('l1-active', mode === 'en');
+}
+</script>
