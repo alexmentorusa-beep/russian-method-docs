@@ -14,19 +14,32 @@
   },
   {
     "id": 2,
-    "title": "Trial Lesson — Lesson 1: Love",
-    "subtitle": "Your First Step Into Real Russian · $5",
+    "title": "Your Russian Is Not Broken. It's Frozen.",
+    "subtitle": "The Advanced Track — The Russian Method",
     "author": "The Russian Method",
     "source": "mentorinrussian.com",
-    "date": "2025",
-    "category": "Russian Lessons",
-    "tag": "Trial · $5",
-    "description": "Everything included in the trial lesson: professional audio narration, bilingual lesson text with language toggle, and a step-by-step practice assignment. Learn at your own pace, any time.",
-    "file": "Trial_Lesson_Preview.html",
-    "color": "#c9963a"
+    "date": "2026",
+    "category": "The Method",
+    "tag": "Advanced",
+    "description": "For intermediate and advanced learners who already speak Russian but freeze under pressure. Explains why more conversation practice alone won't fix the plateau — and what actually will.",
+    "file": "Russian_Fluency_Method.html",
+    "color": "#0D2D6B"
   },
   {
     "id": 3,
+    "title": "Fluency Assignment №1",
+    "subtitle": "A Free Diagnostic for Intermediate & Advanced Learners",
+    "author": "The Russian Method",
+    "source": "mentorinrussian.com",
+    "date": "2026",
+    "category": "Advanced Track",
+    "tag": "Free · Try It",
+    "description": "A short Russian text and three spoken tasks — no dictionary, no preparation. Read aloud, retell, give your opinion. Reveals exactly where your Russian stands in under 20 minutes.",
+    "file": "Advanced_Practice_Assignment_1.html",
+    "color": "#C9963A"
+  },
+  {
+    "id": 4,
     "title": "Distinct Cortical Areas Associated with Native and Second Languages",
     "subtitle": "Original fMRI Research — Nature, 1997",
     "author": "Kim, Relkin, Lee & Hirsch",
@@ -39,7 +52,7 @@
     "color": "#1a237e"
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "When an Adult Adds a Language",
     "subtitle": "It's One Brain, Two Systems",
     "author": "Sandra Blakeslee",
