@@ -27,32 +27,6 @@
   },
   {
     "id": 3,
-    "title": "Lesson 1 — Love",
-    "subtitle": "Любовь · First Immersion Lesson",
-    "author": "Alexander",
-    "source": "The Russian Method",
-    "date": "2025",
-    "category": "Russian Lessons",
-    "tag": "Lesson",
-    "description": "First lesson of The Russian Method. Audio narration by a professional speaker, bilingual text with Russian/English toggle. Features Oleg and Maria in a warm dialogue built around the word любовь — Love.",
-    "file": "Russian_Lesson_1_Love.html",
-    "color": "#0d2d6b"
-  },
-  {
-    "id": 4,
-    "title": "Practice Assignment — Lesson 1",
-    "subtitle": "5 Steps to Automatic Speech",
-    "author": "Alexander",
-    "source": "The Russian Method",
-    "date": "2025",
-    "category": "Russian Lessons",
-    "tag": "Assignment",
-    "description": "Step-by-step practice guide for Lesson 1. From first listening through simultaneous repetition to a final self-check. Designed to move Russian from conscious effort to automatic, subconscious speech.",
-    "file": "Practice_Assignment_1.html",
-    "color": "#1b5e20"
-  },
-  {
-    "id": 5,
     "title": "Distinct Cortical Areas Associated with Native and Second Languages",
     "subtitle": "Original fMRI Research — Nature, 1997",
     "author": "Kim, Relkin, Lee & Hirsch",
@@ -65,7 +39,7 @@
     "color": "#1a237e"
   },
   {
-    "id": 6,
+    "id": 4,
     "title": "When an Adult Adds a Language",
     "subtitle": "It's One Brain, Two Systems",
     "author": "Sandra Blakeslee",
