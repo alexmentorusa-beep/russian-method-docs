@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trial Lesson — The Russian Method</title>
+  <meta name="description" content="One lesson. One word. The beginning of a genuine language center in your brain." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T1GD43HJLV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T1GD43HJLV');
+  </script>
+  <style>
+    :root {
+      --navy:      #0d1b2a;
+      --blue:      #1a4fa0;
+      --dark-blue: #0D2D6B;
+      --gold:      #C9963A;
+      --gold2:     #e8b95a;
+      --cream:     #faf7f1;
+      --text:      #e8e4dc;
+      --dim:       #9ba8bb;
+      --border:    rgba(255,255,255,.07);
+      --card-bg:   rgba(255,255,255,.03);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy); color: var(--text); font-family: 'Nunito', sans-serif; font-weight: 300; line-height: 1.7; }
+
+    /* ── top bar ── */
+    .tlp-topbar { height: 4px; background: linear-gradient(90deg, var(--dark-blue), var(--gold), var(--dark-blue)); }
+
+    /* ── nav ── */
+    .tlp-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 40px; border-bottom: 1px solid var(--border);
+      background: rgba(13,27,42,.95); position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .tlp-nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--cream); letter-spacing: .5px; text-decoration: none; }
+    .tlp-nav-logo span { color: var(--gold); }
+    .tlp-nav-right { display: flex; align-items: center; gap: 14px; }
+    .tlp-nav-tag { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dim); background: var(--card-bg); border: 1px solid var(--border); padding: 5px 14px; border-radius: 20px; }
+    .tlp-back { font-size: 12px; font-weight: 700; letter-spacing: .5px; color: var(--dim); text-decoration: none; transition: color .2s; }
+    .tlp-back:hover { color: var(--gold); }
+
+    /* ── hero ── */
+    .tlp-hero {
+      text-align: center; padding: 80px 24px 64px; position: relative; overflow: hidden;
+    }
+    .tlp-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(26,79,160,.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .tlp-hero-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .tlp-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 600; color: var(--cream); line-height: 1.15; margin-bottom: 20px; }
+    .tlp-hero h1 em { font-style: italic; color: var(--gold); }
+    .tlp-hero-sub { font-size: 16px; color: var(--dim); max-width: 480px; margin: 0 auto 36px; line-height: 1.75; }
+    .tlp-price-badge {
+      display: inline-flex; align-items: baseline; gap: 8px;
+      background: rgba(201,150,58,.1); border: 1px solid rgba(201,150,58,.3);
+      border-radius: 50px; padding: 10px 28px; margin-bottom: 0;
+    }
+    .tlp-price-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--gold); line-height: 1; }
+    .tlp-price-detail { font-size: 13px; color: var(--dim); }
+
+    /* ── section ── */
+    .tlp-section { max-width: 760px; margin: 0 auto; padding: 64px 28px; }
+    .tlp-section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .tlp-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600; color: var(--cream); margin-bottom: 36px; line-height: 1.25; }
+
+    /* ── features grid ── */
+    .tlp-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 64px; }
+    .tlp-feature {
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
+      padding: 28px 26px; transition: border-color .2s;
+    }
+    .tlp-feature:hover { border-color: rgba(201,150,58,.25); }
+    .tlp-feature-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
+    .tlp-feature h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--cream); margin-bottom: 8px; }
+    .tlp-feature p { font-size: 13px; color: var(--dim); line-height: 1.7; }
+
+    /* ── divider ── */
+    .tlp-divider { width: 48px; height: 2px; background: var(--gold); opacity: .4; margin: 0 auto 64px; }
+
+    /* ── how it works ── */
+    .tlp-steps { display: flex; flex-direction: column; gap: 0; margin: 32px 0 48px; }
+    .tlp-step { display: flex; gap: 20px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .tlp-step:last-child { border-bottom: none; }
+    .tlp-step-num {
+      flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+      border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--gold); margin-top: 2px;
+    }
+    .tlp-step h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--cream); margin-bottom: 6px; }
+    .tlp-step p { font-size: 13px; color: var(--dim); line-height: 1.7; }
+
+    /* ── lesson note ── */
+    .tlp-note {
+      background: linear-gradient(135deg, #0f2240, #0D2D6B);
+      border: 1px solid rgba(201,150,58,.2); border-radius: 14px;
+      padding: 28px 32px; margin-bottom: 48px; font-size: 14px; color: var(--dim); line-height: 1.8;
+    }
+    .tlp-note strong { color: var(--text); }
+    .tlp-note em { color: var(--gold); font-style: italic; }
+
+    /* ── CTA ── */
+    .tlp-cta {
+      background: linear-gradient(135deg, #0D2D6B 0%, #1a4fa0 100%);
+      border: 1px solid rgba(201,150,58,.25); border-radius: 20px;
+      padding: 56px 40px; text-align: center; margin-bottom: 24px;
+    }
+    .tlp-cta h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600; color: var(--cream); margin-bottom: 12px; }
+    .tlp-cta p { font-size: 14px; color: var(--dim); margin-bottom: 36px; line-height: 1.7; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .tlp-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .tlp-btn-primary {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--gold); color: var(--navy); font-family: 'Nunito', sans-serif;
+      font-weight: 700; font-size: 15px; padding: 15px 34px; border-radius: 10px;
+      text-decoration: none; transition: background .2s, transform .15s;
+      box-shadow: 0 4px 20px rgba(201,150,58,.3);
+    }
+    .tlp-btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+    .tlp-btn-secondary {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: none; color: var(--text); font-family: 'Nunito', sans-serif;
+      font-weight: 600; font-size: 15px; padding: 15px 34px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.2); text-decoration: none;
+      transition: border-color .2s, background .2s;
+    }
+    .tlp-btn-secondary:hover { border-color: var(--gold); background: rgba(201,150,58,.06); }
+    .tlp-trust { font-size: 12px; color: rgba(255,255,255,.25); margin-top: 20px; }
+
+    /* ── footer ── */
+    .tlp-footer { text-align: center; padding: 28px 24px; font-size: 12px; color: rgba(255,255,255,.2); border-top: 1px solid var(--border); }
+    .tlp-footer a { color: var(--gold); text-decoration: none; opacity: .7; }
+
+    /* ── animations ── */
+    @keyframes tlp-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .tlp-hero { animation: tlp-up .55s ease both; }
+
+    @media (max-width: 580px) {
+      .tlp-nav { padding: 14px 18px; }
+      .tlp-features { grid-template-columns: 1fr; }
+      .tlp-section { padding: 48px 18px; }
+      .tlp-cta { padding: 36px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="tlp-topbar"></div>
+
+<nav class="tlp-nav">
+  <a href="https://mentorinrussian.com" class="tlp-nav-logo">The <span>Russian</span> Method</a>
+  <div class="tlp-nav-right">
+    <div class="tlp-nav-tag">Trial Lesson</div>
+    <a href="https://mentorinrussian.com/Why_Adults_Can_Learn_Russian_Like_Children.html" class="tlp-back">← Back</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="tlp-hero">
+  <div class="tlp-hero-label">The Russian Method — Lesson 1</div>
+  <h1>Your First Step Into<br><em>Real Russian</em></h1>
+  <p class="tlp-hero-sub">One lesson. One word. The beginning of a genuine language center in your brain.</p>
+  <div class="tlp-price-badge">
+    <span class="tlp-price-num">$5</span>
+    <span class="tlp-price-detail">· One-time · Instant access</span>
+  </div>
+</div>
+
+<div class="tlp-section">
+
+  <!-- FEATURES -->
+  <div class="tlp-section-label">What's Included</div>
+  <h2>Everything You Need to Experience the Method</h2>
+
+  <div class="tlp-features">
+    <div class="tlp-feature">
+      <span class="tlp-feature-icon">🎧</span>
+      <h4>Professional Audio Narration</h4>
+      <p>The lesson text is recorded by a native Russian speaker at a pace designed for clear perception — slower than natural conversation, but natural in rhythm and pronunciation. You hear real Russian from the very first minute.</p>
+    </div>
+    <div class="tlp-feature">
+      <span class="tlp-feature-icon">📖</span>
+      <h4>Bilingual Lesson Text</h4>
+      <p>The full lesson is displayed in Russian and English, with a toggle to switch between Russian-only, English-only, or both. Key phrases are highlighted to draw your attention to the building blocks of the language.</p>
+    </div>
+    <div class="tlp-feature">
+      <span class="tlp-feature-icon">📋</span>
+      <h4>Step-by-Step Practice Assignment</h4>
+      <p>A clear, structured guide walks you through exactly how to work with the lesson using the immersion method — from first listening through simultaneous repetition to a final self-check. No guesswork. No confusion.</p>
+    </div>
+    <div class="tlp-feature">
+      <span class="tlp-feature-icon">🕐</span>
+      <h4>Learn on Your Own Schedule</h4>
+      <p>The lesson is yours to access at any time, as many times as you like. There is no deadline, no live session to attend, and no pressure. Work through it at whatever pace feels right for you.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="tlp-divider"></div>
+
+<div class="tlp-section" style="padding-top:0">
+
+  <!-- HOW IT WORKS -->
+  <div class="tlp-section-label">After Payment</div>
+  <h2>How It Works</h2>
+
+  <div class="tlp-steps">
+    <div class="tlp-step">
+      <div class="tlp-step-num">1</div>
+      <div>
+        <h4>Pay $5 via PayPal</h4>
+        <p>Secure payment. PayPal never shares your card details with the seller.</p>
+      </div>
+    </div>
+    <div class="tlp-step">
+      <div class="tlp-step-num">2</div>
+      <div>
+        <h4>Receive Your Link</h4>
+        <p>You will receive a direct link to the lesson by email — typically within a few hours.</p>
+      </div>
+    </div>
+    <div class="tlp-step">
+      <div class="tlp-step-num">3</div>
+      <div>
+        <h4>Start Learning</h4>
+        <p>Open the lesson in any browser, follow the assignment, and experience the method firsthand.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON NOTE -->
+  <div class="tlp-note">
+    💡 <strong>About the lesson:</strong> Lesson 1 is built around the word <em>любовь</em> — Love. It introduces you to two characters, Oleg and Maria, through a short dialogue and a series of phrases. Simple, warm, and surprisingly effective as a first encounter with Russian.
+  </div>
+
+  <!-- CTA -->
+  <div class="tlp-cta">
+    <h2>Ready to Begin?</h2>
+    <p>Choose how you'd like to take the next step.<br>Both paths lead to the same place — fluency.</p>
+    <div class="tlp-cta-btns">
+      <a href="https://www.paypal.com/ncp/payment/ECDJTSRMZ4FKU" class="tlp-btn-primary">💳 Start for $5 — PayPal</a>
+      <a href="https://calendly.com/alex-mentor-usa/30min" class="tlp-btn-secondary">📅 Book a Free Consultation</a>
+    </div>
+    <p class="tlp-trust">🔒 Secure payment · Instant confirmation · No subscription</p>
+  </div>
+
+</div>
+
+<footer class="tlp-footer">
+  <a href="https://mentorinrussian.com">mentorinrussian.com</a> &nbsp;·&nbsp; The Russian Method by Alexander &nbsp;·&nbsp;
+  Questions? <a href="https://calendly.com/alex-mentor-usa/30min">Book a free consultation</a>
+</footer>
+
+</body>
+</html>
