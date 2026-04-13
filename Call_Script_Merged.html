@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T1GD43HJLV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-T1GD43HJLV');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Call Script · Russian Method · Alexander</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #0C1A3A;
+  --navy2:     #0A1228;
+  --card:      #162040;
+  --card2:     #1C2C50;
+  --gold:      #C9963A;
+  --gold2:     #E4B865;
+  --blue:      #4A82D4;
+  --blue2:     #2A5298;
+  --text:      #D4E2F4;
+  --dim:       #7A90B8;
+  --muted:     #4A5E80;
+  --spoken-bg: #192850;
+  --dir-bg:    #0E1E38;
+  --tip-bg:    #261C04;
+  --red:       #C0392B;
+  --red-bg:    #280A08;
+  --green:     #27AE60;
+  --green-bg:  #0A2010;
+  --r:         10px;
+  --r-sm:      7px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--navy);
+  color: var(--text);
+}
+
+body { display: flex; flex-direction: column; }
+
+#topbar {
+  flex-shrink: 0;
+  height: 52px;
+  background: var(--navy2);
+  border-bottom: 1px solid rgba(201,150,58,0.2);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  z-index: 20;
+}
+#menu-btn {
+  background: none; border: none; color: var(--gold);
+  font-size: 20px; cursor: pointer; padding: 4px 6px;
+  flex-shrink: 0;
+}
+#topbar-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; font-weight: 700;
+  color: var(--text); white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+  flex: 1; min-width: 0;
+}
+#topbar-step { font-size: 11px; color: var(--dim); flex-shrink: 0; }
+#progress-wrap {
+  width: 100px; height: 3px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 2px; overflow: hidden; flex-shrink: 0;
+}
+#progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue2), var(--blue));
+  border-radius: 2px; transition: width 0.4s ease;
+}
+#btn-children {
+  background: rgba(192,57,43,0.15);
+  border: 1px solid rgba(192,57,43,0.4);
+  color: #E07070; font-size: 11px; font-weight: 500;
+  padding: 5px 11px; border-radius: 16px; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; flex-shrink: 0;
+  white-space: nowrap;
+}
+#btn-children:hover { background: rgba(192,57,43,0.28); }
+
+#body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  min-height: 0;
+}
+
+#sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: var(--navy2);
+  border-right: 1px solid rgba(201,150,58,0.15);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.28s ease, opacity 0.2s;
+}
+#sidebar.hidden { width: 0; overflow: hidden; opacity: 0; }
+
+.nav-group { padding: 8px 0; }
+.nav-group-label {
+  font-size: 9.5px; letter-spacing: 1.4px; font-weight: 600;
+  color: var(--muted); padding: 6px 16px 4px;
+  text-transform: uppercase;
+}
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 16px; cursor: pointer;
+  font-size: 12.5px; color: var(--dim);
+  border-left: 3px solid transparent;
+  transition: all 0.15s; line-height: 1.3;
+}
+.nav-item:hover { background: rgba(74,130,212,0.07); color: var(--text); }
+.nav-item.active {
+  color: var(--gold);
+  border-left-color: var(--gold);
+  background: rgba(201,150,58,0.07);
+}
+.nav-icon { font-size: 14px; flex-shrink: 0; }
+
+#main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+#scene-wrap {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 28px 16px;
+  min-height: 0;
+}
+
+.scene { display: none; }
+.scene.active {
+  display: block;
+  animation: fadeIn 0.28s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.scene-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(201,150,58,0.1);
+  border: 1px solid rgba(201,150,58,0.22);
+  border-radius: 20px; padding: 3px 12px;
+  font-size: 10.5px; color: var(--gold); font-weight: 600;
+  letter-spacing: 0.4px; margin-bottom: 10px; text-transform: uppercase;
+}
+.scene-badge .dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+
+.scene-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 700;
+  color: var(--gold2); margin-bottom: 3px; line-height: 1.2;
+}
+.scene-sub {
+  font-size: 12.5px; color: var(--dim);
+  margin-bottom: 20px; font-style: italic;
+}
+
+.spoken {
+  background: var(--spoken-bg);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  padding: 12px 16px 12px 38px;
+  margin: 8px 0;
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #C4D6EE;
+  position: relative;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.spoken::before {
+  content: '"';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; color: var(--blue2);
+  position: absolute; top: 2px; left: 10px;
+  line-height: 1; pointer-events: none;
+}
+
+.dir {
+  display: flex; align-items: flex-start; gap: 8px;
+  background: var(--dir-bg);
+  border-radius: var(--r-sm);
+  padding: 9px 13px; margin: 6px 0;
+  font-size: 12.5px; color: var(--dim); font-style: italic;
+  word-wrap: break-word; overflow-wrap: break-word;
+}
+.dir::before { content: '►'; color: var(--blue2); flex-shrink: 0; font-style: normal; font-size: 11px; margin-top: 2px; }
+
+.tip {
+  background: var(--tip-bg);
+  border: 1px solid rgba(201,150,58,0.3);
+  border-radius: var(--r-sm);
+  padding: 10px 14px; margin: 8px 0;
+  font-size: 13px; color: #D4A840; line-height: 1.6;
+  word-wrap: break-word; overflow-wrap: break-word;
+}
+
+.sublabel {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  color: var(--gold); text-transform: uppercase;
+  margin: 18px 0 5px;
+}
+
+hr.div { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 18px 0; }
+
+.branch-cards {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0 8px;
+}
+.branch-cards.two-col { grid-template-columns: 1fr 1fr; }
+
+.branch-card {
+  border-radius: var(--r);
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  border: 1.5px solid transparent;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  display: block; width: 100%;
+}
+.branch-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
+.branch-card:active { transform: translateY(0); }
+
+.branch-card.green { background: rgba(39,174,96,0.12); border-color: rgba(39,174,96,0.35); }
+.branch-card.green:hover { background: rgba(39,174,96,0.2); border-color: rgba(39,174,96,0.6); }
+.branch-card.red { background: rgba(192,57,43,0.12); border-color: rgba(192,57,43,0.3); }
+.branch-card.red:hover { background: rgba(192,57,43,0.2); border-color: rgba(192,57,43,0.5); }
+.branch-card.blue-a { background: rgba(74,130,212,0.1); border-color: rgba(74,130,212,0.3); }
+.branch-card.blue-a:hover { background: rgba(74,130,212,0.18); border-color: rgba(74,130,212,0.55); }
+.branch-card.blue-b { background: rgba(13,53,112,0.25); border-color: rgba(74,100,180,0.3); }
+.branch-card.blue-b:hover { background: rgba(13,53,112,0.38); border-color: rgba(74,100,180,0.55); }
+
+.bc-icon { font-size: 22px; margin-bottom: 6px; display: block; }
+.bc-title { font-size: 14.5px; font-weight: 600; margin-bottom: 4px; }
+.bc-title.green { color: #5DD88A; }
+.bc-title.red   { color: #E07070; }
+.bc-title.blue  { color: #7ABAFF; }
+.bc-sub { font-size: 12px; color: var(--dim); line-height: 1.5; }
+
+.acc { margin: 6px 0; }
+.acc-hdr {
+  width: 100%; background: var(--card);
+  padding: 12px 15px; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13.5px; font-weight: 500; color: var(--text);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--r-sm);
+  transition: background 0.15s;
+  font-family: 'DM Sans', sans-serif;
+  text-align: left;
+}
+.acc-hdr:hover, .acc-hdr.open { background: var(--card2); }
+.acc-hdr.open { border-radius: var(--r-sm) var(--r-sm) 0 0; border-bottom-color: transparent; }
+.acc-arrow { font-size: 10px; color: var(--dim); transition: transform 0.2s; flex-shrink: 0; margin-left: 8px; }
+.acc-hdr.open .acc-arrow { transform: rotate(90deg); }
+.acc-body {
+  display: none; padding: 12px 14px;
+  background: rgba(22,36,72,0.5);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-top: none;
+  border-radius: 0 0 var(--r-sm) var(--r-sm);
+}
+.acc-body.open { display: block; }
+
+#bottombar {
+  flex-shrink: 0;
+  background: var(--navy2);
+  border-top: 1px solid rgba(74,130,212,0.15);
+  padding: 12px 20px;
+  display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 500;
+  padding: 9px 20px; border-radius: 8px;
+  border: none; cursor: pointer;
+  transition: all 0.18s; display: inline-flex;
+  align-items: center; gap: 7px; white-space: nowrap;
+}
+.btn-back { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--dim); }
+.btn-back:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+.btn-next { background: linear-gradient(135deg, var(--blue2), var(--blue)); color: #fff; box-shadow: 0 3px 12px rgba(74,130,212,0.3); }
+.btn-next:hover { transform: translateY(-1px); box-shadow: 0 5px 16px rgba(74,130,212,0.4); }
+.btn-gold { background: linear-gradient(135deg, #8A6010, var(--gold)); color: var(--navy); font-weight: 600; box-shadow: 0 3px 12px rgba(201,150,58,0.3); }
+.btn-gold:hover { transform: translateY(-1px); }
+
+.spacer { flex: 1; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+@media (max-width: 680px) {
+  #sidebar { display: none; }
+  #sidebar.shown { display: flex; position: fixed; top: 52px; left: 0; bottom: 0; z-index: 100; width: 220px !important; }
+  .branch-cards.two-col { grid-template-columns: 1fr; }
+  #scene-wrap { padding: 16px 14px 12px; }
+  #portrait-panel { display: none; }
+}
+
+/* ── PORTRAIT PANEL ── */
+#portrait-panel {
+  width: 250px;
+  flex-shrink: 0;
+  background: #060d1a;
+  border-left: 1px solid rgba(201,150,58,0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+#portrait-inner {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+.pp-header {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px; font-weight: 700; color: var(--gold);
+  border-bottom: 1px solid rgba(201,150,58,0.18);
+  padding-bottom: 9px; margin-bottom: 13px;
+  display: flex; align-items: center; gap: 7px;
+}
+.live-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; animation: blink 1.6s infinite; flex-shrink: 0; }
+@keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.75)} }
+.pp-row { margin-bottom: 11px; transition: opacity 0.3s; }
+.pp-row.dim { opacity: 0.2; }
+.pp-key { font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--gold2); margin-bottom: 2px; }
+.pp-val { font-size: 11.5px; color: var(--text); line-height: 1.5; }
+.pp-val.empty { color: rgba(212,226,244,0.25); font-style: italic; font-size: 10.5px; }
+.pp-hr { height: 1px; background: rgba(201,150,58,0.08); margin: 11px 0; }
+.pp-dots { display: flex; gap: 4px; margin-top: 4px; }
+.pp-dot { width: 18px; height: 18px; border-radius: 4px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); transition: all 0.25s; }
+.pp-dot.on { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 6px rgba(201,150,58,0.3); }
+#pp-copy {
+  margin: 0; padding: 10px 14px;
+  background: transparent;
+  border: none; border-top: 1px solid rgba(201,150,58,0.12);
+  color: var(--gold2); font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px; cursor: pointer; transition: all 0.2s;
+  text-align: left; width: 100%; flex-shrink: 0;
+}
+#pp-copy:hover { background: rgba(201,150,58,0.1); color: var(--gold); }
+#pp-copied { font-size: 10.5px; color: #4ade80; padding: 4px 14px 8px; opacity: 0; transition: opacity 0.3s; flex-shrink: 0; }
+
+/* ── INTAKE WIDGETS ── */
+.intake-block {
+  margin-top: 18px;
+  background: rgba(6,18,40,0.6);
+  border: 1px solid rgba(201,150,58,0.18);
+  border-radius: 9px;
+  padding: 13px 15px;
+}
+.intake-label {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 1.4px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 9px; display: flex; align-items: center; gap: 6px;
+}
+.intake-label::before { content: '📋'; font-size: 11px; }
+.iog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 6px; margin-bottom: 8px;
+}
+.ioc { position: relative; cursor: pointer; }
+.ioc input { position: absolute; opacity: 0; width: 0; height: 0; }
+.iol {
+  display: flex; align-items: center; gap: 7px;
+  padding: 7px 11px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 7px;
+  font-size: 12px; color: rgba(212,226,244,0.65);
+  cursor: pointer; transition: all 0.16s; user-select: none;
+  font-family: 'DM Sans', sans-serif;
+}
+.iol:hover { background: rgba(74,130,212,0.12); border-color: rgba(201,150,58,0.3); color: var(--text); }
+.ioc input:checked + .iol { background: rgba(74,130,212,0.22); border-color: var(--gold); color: var(--gold2); }
+.ico, .iro { width: 13px; height: 13px; flex-shrink: 0; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 2px; display: flex; align-items: center; justify-content: center; transition: all 0.16s; font-size: 9px; }
+.iro { border-radius: 50%; }
+.ioc input:checked + .iol .ico, .ioc input:checked + .iol .iro { border-color: var(--gold); background: var(--gold); color: var(--navy); }
+.ioc input:checked + .iol .ico::after { content: '✓'; font-weight: 700; }
+.ioc input:checked + .iol .iro::after { content: ''; width: 5px; height: 5px; background: var(--navy); border-radius: 50%; }
+.intake-text {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 7px; padding: 7px 11px;
+  color: var(--text); font-family: 'DM Sans', sans-serif;
+  font-size: 12px; outline: none; transition: border-color 0.2s;
+  margin-top: 6px;
+}
+.intake-text:focus { border-color: var(--gold); background: rgba(74,130,212,0.1); }
+textarea.intake-text { resize: vertical; min-height: 58px; }
+.intake-sub { font-size: 10px; color: var(--dim); letter-spacing: 0.5px; text-transform: uppercase; margin: 8px 0 3px; }
+.i-scale { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px; }
+.i-sc { position: relative; cursor: pointer; }
+.i-sc input { position: absolute; opacity: 0; width: 0; }
+.i-sl { display: flex; flex-direction: column; align-items: center; padding: 6px 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 7px; cursor: pointer; transition: all 0.16s; min-width: 46px; font-size: 10px; color: rgba(212,226,244,0.55); font-family: 'DM Sans', sans-serif; }
+.i-sl .n { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--gold2); line-height: 1; }
+.i-sc input:checked + .i-sl { background: rgba(201,150,58,0.18); border-color: var(--gold); color: var(--text); }
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <button id="menu-btn" onclick="toggleSidebar()">☰</button>
+  <span id="topbar-title">Открытие</span>
+  <span id="topbar-step">Шаг 1 из 12</span>
+  <div id="progress-wrap"><div id="progress-fill" style="width:8%"></div></div>
+  <button id="btn-children" onclick="goTo('children')">⚠️ Дети</button>
+</div>
+
+<div id="body">
+
+<div id="sidebar">
+  <div class="nav-group">
+    <div class="nav-group-label">Основной поток</div>
+    <div class="nav-item active" id="nav-opening"        onclick="goTo('opening')">        <span class="nav-icon">👋</span>1. Открытие</div>
+    <div class="nav-item"        id="nav-story"           onclick="goTo('story')">           <span class="nav-icon">📖</span>2. История студента</div>
+    <div class="nav-item"        id="nav-goals"           onclick="goTo('goals')">           <span class="nav-icon">🎯</span>3. Цель и результат</div>
+    <div class="nav-item"        id="nav-commitment"      onclick="goTo('commitment')">      <span class="nav-icon">⏱</span>4. Время и готовность</div>
+    <div class="nav-item"        id="nav-fitCheck"        onclick="goTo('fitCheck')">        <span class="nav-icon">⚖️</span>5. Оценка студента</div>
+    <div class="nav-item"        id="nav-method"          onclick="goTo('method')">          <span class="nav-icon">💡</span>6. Методика</div>
+    <div class="nav-item"        id="nav-email"           onclick="goTo('email')">           <span class="nav-icon">✉️</span>7. Email студента</div>
+    <div class="nav-item"        id="nav-miniPractice"    onclick="goTo('miniPractice')">    <span class="nav-icon">⭐</span>8. Мини-практика</div>
+    <div class="nav-item"        id="nav-preplyChoice"    onclick="goTo('preplyChoice')">    <span class="nav-icon">🔀</span>9. Preply или напрямую</div>
+    <div class="nav-item"        id="nav-objections"      onclick="goTo('objections')">      <span class="nav-icon">🛡</span>10. Возражения</div>
+    <div class="nav-item"        id="nav-close"           onclick="goTo('close')">           <span class="nav-icon">🏁</span>11. Закрытие</div>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group-label">Особые ситуации</div>
+    <div class="nav-item" id="nav-notFit"   onclick="goTo('notFit')">   <span class="nav-icon">🚫</span>Студент не подходит</div>
+    <div class="nav-item" id="nav-pathA"    onclick="goTo('pathA')">    <span class="nav-icon">✅</span>Путь A — Напрямую</div>
+    <div class="nav-item" id="nav-pathB"    onclick="goTo('pathB')">    <span class="nav-icon">🔄</span>Путь B — Preply</div>
+    <div class="nav-item" id="nav-pathC"    onclick="goTo('pathC')">    <span class="nav-icon">🤔</span>Путь C — Объясни разницу</div>
+    <div class="nav-item" id="nav-children" onclick="goTo('children')"> <span class="nav-icon">🧒</span>Запрос на детей</div>
+  </div>
+</div>
+
+<div id="main">
+<div id="scene-wrap">
+
+<!-- 1. OPENING -->
+<div class="scene active" id="scene-opening">
+  <div class="scene-badge"><div class="dot"></div>Шаг 1 · ~2–3 мин</div>
+  <div class="scene-title">Открытие</div>
+  <div class="scene-sub">Тех-чек, тёплый тон, прозрачность о подходе</div>
+  <div class="spoken">Hi! Can you see and hear me okay? Great!</div>
+  <div class="spoken">Could you tell me how to pronounce your name correctly?</div>
+  <div class="spoken">Welcome, [Name]! Really glad you're here. This is going to be part conversation, part little taste of how we actually work together — so by the end you'll have a real feel for what our lessons look like.</div>
+  <hr class="div">
+  <div class="spoken">And before we dive in, I want to make sure we're a good fit. I'd hate for either of us to waste time if this isn't the right approach for where you're at. I've learned my method works really well for certain situations — but not all. Does that make sense?</div>
+  <div class="dir">Задай тёплый, расслабленный тон. Следи за реакцией — уже здесь многое считывается.</div>
+</div>
+
+<!-- 2. STORY -->
+<div class="scene" id="scene-story">
+  <div class="scene-badge"><div class="dot"></div>Шаг 2 · ~5–7 мин</div>
+  <div class="scene-title">История студента</div>
+  <div class="scene-sub">Слушай внимательно — мотивация определяет всё</div>
+
+  <div class="spoken">So tell me — what brought you to Russian? What's the story behind it?</div>
+  <div class="dir">Слушай полностью. Не торопи. Уже здесь многое определяется.</div>
+  <div class="intake-block">
+    <div class="intake-label">Why Russian?</div>
+    <div class="iog">
+      <label class="ioc"><input type="checkbox" name="motivation" value="Travel / Russia & CIS"><div class="iol"><div class="ico"></div>Travel / Russia & CIS</div></label>
+      <label class="ioc"><input type="checkbox" name="motivation" value="Family or partner connection"><div class="iol"><div class="ico"></div>Family / partner</div></label>
+      <label class="ioc"><input type="checkbox" name="motivation" value="Career advancement"><div class="iol"><div class="ico"></div>Career advancement</div></label>
+      <label class="ioc"><input type="checkbox" name="motivation" value="Business in Russian-speaking market"><div class="iol"><div class="ico"></div>Business / Russian market</div></label>
+      <label class="ioc"><input type="checkbox" name="motivation" value="Culture, literature, film"><div class="iol"><div class="ico"></div>Culture / literature / film</div></label>
+      <label class="ioc"><input type="checkbox" name="motivation" value="Heritage reconnection"><div class="iol"><div class="ico"></div>Heritage reconnection</div></label>
+      <label class="ioc"><input type="checkbox" name="motivation" value="Academic / research"><div class="iol"><div class="ico"></div>Academic / research</div></label>
+      <label class="ioc"><input type="checkbox" name="motivation" value="Personal challenge"><div class="iol"><div class="ico"></div>Personal challenge</div></label>
+    </div>
+    <div class="intake-sub">Key quote — their own words</div>
+    <input type="text" class="intake-text" id="motivation_quote" placeholder='"My wife is Russian — I want to talk to her family"' oninput="updatePortrait()">
+  </div>
+
+  <hr class="div">
+
+  <div class="spoken">Have you had any experience with Russian before — classes, apps, self-study, anything at all?</div>
+  <div class="dir">Если НЕТ: "Okay, a clean slate — that's actually wonderful to work with!" &nbsp;|&nbsp; Если ДА: "Oh interesting! What did you try? How far did you get? What worked, what didn't?"</div>
+  <div class="intake-block">
+    <div class="intake-label">Experience with Russian</div>
+    <div class="iog">
+      <label class="ioc"><input type="checkbox" name="exp" value="No prior experience"><div class="iol"><div class="ico"></div>No prior experience</div></label>
+      <label class="ioc"><input type="checkbox" name="exp" value="Self-study (books / YouTube)"><div class="iol"><div class="ico"></div>Self-study</div></label>
+      <label class="ioc"><input type="checkbox" name="exp" value="Apps (Duolingo, Babbel…)"><div class="iol"><div class="ico"></div>Apps (Duolingo…)</div></label>
+      <label class="ioc"><input type="checkbox" name="exp" value="Group classes / school"><div class="iol"><div class="ico"></div>Group classes</div></label>
+      <label class="ioc"><input type="checkbox" name="exp" value="Private tutor"><div class="iol"><div class="ico"></div>Private tutor</div></label>
+      <label class="ioc"><input type="checkbox" name="exp" value="Immersion / lived in Russia"><div class="iol"><div class="ico"></div>Immersion / lived there</div></label>
+    </div>
+    <div class="intake-sub">How long / what happened / what didn't work?</div>
+    <input type="text" class="intake-text" id="exp_duration" placeholder="e.g. 6 months Duolingo — could read a little but couldn't speak" oninput="updatePortrait()">
+  </div>
+
+  <hr class="div">
+
+  <div class="spoken">What about other languages — have you ever tried to learn one? It doesn't matter if it didn't work out.</div>
+
+  <!-- YES/NO toggle -->
+  <div class="intake-block">
+    <div class="intake-label">Other Languages</div>
+    <div class="iog" style="grid-template-columns:1fr 1fr; max-width:260px;">
+      <label class="ioc"><input type="radio" name="other_lang_yn" value="no" onchange="toggleOtherLang(false)"><div class="iol"><div class="iro"></div>No — just Russian</div></label>
+      <label class="ioc"><input type="radio" name="other_lang_yn" value="yes" onchange="toggleOtherLang(true)"><div class="iol"><div class="iro"></div>Yes</div></label>
+    </div>
+
+    <div id="other-lang-details" style="display:none; margin-top:10px;">
+      <div class="dir" style="margin-bottom:8px;">So I can see you're no stranger to language learning — that's really impressive! Which languages do you speak?</div>
+      <div class="intake-sub">Which language(s)?</div>
+      <input type="text" class="intake-text" id="other_lang_names" placeholder="e.g. Spanish, French, Mandarin" oninput="updatePortrait()">
+
+      <div class="intake-sub">Proficiency level reached</div>
+      <div class="iog">
+        <label class="ioc"><input type="checkbox" name="other_lang_level" value="Basic phrases only"><div class="iol"><div class="ico"></div>Basic phrases only</div></label>
+        <label class="ioc"><input type="checkbox" name="other_lang_level" value="Conversational"><div class="iol"><div class="ico"></div>Conversational</div></label>
+        <label class="ioc"><input type="checkbox" name="other_lang_level" value="Fluent / advanced"><div class="iol"><div class="ico"></div>Fluent / advanced</div></label>
+        <label class="ioc"><input type="checkbox" name="other_lang_level" value="Near-native"><div class="iol"><div class="ico"></div>Near-native</div></label>
+      </div>
+
+      <div class="intake-sub">How did they learn?</div>
+      <div class="iog">
+        <label class="ioc"><input type="checkbox" name="other_lang_method" value="School / university"><div class="iol"><div class="ico"></div>School / university</div></label>
+        <label class="ioc"><input type="checkbox" name="other_lang_method" value="Self-study / apps"><div class="iol"><div class="ico"></div>Self-study / apps</div></label>
+        <label class="ioc"><input type="checkbox" name="other_lang_method" value="Immersion / lived in country"><div class="iol"><div class="ico"></div>Immersion</div></label>
+        <label class="ioc"><input type="checkbox" name="other_lang_method" value="Private tutor"><div class="iol"><div class="ico"></div>Private tutor</div></label>
+        <label class="ioc"><input type="checkbox" name="other_lang_method" value="Natural / grew up bilingual"><div class="iol"><div class="ico"></div>Natural / bilingual</div></label>
+      </div>
+
+      <div class="intake-sub">Approximate duration</div>
+      <input type="text" class="intake-text" id="other_lang_duration" placeholder="e.g. Spanish — 3 years at school, now conversational" oninput="updatePortrait()">
+
+      <div class="dir">Looking back — what worked best and what felt like a waste of time?</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. GOALS -->
+<div class="scene" id="scene-goals">
+  <div class="scene-badge"><div class="dot"></div>Шаг 3 · ~5 мин</div>
+  <div class="scene-title">Цель и желаемый результат</div>
+  <div class="scene-sub">Пусть студент опишет конечный результат — не срок, а картину</div>
+
+  <div class="spoken">Let me ask you something important. Forget about timelines for a moment — what does knowing Russian actually mean for you? If you truly spoke it, what would change in your life?</div>
+  <div class="dir">Дай студенту время. Слушай конкретику — не "хочу говорить", а что именно изменится.</div>
+  <div class="intake-block">
+    <div class="intake-label">What changes when they speak Russian?</div>
+    <div class="iog">
+      <label class="ioc"><input type="checkbox" name="benefit" value="Higher income / salary"><div class="iol"><div class="ico"></div>Higher income</div></label>
+      <label class="ioc"><input type="checkbox" name="benefit" value="Career promotion or new role"><div class="iol"><div class="ico"></div>Career promotion</div></label>
+      <label class="ioc"><input type="checkbox" name="benefit" value="New business opportunities"><div class="iol"><div class="ico"></div>New business</div></label>
+      <label class="ioc"><input type="checkbox" name="benefit" value="Deeper family / relationship bonds"><div class="iol"><div class="ico"></div>Deeper family bonds</div></label>
+      <label class="ioc"><input type="checkbox" name="benefit" value="Confidence and self-development"><div class="iol"><div class="ico"></div>Confidence / growth</div></label>
+      <label class="ioc"><input type="checkbox" name="benefit" value="Freedom to live / work abroad"><div class="iol"><div class="ico"></div>Freedom abroad</div></label>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <div class="spoken">And what level do you want to reach — what does success actually look like for you?</div>
+  <div class="intake-block">
+    <div class="intake-label">Target Level</div>
+    <div class="iog">
+      <label class="ioc"><input type="radio" name="target_level" value="Basic survival / travel"><div class="iol"><div class="iro"></div>Basic survival / travel</div></label>
+      <label class="ioc"><input type="radio" name="target_level" value="Everyday conversation"><div class="iol"><div class="iro"></div>Everyday conversation</div></label>
+      <label class="ioc"><input type="radio" name="target_level" value="Professional / business fluency"><div class="iol"><div class="iro"></div>Professional / business</div></label>
+      <label class="ioc"><input type="radio" name="target_level" value="Full fluency — think in Russian"><div class="iol"><div class="iro"></div>Full fluency — think in Russian</div></label>
+      <label class="ioc"><input type="radio" name="target_level" value="Near-native / heritage reconnection"><div class="iol"><div class="iro"></div>Near-native / heritage</div></label>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <div class="spoken">Here's something I ask everyone — how do you picture the process of learning Russian? What does it look like in your mind?</div>
+  <div class="intake-block">
+    <div class="intake-label">How they imagine the learning process</div>
+    <div class="iog">
+      <label class="ioc"><input type="checkbox" name="learn_process" value="Regular scheduled lessons with a tutor"><div class="iol"><div class="ico"></div>Regular lessons with tutor</div></label>
+      <label class="ioc"><input type="checkbox" name="learn_process" value="Independent work with materials"><div class="iol"><div class="ico"></div>Independent work</div></label>
+      <label class="ioc"><input type="checkbox" name="learn_process" value="Conversation practice"><div class="iol"><div class="ico"></div>Conversation practice</div></label>
+      <label class="ioc"><input type="checkbox" name="learn_process" value="Grammar rules and structure"><div class="iol"><div class="ico"></div>Grammar and rules</div></label>
+      <label class="ioc"><input type="checkbox" name="learn_process" value="Immersion — think only in Russian"><div class="iol"><div class="ico"></div>Immersion / think in Russian</div></label>
+      <label class="ioc"><input type="checkbox" name="learn_process" value="Not sure — open to any approach"><div class="iol"><div class="ico"></div>Not sure — open to anything</div></label>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <div class="spoken">And what specifically do you expect from me as your instructor?</div>
+  <div class="intake-block">
+    <div class="intake-label">Expectations from the instructor</div>
+    <div class="iog">
+      <label class="ioc"><input type="checkbox" name="expect_instructor" value="Clear explanations and structure"><div class="iol"><div class="ico"></div>Clear explanations</div></label>
+      <label class="ioc"><input type="checkbox" name="expect_instructor" value="Feedback and error correction"><div class="iol"><div class="ico"></div>Feedback & correction</div></label>
+      <label class="ioc"><input type="checkbox" name="expect_instructor" value="Motivation and emotional support"><div class="iol"><div class="ico"></div>Motivation & support</div></label>
+      <label class="ioc"><input type="checkbox" name="expect_instructor" value="Ready-made materials to study independently"><div class="iol"><div class="ico"></div>Ready-made materials</div></label>
+      <label class="ioc"><input type="checkbox" name="expect_instructor" value="Flexible individual approach"><div class="iol"><div class="ico"></div>Flexible individual approach</div></label>
+      <label class="ioc"><input type="checkbox" name="expect_instructor" value="Fast progress with no unnecessary theory"><div class="iol"><div class="ico"></div>Fast progress, no theory</div></label>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <div class="spoken">In your opinion — what should a lesson actually consist of? What would your ideal lesson look like?</div>
+  <div class="dir">Слушай внимательно. Это показывает его внутреннюю модель — и насколько она совпадает с твоим методом.</div>
+  <div class="intake-block">
+    <div class="intake-label">Ideal lesson content — their picture</div>
+    <div class="iog">
+      <label class="ioc"><input type="checkbox" name="lesson_content" value="Grammar explanation and rules"><div class="iol"><div class="ico"></div>Grammar & rules</div></label>
+      <label class="ioc"><input type="checkbox" name="lesson_content" value="Translation and text analysis"><div class="iol"><div class="ico"></div>Translation & analysis</div></label>
+      <label class="ioc"><input type="checkbox" name="lesson_content" value="Conversation with the instructor"><div class="iol"><div class="ico"></div>Conversation with tutor</div></label>
+      <label class="ioc"><input type="checkbox" name="lesson_content" value="Listening and repetition"><div class="iol"><div class="ico"></div>Listening & repetition</div></label>
+      <label class="ioc"><input type="checkbox" name="lesson_content" value="Vocabulary — memorizing words"><div class="iol"><div class="ico"></div>Vocabulary / word lists</div></label>
+      <label class="ioc"><input type="checkbox" name="lesson_content" value="Reading and writing exercises"><div class="iol"><div class="ico"></div>Reading & writing</div></label>
+      <label class="ioc"><input type="checkbox" name="lesson_content" value="Full immersion — think and speak only in Russian"><div class="iol"><div class="ico"></div>Full immersion in Russian</div></label>
+      <label class="ioc"><input type="checkbox" name="lesson_content" value="Not sure — whatever works"><div class="iol"><div class="ico"></div>Not sure — whatever works</div></label>
+    </div>
+    <div class="tip" style="margin-top:10px;">💡 Grammar / translation / word lists → Шаг 5 (методика) особенно важен — нужно перестроить его картину.<br>Разговор / погружение / повторение → он уже думает в правильном направлении.</div>
+  </div>
+
+  <hr class="div">
+
+  <div class="spoken">And just so I understand where we're starting — how would you honestly describe your current level right now?</div>
+  <div class="intake-block">
+    <div class="intake-label">Current Level</div>
+    <div class="iog">
+      <label class="ioc"><input type="radio" name="current_level" value="Zero — no Russian at all"><div class="iol"><div class="iro"></div>Zero — no Russian at all</div></label>
+      <label class="ioc"><input type="radio" name="current_level" value="Beginner — a few words"><div class="iol"><div class="iro"></div>Beginner — a few words</div></label>
+      <label class="ioc"><input type="radio" name="current_level" value="Elementary — basic phrases"><div class="iol"><div class="iro"></div>Elementary — basic phrases</div></label>
+      <label class="ioc"><input type="radio" name="current_level" value="Pre-Intermediate"><div class="iol"><div class="iro"></div>Pre-Intermediate</div></label>
+      <label class="ioc"><input type="radio" name="current_level" value="Intermediate"><div class="iol"><div class="iro"></div>Intermediate</div></label>
+      <label class="ioc"><input type="radio" name="current_level" value="Upper-Intermediate+"><div class="iol"><div class="iro"></div>Upper-Intermediate+</div></label>
+    </div>
+  </div>
+  <div class="tip">💡 Если студент хочет «для себя, без спешки» — ты должен решить, подходит ли он. Ты работаешь только с теми, кто реально хочет владеть языком.</div>
+</div>
+
+<!-- 4. COMMITMENT -->
+<div class="scene" id="scene-commitment">
+  <div class="scene-badge"><div class="dot"></div>Шаг 4 · ~2–3 мин</div>
+  <div class="scene-title">Время и готовность</div>
+  <div class="scene-sub">Время — самый честный показатель серьёзности намерений</div>
+
+  <div class="spoken">Real talk — and there's no wrong answer here — how much time can you realistically dedicate to Russian each day?</div>
+  <div class="intake-block">
+    <div class="intake-label">Daily Practice Time</div>
+    <div class="iog">
+      <label class="ioc"><input type="radio" name="daily_time" value="Less than 30 min"><div class="iol"><div class="iro"></div>Less than 30 min</div></label>
+      <label class="ioc"><input type="radio" name="daily_time" value="30–45 min"><div class="iol"><div class="iro"></div>30–45 min</div></label>
+      <label class="ioc"><input type="radio" name="daily_time" value="45 min – 1 hour"><div class="iol"><div class="iro"></div>45 min – 1 hour</div></label>
+      <label class="ioc"><input type="radio" name="daily_time" value="1–2 hours"><div class="iol"><div class="iro"></div>1–2 hours</div></label>
+      <label class="ioc"><input type="radio" name="daily_time" value="2+ hours"><div class="iol"><div class="iro"></div>2+ hours</div></label>
+    </div>
+  </div>
+  <div class="spoken">In my experience, to pick up the language quickly and successfully, you should be putting in anywhere from 45 minutes to 2 hours of practice every day. Is that workable?</div>
+  <div class="tip">💡 Менее 30 минут в день — серьёзный сигнал. Будь честен с собой и со студентом: метод требует регулярной самостоятельной работы.</div>
+</div>
+
+<!-- 5. FIT CHECK (бывший шаг 6) -->
+<div class="scene" id="scene-fitCheck">
+  <div class="scene-badge"><div class="dot"></div>Шаг 6 · Развилка</div>
+  <div class="scene-title">Оцени студента — выбери путь</div>
+  <div class="scene-sub">Решение принимаешь ты, на основе всего что услышал</div>
+
+  <div class="spoken">And on the flip side — if Russian stays out of reach, if nothing changes — what does that mean for you? What stays stuck?</div>
+  <div class="intake-block">
+    <div class="intake-label">Cost of Not Learning</div>
+    <div class="iog">
+      <label class="ioc"><input type="checkbox" name="cost" value="Missed business / financial opportunity"><div class="iol"><div class="ico"></div>Missed opportunity</div></label>
+      <label class="ioc"><input type="checkbox" name="cost" value="Career stays limited"><div class="iol"><div class="ico"></div>Career stays limited</div></label>
+      <label class="ioc"><input type="checkbox" name="cost" value="Relationship stays surface-level"><div class="iol"><div class="ico"></div>Relationships stay shallow</div></label>
+      <label class="ioc"><input type="checkbox" name="cost" value="Always dependent on translator"><div class="iol"><div class="ico"></div>Always need a translator</div></label>
+      <label class="ioc"><input type="checkbox" name="cost" value="Dream stays a dream"><div class="iol"><div class="ico"></div>Dream stays a dream</div></label>
+      <label class="ioc"><input type="checkbox" name="cost" value="Regret — another failed attempt"><div class="iol"><div class="ico"></div>Another failed attempt</div></label>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <div class="spoken">You know, most people who've tried to learn a language went through the same route — classes, grammar rules, vocabulary lists. It gets them somewhere, but most hit a wall and never quite get to actually speaking freely and naturally.</div>
+  <div class="spoken">What's interesting is that there are fundamentally different approaches to language acquisition — and they produce very different results. Some methods build genuine fluency. Others just build knowledge about the language — which sounds similar, but feels completely different when you're in a real conversation.</div>
+  <div class="intake-block">
+    <div class="intake-label">Student's reaction — твоё наблюдение</div>
+    <div class="iog" style="grid-template-columns:repeat(3,1fr)">
+      <label class="ioc"><input type="radio" name="program_fit" value="Resonates — already sensed this"><div class="iol"><div class="iro"></div>Кивает — уже чувствовал</div></label>
+      <label class="ioc"><input type="radio" name="program_fit" value="Curious — wants to know more"><div class="iol"><div class="iro"></div>Любопытство — хочет узнать</div></label>
+      <label class="ioc"><input type="radio" name="program_fit" value="Skeptical — needs more context"><div class="iol"><div class="iro"></div>Скептик — нужен контекст</div></label>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <div class="tip">✅ <strong>Подходит:</strong> мотивирован конкретной целью, готов работать ежедневно, самостоятелен, хочет реальной беглости.</div>
+  <div class="tip" style="background:var(--red-bg); border-color:rgba(192,57,43,0.4); color:#E07070;">🚫 <strong>Не подходит:</strong> учёба «когда получится», не готов к заданиям, цель расплывчатая, нет живого интереса.</div>
+  <div class="branch-cards two-col">
+    <button class="branch-card green" onclick="goTo('method')">
+      <span class="bc-icon">✅</span>
+      <div class="bc-title green">Студент подходит</div>
+      <div class="bc-sub">Перейти к объяснению методики → Шаг 7</div>
+    </button>
+    <button class="branch-card red" onclick="goTo('notFit')">
+      <span class="bc-icon">🚫</span>
+      <div class="bc-title red">Студент не подходит</div>
+      <div class="bc-sub">Вежливый, честный выход из разговора</div>
+    </button>
+  </div>
+</div>
+
+<!-- NOT FIT -->
+<div class="scene" id="scene-notFit">
+  <div class="scene-badge" style="background:rgba(192,57,43,0.12);border-color:rgba(192,57,43,0.3);color:#E07070;"><div class="dot" style="background:#E07070"></div>Особая ситуация</div>
+  <div class="scene-title" style="color:#E07070;">🚫 Студент не подходит</div>
+  <div class="scene-sub">Вежливый, честный выход — без давления</div>
+  <div class="sublabel">Шаг 1 — Уточни и дай шанс передумать</div>
+  <div class="spoken">I want to make sure I understand you correctly. It sounds like right now, fitting in daily practice might be a real challenge — and that's completely okay, life gets busy. But I want to be honest: my method requires consistent independent work between our check-ins. Without that, the results just won't come — and I wouldn't be doing you any favors by pretending otherwise.</div>
+  <div class="spoken">Is there any chance that could change in the near future — or is this genuinely not the right moment for you?</div>
+  <div class="dir">Слушай внимательно. Если говорит «готов попробовать» — используй кнопку ниже ↓</div>
+  <div class="branch-cards">
+    <button class="branch-card green" onclick="goTo('method')">
+      <span class="bc-icon">🔄</span>
+      <div class="bc-title green">Студент передумал — готов</div>
+      <div class="bc-sub">Вернуться к методике → Шаг 7</div>
+    </button>
+  </div>
+  <div class="sublabel">Шаг 2 — Честный и тёплый отказ</div>
+  <div class="spoken">I really appreciate your honesty — and I respect it. Here's the thing: I'd rather have this conversation now than three weeks in, when you're frustrated and I'm not delivering what you hoped for.</div>
+  <div class="spoken">My method is built for people who are genuinely ready to commit — not because they have endless free time, but because Russian is a real priority for them right now. And it sounds like, for you, the timing might just not be right. That's not a failure — it's just reality.</div>
+  <div class="sublabel">Шаг 3 — Оставь дверь открытой</div>
+  <div class="spoken">Here's what I'd suggest — let's stay in touch. When the timing is better, when you know you can carve out that daily practice time, reach out. I'd genuinely love to work with you then.</div>
+  <div class="spoken">And in the meantime — if you're looking for something more casual, there are great tutors on Preply who do traditional lesson-by-lesson work. That might be a better fit for where you're at right now.</div>
+  <div class="spoken">I wish you all the best — and I mean that. Russian is a beautiful language, and when you're ready, it'll be worth every minute. 😊</div>
+  <div class="tip">💡 Не дави. Не уговаривай. Студент, который не готов — потеря времени для вас обоих. Твоя репутация строится на результатах.</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- 7. METHOD — UPDATED                               -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="scene" id="scene-method">
+  <div class="scene-badge"><div class="dot"></div>Шаг 7 · ~10–12 мин</div>
+  <div class="scene-title">Объяснение методики</div>
+  <div class="scene-sub">Только для подходящих студентов</div>
+
+  <div class="spoken">And my method is exactly one of those fundamentally different approaches — so let me show you what I mean.</div>
+
+  <div class="sublabel">Почему традиционный подход не работает</div>
+  <div class="spoken">Most people learn a foreign language the same way. They go to class, memorize vocabulary lists, study grammar rules, do written exercises — and after months or even years of that, they still freeze up the moment someone actually speaks to them in real life.</div>
+  <div class="spoken">Here's why. When you memorize a word or a grammar rule, that information goes into short-term — or working — memory. Think of it like RAM on a computer. It holds things temporarily, but it's limited and it constantly needs to be refreshed. That's why words get forgotten. It's not a personal failure — it's how the brain is designed, clearing out what isn't used regularly.</div>
+  <div class="spoken">So here's what happens inside the head of someone who learned the traditional way. They hear a Russian phrase, the brain immediately searches for the English translation, constructs a sentence, checks it against the grammar rules stored in memory — and by the time all of that processing is done, the moment has passed. The conversation has moved on. The person feels slow, unnatural, exhausted.</div>
+  <div class="tip">💡 That's not a learning problem. That's a method problem.</div>
+
+  <div class="sublabel">Аналогия — велосипед</div>
+  <div class="spoken">Let me give you an analogy. Imagine you want to learn to ride a bicycle. You could spend weeks reading books about cycling — physics of balance, mechanics of pedaling, rules of the road. You'd know everything theoretically. Then you get on the bicycle — and you fall. Because knowing about riding a bike and being able to ride a bike are two completely different things. One lives in your head. The other lives somewhere deeper — in a kind of automatic memory that only develops through actual practice. Language works exactly the same way. Grammar rules are the books about cycling. Real language — the kind that comes naturally, without effort — lives somewhere else entirely.</div>
+
+  <div class="sublabel">Как работает мой метод</div>
+  <div class="spoken">My method bypasses the translation mechanism entirely. The core technique is simultaneous repetition with visualization. You hear a phrase in Russian from a native speaker, follow the text with your eyes — and at the same moment, repeat it out loud almost simultaneously with the recording, while forming a mental image of what the phrase actually means. When you're repeating at the same pace as the speaker, your brain simply has no time to translate. It has to find another way to process the meaning — directly. Sound connects to image. Image connects to meaning. No English in between.</div>
+  <div class="spoken">Do this consistently, and something remarkable starts to happen. Your brain begins building a new language center — not in working memory where things get forgotten, but in long-term memory. The same kind of deep, automatic storage where your native language lives. Vocabulary accumulates — not because you memorized it, but because you experienced it in context, connected to real images. Grammar becomes instinctive — not because you studied the rules, but because you've heard correct Russian thousands of times and your brain has absorbed the patterns.</div>
+  <div class="spoken">The result: you start to think in Russian. You respond without translating. You develop what linguists call a "feel for the language" — the same feeling you have for your native tongue.</div>
+
+  <div class="sublabel">Почему это работает для взрослых</div>
+  <div class="spoken">A lot of people believe adults can't learn languages the way children do. That's not quite true. Children acquire language naturally because they have no choice — they're immersed, they can't translate, they just absorb. Adults can do the same thing, but we need a structured method that deliberately bypasses the translation habit we've already built. That's exactly what this method does. Most students reach a confident conversational level in six months to a year — not because they work harder, but because they work in the right direction.</div>
+
+  <hr class="div">
+  <div class="sublabel">Моя история</div>
+  <div class="spoken">I know this works — because I've lived it. When I moved to the United States, I had zero English. None. And yet within six months I reached an advanced level — not by memorizing vocabulary lists or grinding through grammar books, but by using the exact same immersive approach I now teach. That experience is what inspired me to help other adults do the same thing with Russian.</div>
+  <div class="spoken">Does that make sense? Any questions before we actually try it?</div>
+</div>
+
+<!-- 8. EMAIL -->
+<div class="scene" id="scene-email">
+  <div class="scene-badge"><div class="dot"></div>Шаг 8</div>
+  <div class="scene-title">✉️ Email студента</div>
+  <div class="scene-sub">Прямо сейчас, в чате — пока интерес на пике</div>
+  <div class="spoken">Please drop your email address right here in the chat — I'll send you a detailed breakdown of the method with the science behind it, so you can read it at your own pace after our call.</div>
+  <div class="dir">Дождись, пока студент напишет email в чате. Сохрани его.</div>
+  <div class="tip">💡 Если колеблется: "Just your email, nothing else — no spam, I promise. It's the easiest way for us to stay connected outside of Preply."</div>
+  <div class="spoken">Got it, thank you! Now — you can actually try a hands-on session using my method right now. Want to give it a go?</div>
+
+  <div class="intake-block">
+    <div class="intake-label">Student Contact</div>
+    <div class="intake-sub">Name</div>
+    <input type="text" class="intake-text" id="student_name" placeholder="First name" oninput="updatePortrait()">
+    <div class="intake-sub">Email (from chat)</div>
+    <input type="email" class="intake-text" id="student_email" placeholder="student@email.com" oninput="updatePortrait()">
+  </div>
+</div>
+
+<!-- 9. MINI PRACTICE -->
+<div class="scene" id="scene-miniPractice">
+  <div class="scene-badge"><div class="dot"></div>Шаг 8 · ~5–7 мин</div>
+  <div class="scene-title">⭐ Мини-практика</div>
+  <div class="scene-sub">Живой вкус метода прямо сейчас — через Whiteboard</div>
+
+  <div class="spoken">Now — let me actually show you what this looks like in practice. I'm going to put a short demo lesson on our Whiteboard right now.</div>
+  <div class="dir">Помести ссылку на YouTube-видео в Whiteboard.</div>
+
+  <div class="spoken">Can you see the Whiteboard on your screen? You should see a video there now.</div>
+  <div class="dir">Подожди подтверждения. Если не видит — помоги открыть Whiteboard.</div>
+
+  <div class="spoken">Great. Before we start — do you have headphones with you? If yes, go ahead and put them in. It makes a real difference for this.</div>
+  <div class="dir">Подожди. Если нет наушников — нормально, продолжай.</div>
+
+  <div class="spoken">Now, can you press play yourself? Let's see if you can control the video from your side.</div>
+  <div class="dir">
+    Если студент может управлять воспроизведением сам — отлично, пусть запускает.<br>
+    Если нет — запусти видео со своей стороны.
+  </div>
+
+  <hr class="div">
+
+  <div class="spoken">Here's what I'd like you to do while you watch. First — read the English text of the lesson to yourself, silently, and picture everything as vivid images in your mind. Really see it.</div>
+  <div class="spoken">Then — when the Russian audio plays, repeat out loud almost at the same time as the recording, while following the Russian text with your eyes. Don't translate — just picture the meaning directly. That's the whole technique.</div>
+  <div class="dir">Дай студенту поработать с видео. Не торопи. Наблюдай.</div>
+
+  <hr class="div">
+
+  <div class="spoken">So — how was that? What did you notice?</div>
+  <div class="dir">Реакция студента говорит всё. Запомни её — используй дальше в разговоре.</div>
+  <div class="intake-block">
+    <div class="intake-label">Student's reaction after demo</div>
+    <div class="iog">
+      <label class="ioc"><input type="checkbox" name="demo_reaction" value="Excited — felt something click"><div class="iol"><div class="ico"></div>Excited — что-то щёлкнуло</div></label>
+      <label class="ioc"><input type="checkbox" name="demo_reaction" value="Surprised — different from expected"><div class="iol"><div class="ico"></div>Удивлён — не ожидал</div></label>
+      <label class="ioc"><input type="checkbox" name="demo_reaction" value="Positive but cautious"><div class="iol"><div class="ico"></div>Позитивно, но осторожно</div></label>
+      <label class="ioc"><input type="checkbox" name="demo_reaction" value="Neutral / not sure yet"><div class="iol"><div class="ico"></div>Нейтрально / не уверен</div></label>
+      <label class="ioc"><input type="checkbox" name="demo_reaction" value="Technical issues"><div class="iol"><div class="ico"></div>Технические проблемы</div></label>
+    </div>
+  </div>
+</div>
+
+<!-- 10. PREPLY CHOICE -->
+<div class="scene" id="scene-preplyChoice">
+  <div class="scene-badge"><div class="dot"></div>Шаг 9 · ~4 мин · Развилка</div>
+  <div class="scene-title">Как вы работаете с Preply?</div>
+  <div class="scene-sub">Мягко исследуй — студент сам откроет дверь</div>
+
+  <div class="spoken">By the way — how did you find me on Preply? Was it a search, a recommendation, or just browsing?</div>
+  <div class="dir">Слушай. Это даёт контекст — насколько он привязан к платформе.</div>
+  <div class="intake-block">
+    <div class="intake-label">How they found Preply</div>
+    <div class="iog">
+      <label class="ioc"><input type="checkbox" name="preply_how" value="Search on Preply"><div class="iol"><div class="ico"></div>Поиск на Preply</div></label>
+      <label class="ioc"><input type="checkbox" name="preply_how" value="Recommendation from someone"><div class="iol"><div class="ico"></div>Рекомендация</div></label>
+      <label class="ioc"><input type="checkbox" name="preply_how" value="Google / online search"><div class="iol"><div class="ico"></div>Google / интернет</div></label>
+      <label class="ioc"><input type="checkbox" name="preply_how" value="Already uses Preply for other subjects"><div class="iol"><div class="ico"></div>Уже пользуется Preply</div></label>
+      <label class="ioc"><input type="checkbox" name="preply_how" value="Not sure / just convenient"><div class="iol"><div class="ico"></div>Просто удобно</div></label>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <div class="spoken">Have you used Preply before — for Russian or anything else? What's been your experience with the platform?</div>
+  <div class="dir">Слушай: что нравится, что нет. Не навязывай своё мнение — пусть говорит.</div>
+
+  <hr class="div">
+
+  <div class="spoken">Let me ask you directly — is staying on Preply a must for you, or are you open to exploring other options if they get you to your goal faster?</div>
+  <div class="dir">Здесь студент сам откроет дверь. Возможные ответы:<br><br>
+  🔒 "Важна защита платежа / привычно" → Путь B<br>
+  🤔 "Честно, не знаю — просто нашёл тебя здесь" → объясни разницу, предложи выбор<br>
+  ✅ "Мне всё равно где, главное результат" → Путь A</div>
+
+  <div class="spoken">I appreciate your honesty. Here's what I'd like to offer — two options, and you choose what works best for you.</div>
+  <div class="branch-cards" style="grid-template-columns:1fr 1fr 1fr;">
+    <button class="branch-card blue-a" onclick="goTo('pathA')">
+      <span class="bc-icon">✅</span>
+      <div class="bc-title blue">Вариант A — Напрямую</div>
+      <div class="bc-sub">Полный доступ к методу · Гибкий темп · Доступнее<br><br>$5 пробный урок → $120 / 10 уроков ($12 каждый)</div>
+    </button>
+    <button class="branch-card blue-b" onclick="goTo('pathB')">
+      <span class="bc-icon">🔄</span>
+      <div class="bc-title blue">Вариант B — Остаёмся на Preply</div>
+      <div class="bc-sub">Занятия здесь на Preply · Полный метод · $25 за занятие</div>
+    </button>
+    <button class="branch-card" style="background:rgba(201,150,58,0.08);border-color:rgba(201,150,58,0.3);" onclick="goTo('pathC')">
+      <span class="bc-icon">🤔</span>
+      <div class="bc-title" style="color:var(--gold2);">Не знает — объясни разницу</div>
+      <div class="bc-sub">"Честно, просто нашёл тебя здесь" → покажи картину, помоги выбрать</div>
+    </button>
+  </div>
+  <div class="spoken">Either way, you're getting the real method. It's just a question of which setup fits your life better.</div>
+</div>
+
+<!-- PATH A -->
+<div class="scene" id="scene-pathA">
+  <div class="scene-badge" style="background:rgba(39,174,96,0.12);border-color:rgba(39,174,96,0.3);color:#5DD88A;"><div class="dot" style="background:#5DD88A"></div>Путь A</div>
+  <div class="scene-title" style="color:#5DD88A;">✅ Путь A — Работаем напрямую</div>
+  <div class="scene-sub">Студент открыт к работе вне Preply</div>
+  <div class="spoken">That's great — I think you're going to love how this works.</div>
+  <div class="spoken">So here's what happens next. We'll do a short $5 trial lesson first — just so you can experience the method firsthand before committing to anything more. No risk, no pressure.</div>
+  <div class="spoken">Once you're happy — and I'm confident you will be — I offer a package of 10 lessons for $120. That's just $12 per lesson, completely at your own pace, no fixed schedule.</div>
+  <div class="spoken">Here's how it flows: as soon as I receive your payment, I send you your first lesson and assignments. You go through them in your own time, record yourself completing the exercise, and send it back to me. I review everything, give you detailed personal feedback, and send you the next lesson. Simple, effective, and built entirely around you. And of course we can meet on Zoom whenever you need.</div>
+  <div class="spoken">Right after our call I'll send you the payment link. Please write down my email — and if it doesn't arrive in a few minutes, check your spam: mentor@MentorInRussian.com</div>
+  <div class="sublabel">📧 Email студента</div>
+  <div class="spoken">Could you share your email with me right now so I can send you the link?</div>
+  <div style="background:#0A1E10;border:1px solid rgba(39,174,96,0.3);border-radius:7px;padding:14px 16px;margin:10px 0;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5DD890;margin-bottom:10px;">📤 Мои контакты для студента</div>
+    <div style="display:flex;align-items:center;gap:10px;margin:6px 0;"><div style="font-size:12px;color:#7A90B8;width:160px;flex-shrink:0;">Оплата / ссылка на урок:</div><div style="font-size:13px;color:#8DEDB0;font-weight:600;">mentor@MentorInRussian.com</div></div>
+    <div style="display:flex;align-items:center;gap:10px;margin:6px 0;"><div style="font-size:12px;color:#7A90B8;width:160px;flex-shrink:0;">Быстрая связь:</div><div style="font-size:13px;color:#8DEDB0;font-weight:600;">alex.mentor.usa@gmail.com</div></div>
+  </div>
+  <div style="background:#162040;border-radius:7px;padding:10px 12px;margin:8px 0;">
+    <div style="font-size:11px;color:#7A90B8;margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;">Email студента</div>
+    <input style="width:100%;background:#0A1228;border:1px solid rgba(255,255,255,0.08);border-radius:7px;padding:8px 12px;color:#D4E2F4;font-size:13.5px;font-family:'DM Sans',sans-serif;outline:none;" placeholder="student@email.com">
+  </div>
+  <div class="tip">💡 Отправь ссылку на оплату сразу, пока студент на звонке и мотивирован.</div>
+</div>
+
+<!-- PATH B -->
+<div class="scene" id="scene-pathB">
+  <div class="scene-badge" style="background:rgba(74,130,212,0.12);border-color:rgba(74,130,212,0.3);color:#6AABF0;"><div class="dot" style="background:#6AABF0"></div>Путь B</div>
+  <div class="scene-title" style="color:#6AABF0;">🔄 Путь B — Остаёмся на Preply</div>
+  <div class="scene-sub">Студент предпочитает работать на платформе</div>
+  <div class="spoken">Absolutely — I respect that completely, and we can make it work well.</div>
+  <div class="spoken">Here's how our sessions will run. We meet here on Preply — and during each session I guide you through the method, check your progress, answer questions, and take you to the next level.</div>
+  <div class="spoken">Between sessions I'll send you structured lesson materials and practice assignments. You work through them in your own time, and when we meet next I review everything with you personally.</div>
+  <div class="spoken">Shall we go ahead and schedule our first session?</div>
+  <div class="sublabel">📧 Email студента</div>
+  <div class="spoken">Could you share your email with me? I'll use it to send you lesson materials. You can write it right here in the chat.</div>
+  <div style="background:#0A1E10;border:1px solid rgba(39,174,96,0.3);border-radius:7px;padding:14px 16px;margin:10px 0;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5DD890;margin-bottom:10px;">📤 Мои контакты для студента</div>
+    <div style="display:flex;align-items:center;gap:10px;margin:6px 0;"><div style="font-size:12px;color:#7A90B8;width:160px;flex-shrink:0;">Уроки / материалы:</div><div style="font-size:13px;color:#8DEDB0;font-weight:600;">mentor@MentorInRussian.com</div></div>
+    <div style="display:flex;align-items:center;gap:10px;margin:6px 0;"><div style="font-size:12px;color:#7A90B8;width:160px;flex-shrink:0;">Быстрая связь:</div><div style="font-size:13px;color:#8DEDB0;font-weight:600;">alex.mentor.usa@gmail.com</div></div>
+  </div>
+  <div style="background:#162040;border-radius:7px;padding:10px 12px;margin:8px 0;">
+    <div style="font-size:11px;color:#7A90B8;margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;">Email студента</div>
+    <input style="width:100%;background:#0A1228;border:1px solid rgba(255,255,255,0.08);border-radius:7px;padding:8px 12px;color:#D4E2F4;font-size:13.5px;font-family:'DM Sans',sans-serif;outline:none;" placeholder="student@email.com">
+  </div>
+</div>
+
+<!-- PATH C — ОБЪЯСНИ РАЗНИЦУ -->
+<div class="scene" id="scene-pathC">
+  <div class="scene-badge" style="background:rgba(201,150,58,0.1);border-color:rgba(201,150,58,0.3);color:var(--gold2);"><div class="dot" style="background:var(--gold)"></div>Путь C</div>
+  <div class="scene-title" style="color:var(--gold2);">🤔 Объясни разницу — помоги выбрать</div>
+  <div class="scene-sub">Студент открыт — покажи картину честно и без давления</div>
+
+  <div class="spoken">That's totally fair — most people find me through Preply and haven't thought much beyond that. So let me just be transparent with you for a moment, because I think it'll help you make the right choice.</div>
+
+  <hr class="div">
+
+  <div class="sublabel">Как работает Preply</div>
+  <div class="spoken">Preply is a platform built around traditional tutoring — you book an hour, the tutor teaches, you pay per session. It's convenient, and the payment system gives you a layer of protection. That's genuinely valuable, especially when you're trying someone new.</div>
+  <div class="spoken">The platform takes a significant commission from every session though — which means a portion of what you pay doesn't reach the tutor. That's just how the platform works.</div>
+
+  <hr class="div">
+
+  <div class="sublabel">Как работаю я — вне зависимости от платформы</div>
+  <div class="spoken">My method isn't a single weekly session. It's a structured program — lessons, assignments, recordings, personal feedback. You do the practice independently, send me your work, and I review it and guide your next step. The learning happens continuously, not just when we're on a call together.</div>
+  <div class="spoken">Working directly gives us more flexibility — I can deliver the full program the way it's designed, at a pace that fits you, and at a significantly lower cost since there's no platform commission in between.</div>
+  <div class="spoken">Working through Preply is also an option — our sessions happen here on the platform, and I'll send you materials and assignments to work through between them.</div>
+
+  <hr class="div">
+
+  <div class="sublabel">Твой выбор — без давления</div>
+  <div class="spoken">Both options get you the real method and real results. The question is just what matters more to you right now — the platform's familiar structure, or maximum flexibility and value.</div>
+  <div class="tip">💡 Не торопи. Дай студенту секунду подумать. Потом предложи выбор.</div>
+
+  <div class="branch-cards two-col">
+    <button class="branch-card blue-a" onclick="goTo('pathA')">
+      <span class="bc-icon">✅</span>
+      <div class="bc-title blue">Выбирает A — Напрямую</div>
+      <div class="bc-sub">Гибко · Доступнее · Полный метод<br><br>$5 пробный → $120 / 10 уроков</div>
+    </button>
+    <button class="branch-card blue-b" onclick="goTo('pathB')">
+      <span class="bc-icon">🔄</span>
+      <div class="bc-title blue">Выбирает B — Preply</div>
+      <div class="bc-sub">Привычная платформа · Полный метод · $25 за занятие</div>
+    </button>
+  </div>
+</div>
+
+<!-- 11. OBJECTIONS -->
+<div class="scene" id="scene-objections">
+  <div class="scene-badge"><div class="dot"></div>Шаг 11</div>
+  <div class="scene-title">🛡 Работа с возражениями</div>
+  <div class="scene-sub">Открой нужное возражение — ответь спокойно и уверенно</div>
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">❓ &nbsp;"Мне нужно подумать" <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">Of course — and I completely respect that. This is a different approach and it's worth thinking through.</div>
+      <div class="spoken">Can I ask — what specifically is making you pause? Is it the method itself, working outside of Preply, the investment, or something else? Because whatever it is, I'd rather talk it through now than have you walk away with an unanswered question.</div>
+      <div class="dir">Слушай внимательно. Затем:</div>
+      <div class="spoken">Here's what I'd suggest — start with the $5 trial. You're not committing to anything. You're just giving yourself the chance to feel it firsthand. Five dollars to find out if this could change everything about how you learn Russian — that's a pretty low-risk experiment, don't you think?</div>
+    </div>
+  </div>
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">💸 &nbsp;"Почему дешевле вне Preply?" <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">Great question. Preply takes a significant commission from every lesson. So a big chunk of what you pay never actually reaches me. When we work directly, that money stays where it belongs — in your learning. You pay less, I earn the same, and we both win.</div>
+    </div>
+  </div>
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">🔒 &nbsp;"Мне безопаснее платить через Preply" <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">I totally understand — and that's a completely reasonable concern. Preply does offer a layer of protection, and if that peace of mind matters to you, Option B is absolutely there for you.</div>
+      <div class="spoken">That said, if it helps — I can send you a proper invoice, we can use PayPal which has its own buyer protection, or Zelle if you prefer. There's a paper trail either way. But if Preply feels safer, let's go that route. Your comfort matters more than anything else.</div>
+    </div>
+  </div>
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">🤔 &nbsp;"Как я знаю, что метод работает?" <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">That's the most important question you could ask — and the honest answer is: you don't know yet. And you shouldn't have to take my word for it.</div>
+      <div class="spoken">That's exactly why the $5 trial exists. Try it. Do the exercise. Notice the difference when you repeat Russian and actually picture what you're saying instead of translating it.</div>
+      <div class="spoken">I've used this method myself — I moved to the United States with zero English and reached an advanced level in six months. Not because I'm special, but because the method works.</div>
+      <div class="tip">💡 Five dollars. One lesson. You'll know.</div>
+    </div>
+  </div>
+  <div class="acc">
+    <button class="acc-hdr" onclick="toggleAcc(this)">⏰ &nbsp;"У меня мало времени" <span class="acc-arrow">▶</span></button>
+    <div class="acc-body">
+      <div class="spoken">That's actually one of the best things about this method — there's no fixed schedule. You work at your own pace. Even 45 minutes a day is enough to make real progress. It's designed for busy adults. The lesson is there whenever you are — morning, evening, weekend.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 12. CLOSE -->
+<div class="scene" id="scene-close">
+  <div class="scene-badge"><div class="dot"></div>Шаг 12</div>
+  <div class="scene-title">🏁 Закрытие</div>
+  <div class="scene-sub">Уверенно, тепло, с чётким следующим шагом</div>
+  <div class="spoken">I really enjoyed this conversation — I think we'd work great together. Any questions for me?</div>
+  <div class="dir">Ответь на вопросы.</div>
+  <div class="spoken">Perfect. Let's lock in our first lesson — I'll send you the payment details right now.</div>
+  <div class="sublabel">📧 Обмен email</div>
+  <div class="spoken">Could you share your email? I'll send the link from <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="610c040f150e13212c040f150e13280f3314121208000f4f020e0c">[email&#160;protected]</a> — please save it and check spam if it doesn't arrive within a few minutes. For any quick questions: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="accdc0c9d482c1c9c2d8c3de82d9dfcdeccbc1cdc5c082cfc3c1">[email&#160;protected]</a></div>
+  <div style="background:#0A1E10;border:1px solid rgba(39,174,96,0.3);border-radius:7px;padding:14px 16px;margin:10px 0;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5DD890;margin-bottom:10px;">📤 Мои контакты для студента</div>
+    <div style="display:flex;align-items:center;gap:10px;margin:6px 0;"><div style="font-size:12px;color:#7A90B8;width:160px;flex-shrink:0;">Оплата / ссылка:</div><div style="font-size:13px;color:#8DEDB0;font-weight:600;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8ce1e9e2f8e3feccc1e9e2f8e3fec5e2def9ffffe5ede2a2efe3e1">[email&#160;protected]</a></div></div>
+    <div style="display:flex;align-items:center;gap:10px;margin:6px 0;"><div style="font-size:12px;color:#7A90B8;width:160px;flex-shrink:0;">Быстрая связь:</div><div style="font-size:13px;color:#8DEDB0;font-weight:600;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ddbcb1b8a5f3b0b8b3a9b2aff3a8aebc9dbab0bcb4b1f3beb2b0">[email&#160;protected]</a></div></div>
+  </div>
+  <div style="background:#162040;border-radius:7px;padding:10px 12px;margin:8px 0;">
+    <div style="font-size:11px;color:#7A90B8;margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;">Email студента</div>
+    <input style="width:100%;background:#0A1228;border:1px solid rgba(255,255,255,0.08);border-radius:7px;padding:8px 12px;color:#D4E2F4;font-size:13.5px;font-family:'DM Sans',sans-serif;outline:none;" placeholder="student@email.com">
+  </div>
+  <div class="spoken">До свидания — that's "goodbye" in Russian — your first word of the day! 😄</div>
+  <hr class="div">
+  <div class="sublabel">🔚 Если студент всё ещё нерешителен</div>
+  <div class="spoken">Look — I'm not here to push you into anything. But I genuinely believe this works, because I've seen it work — for myself and for many adult learners just like you. When you're ready, I'm here. And if you have any more questions before deciding, just reach out — I'm happy to talk it through. 😊</div>
+
+  <div class="intake-block">
+    <div class="intake-label">Session Notes</div>
+    <textarea class="intake-text" id="overall_notes" placeholder="Energy, hesitations, key moments, next steps…" oninput="updatePortrait()"></textarea>
+  </div>
+</div>
+
+<!-- CHILDREN -->
+<div class="scene" id="scene-children">
+  <div class="scene-badge" style="background:rgba(192,57,43,0.12);border-color:rgba(192,57,43,0.3);color:#E07070;"><div class="dot" style="background:#E07070"></div>Особая ситуация</div>
+  <div class="scene-title" style="color:#E07070;">🧒 Запрос на занятия с детьми</div>
+  <div class="scene-sub">Тепло, без осуждения, с уважением к выбору родителя</div>
+  <div class="spoken">Thank you so much for choosing me — I really appreciate your interest!</div>
+  <div class="spoken">But I do need to be upfront with you — my method is specifically designed for adult learners. The way it works is built around how the adult brain processes and acquires language, so unfortunately it's not the right fit for children.</div>
+  <div class="spoken">I wouldn't want to take you on as a student and not deliver the results you're hoping for — that wouldn't be fair to your child or to you.</div>
+  <div class="spoken">I'd recommend looking for a tutor who specializes in teaching kids — there are some wonderful ones out there who use age-appropriate, play-based approaches that work really well for younger learners.</div>
+  <div class="spoken">I wish your child all the best on their Russian journey — it's a beautiful language and a wonderful gift to give them!</div>
+</div>
+
+</div><!-- /scene-wrap -->
+
+<div id="bottombar">
+  <button class="btn btn-back" onclick="goBack()">← Назад</button>
+  <div class="spacer"></div>
+  <div id="dyn-btns"></div>
+</div>
+
+</div><!-- /main -->
+
+<!-- ══════════ LIVE PORTRAIT PANEL ══════════ -->
+<div id="portrait-panel">
+  <div id="portrait-inner">
+    <div class="pp-header"><div class="live-dot"></div>Live Portrait</div>
+
+    <div class="pp-row dim" id="r-name"><div class="pp-key">Student</div><div class="pp-val empty" id="v-name">waiting…</div></div>
+    <div class="pp-row dim" id="r-email"><div class="pp-key">Email</div><div class="pp-val empty" id="v-email">—</div></div>
+    <div class="pp-hr"></div>
+    <div class="pp-row dim" id="r-cur"><div class="pp-key">Current Level</div><div class="pp-val empty" id="v-cur">—</div></div>
+    <div class="pp-row dim" id="r-tar"><div class="pp-key">Target Level</div><div class="pp-val empty" id="v-tar">—</div></div>
+    <div class="pp-row dim" id="r-process"><div class="pp-key">Learning Process Expectation</div><div class="pp-val empty" id="v-process">—</div></div>
+    <div class="pp-row dim" id="r-expect"><div class="pp-key">Expects from Instructor</div><div class="pp-val empty" id="v-expect">—</div></div>
+    <div class="pp-row dim" id="r-lesson"><div class="pp-key">Ideal Lesson Content</div><div class="pp-val empty" id="v-lesson">—</div></div>
+    <div class="pp-hr"></div>
+    <div class="pp-row dim" id="r-exp"><div class="pp-key">Experience</div><div class="pp-val empty" id="v-exp">—</div></div>
+    <div class="pp-row dim" id="r-expd"><div class="pp-key">Duration</div><div class="pp-val empty" id="v-expd">—</div></div>
+    <div class="pp-hr"></div>
+    <div class="pp-row dim" id="r-mot"><div class="pp-key">Motivation</div><div class="pp-val empty" id="v-mot">—</div></div>
+    <div class="pp-row dim" id="r-quote"><div class="pp-key">Key Quote</div><div class="pp-val empty" id="v-quote">—</div></div>
+    <div class="pp-hr"></div>
+    <div class="pp-row dim" id="r-ben"><div class="pp-key">Real Benefit</div><div class="pp-val empty" id="v-ben">—</div></div>
+    <div class="pp-row dim" id="r-cost"><div class="pp-key">Cost of Not Learning</div><div class="pp-val empty" id="v-cost">—</div></div>
+    <div class="pp-hr"></div>
+    <div class="pp-row dim" id="r-fit"><div class="pp-key">Program Understanding</div><div class="pp-val empty" id="v-fit">—</div></div>
+    <div class="pp-row" id="r-comm" style="opacity:0.2">
+      <div class="pp-key">Daily Practice Time</div>
+      <div class="pp-val empty" id="v-comm-text">—</div>
+    </div>
+    <div class="pp-hr"></div>
+    <div class="pp-row dim" id="r-notes"><div class="pp-key">Impressions</div><div class="pp-val empty" id="v-notes">—</div></div>
+  </div>
+  <button id="pp-copy" onclick="copyPortrait()">⎘ Copy Portrait</button>
+  <div id="pp-copied">✓ Copied to clipboard!</div>
+</div>
+
+</div><!-- /body -->
+
+<script>
+const SCENES = [
+  { id:'opening',        title:'Открытие',             step:'Шаг 1 из 11',  pct:9   },
+  { id:'story',          title:'История студента',      step:'Шаг 2 из 11',  pct:18  },
+  { id:'goals',          title:'Цель и результат',      step:'Шаг 3 из 11',  pct:27  },
+  { id:'commitment',     title:'Время и готовность',    step:'Шаг 4 из 11',  pct:36  },
+  { id:'fitCheck',       title:'Оценка студента',       step:'Шаг 5 из 11',  pct:45  },
+  { id:'method',         title:'Методика',              step:'Шаг 6 из 11',  pct:54  },
+  { id:'email',          title:'Email студента',        step:'Шаг 7 из 11',  pct:63  },
+  { id:'miniPractice',   title:'Мини-практика',         step:'Шаг 8 из 11',  pct:72  },
+  { id:'preplyChoice',   title:'Preply или напрямую',   step:'Шаг 9 из 11',  pct:81  },
+  { id:'objections',     title:'Возражения',            step:'Шаг 10 из 11', pct:90  },
+  { id:'close',          title:'Закрытие',              step:'Шаг 11 из 11', pct:100 },
+  { id:'notFit',         title:'Студент не подходит',   step:'Особая',       pct:45  },
+  { id:'pathA',          title:'Путь A — Напрямую',     step:'Путь A',       pct:86  },
+  { id:'pathB',          title:'Путь B — Preply',       step:'Путь B',       pct:86  },
+  { id:'pathC',          title:'Путь C — Объясни разницу', step:'Путь C',    pct:86  },
+  { id:'children',       title:'Запрос на детей',       step:'Особая',       pct:0   },
+];
+
+const NEXT = {
+  opening:'story', story:'goals', goals:'commitment',
+  commitment:'fitCheck',
+  method:'email', email:'miniPractice', miniPractice:'preplyChoice',
+  pathA:'objections', pathB:'objections', pathC:'objections',
+  objections:'close',
+};
+
+const EXTRA_BTNS = {
+  fitCheck:     '',
+  preplyChoice: '',
+  notFit:  '<button class="btn btn-back" style="color:var(--dim)" onclick="goTo(\'opening\')">↩ Начать заново</button>',
+  children:'<button class="btn btn-back" style="color:var(--dim)" onclick="goTo(\'opening\')">↩ Начать заново</button>',
+  close:   '<button class="btn btn-gold" onclick="goTo(\'opening\')">↩ Новый звонок</button>',
+};
+
+let cur = 'opening';
+let hist = [];
+
+function goTo(id) {
+  if (id === cur) return;
+  document.getElementById('scene-' + cur)?.classList.remove('active');
+  document.getElementById('nav-'   + cur)?.classList.remove('active');
+  hist.push(cur);
+  cur = id;
+  const el = document.getElementById('scene-' + id);
+  if (el) { el.classList.remove('active'); void el.offsetWidth; el.classList.add('active'); }
+  document.getElementById('nav-' + id)?.classList.add('active');
+  const sc = SCENES.find(s => s.id === id);
+  if (sc) {
+    document.getElementById('topbar-title').textContent = sc.title;
+    document.getElementById('topbar-step').textContent  = sc.step;
+    document.getElementById('progress-fill').style.width = sc.pct + '%';
+  }
+  renderBtns(id);
+  document.getElementById('scene-wrap').scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goBack() {
+  if (!hist.length) return;
+  const prev = hist.pop();
+  document.getElementById('scene-' + cur)?.classList.remove('active');
+  document.getElementById('nav-'   + cur)?.classList.remove('active');
+  cur = prev;
+  document.getElementById('scene-' + prev)?.classList.add('active');
+  document.getElementById('nav-'   + prev)?.classList.add('active');
+  const sc = SCENES.find(s => s.id === prev);
+  if (sc) {
+    document.getElementById('topbar-title').textContent = sc.title;
+    document.getElementById('topbar-step').textContent  = sc.step;
+    document.getElementById('progress-fill').style.width = sc.pct + '%';
+  }
+  renderBtns(prev);
+  document.getElementById('scene-wrap').scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderBtns(id) {
+  const d = document.getElementById('dyn-btns');
+  if (EXTRA_BTNS[id] !== undefined) {
+    d.innerHTML = EXTRA_BTNS[id];
+  } else if (NEXT[id]) {
+    d.innerHTML = `<button class="btn btn-next" onclick="goTo('${NEXT[id]}')">Далее →</button>`;
+  } else {
+    d.innerHTML = '';
+  }
+}
+
+function toggleOtherLang(show) {
+  document.getElementById('other-lang-details').style.display = show ? 'block' : 'none';
+  updatePortrait();
+}
+
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  sb.classList.toggle('hidden');
+  sb.classList.toggle('shown');
+}
+
+function toggleAcc(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+
+// ── LIVE PORTRAIT ──
+function gc(n) { return [...document.querySelectorAll('input[name="'+n+'"]:checked')].map(e=>e.value).join(', '); }
+function gv(id) { const e=document.getElementById(id); return e?e.value.trim():''; }
+
+function pset(rid, vid, val, dim) {
+  const r=document.getElementById(rid), v=document.getElementById(vid);
+  if(!r||!v) return;
+  if(val){ v.textContent=val; v.classList.remove('empty'); r.classList.remove('dim'); }
+  else { v.textContent=dim||'—'; v.classList.add('empty'); r.classList.add('dim'); }
+}
+
+function updatePortrait() {
+  pset('r-name',  'v-name',  gv('student_name'),  'waiting…');
+  pset('r-email', 'v-email', gv('student_email'), '—');
+  pset('r-cur',   'v-cur',   gc('current_level'), '—');
+  pset('r-tar',   'v-tar',   gc('target_level'),  '—');
+  pset('r-process','v-process', gc('learn_process'), '—');
+  pset('r-expect', 'v-expect',  gc('expect_instructor'), '—');
+  pset('r-lesson', 'v-lesson',  gc('lesson_content'), '—');
+  pset('r-exp',   'v-exp',   gc('exp'),           '—');
+  pset('r-expd',  'v-expd',  gv('exp_duration'),  '—');
+  // other languages
+  const olYn = gc('other_lang_yn');
+  const olVal = olYn === 'yes'
+    ? [gv('other_lang_names'), gc('other_lang_level'), gc('other_lang_method'), gv('other_lang_duration')].filter(Boolean).join(' · ')
+    : olYn === 'no' ? 'No other languages' : '';
+  pset('r-mot',   'v-mot',   olVal || gc('motivation'), '—');
+  const q=gv('motivation_quote'); pset('r-quote','v-quote',q?'"'+q+'"':'','—');
+  pset('r-ben',   'v-ben',   gc('benefit'),       '—');
+  pset('r-cost',  'v-cost',  gc('cost'),          '—');
+  pset('r-fit',   'v-fit',   gc('program_fit'),   '—');
+  pset('r-notes', 'v-notes', gv('overall_notes'), '—');
+  const time = gc('daily_time');
+  const commRow = document.getElementById('r-comm');
+  const commText = document.getElementById('v-comm-text');
+  if (commRow && commText) {
+    commRow.style.opacity = time ? '1' : '0.2';
+    commText.textContent = time || '—';
+    commText.classList.toggle('empty', !time);
+  }
+}
+
+function buildPortraitText() {
+  const date=new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  return ['STUDENT PORTRAIT — '+date,'─'.repeat(46),
+    'STUDENT: '+(gv('student_name')||'—'),
+    'EMAIL: '+(gv('student_email')||'—'), '',
+    'CURRENT LEVEL: '+(gc('current_level')||'—'),
+    'TARGET LEVEL: '+(gc('target_level')||'—'),
+    'LEARNING PROCESS EXPECTATION: '+(gc('learn_process')||'—'),
+    'EXPECTS FROM INSTRUCTOR: '+(gc('expect_instructor')||'—'),
+    'IDEAL LESSON CONTENT: '+(gc('lesson_content')||'—'), '',
+    'EXPERIENCE: '+(gc('exp')||'—'),
+    'DURATION: '+(gv('exp_duration')||'—'),
+    'OTHER LANGUAGES: '+(gc('other_lang_yn')==='no'?'None':[gv('other_lang_names'),gc('other_lang_level'),gc('other_lang_method'),gv('other_lang_duration')].filter(Boolean).join(' · ')||'—'),
+    'MOTIVATION: '+(gc('motivation')||'—'),
+    'KEY QUOTE: '+(gv('motivation_quote')?'"'+gv('motivation_quote')+'"':'—'), '',
+    'REAL BENEFIT: '+(gc('benefit')||'—'),
+    'COST OF NOT LEARNING: '+(gc('cost')||'—'),
+    'PROGRAM UNDERSTANDING: '+(gc('program_fit')||'—'),
+    'COMMITMENT: '+(gc('daily_time')||'—'), '',
+    'SESSION NOTES: '+(gv('overall_notes')||'—'),
+  ].join('\n');
+}
+
+function copyPortrait() {
+  navigator.clipboard.writeText(buildPortraitText()).then(()=>{
+    const el=document.getElementById('pp-copied');
+    el.style.opacity='1'; setTimeout(()=>el.style.opacity='0',2500);
+  });
+}
+
+document.addEventListener('change', updatePortrait);
+document.addEventListener('input', updatePortrait);
+
+renderBtns('opening');
+</script>
+</body>
+</html>
