@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your First Step Into Real Russian — The Russian Method</title>
+  <meta name="description" content="One lesson. One word. A genuine immersion experience built on the neuroscience of how the brain naturally acquires language. $5 trial." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T1GD43HJLV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T1GD43HJLV');
+  </script>
+  <style>
+    :root {
+      --navy:      #0d1b2a;
+      --blue:      #1a4fa0;
+      --dark-blue: #0D2D6B;
+      --gold:      #C9963A;
+      --gold2:     #e8b95a;
+      --cream:     #faf7f1;
+      --warm:      #f3efe8;
+      --text:      #e8e4dc;
+      --dim:       #9ba8bb;
+      --border:    rgba(255,255,255,.07);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    .sir-topbar { height: 4px; background: linear-gradient(90deg, var(--dark-blue), var(--gold), var(--dark-blue)); }
+
+    /* ── NAV ── */
+    .sir-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 40px; border-bottom: 1px solid var(--border);
+      background: rgba(13,27,42,.95); position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .sir-nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-weight: 600; color: var(--cream);
+      text-decoration: none; letter-spacing: .5px;
+    }
+    .sir-nav-logo span { color: var(--gold); }
+    .sir-nav-cta {
+      font-size: 12px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(201,150,58,.4); padding: 8px 18px;
+      border-radius: 6px; text-decoration: none; transition: background .2s, color .2s;
+    }
+    .sir-nav-cta:hover { background: var(--gold); color: var(--navy); }
+
+    /* ── HERO ── */
+    .sir-hero {
+      background: var(--navy); padding: 80px 32px 72px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .sir-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(26,79,160,.35) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 80% 90%, rgba(201,150,58,.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .sir-hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+
+    .sir-eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      margin-bottom: 28px; animation: sir-up .5s ease both;
+    }
+    .sir-eyebrow-line { width: 28px; height: 1px; background: var(--gold); }
+    .sir-eyebrow-text {
+      font-size: 12px; font-weight: 700; letter-spacing: 3.5px;
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    .sir-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 600; color: var(--cream);
+      line-height: 1.1; margin-bottom: 8px;
+      animation: sir-up .55s ease .1s both;
+    }
+    .sir-hero h1 em { font-style: italic; color: var(--gold2); }
+
+    .sir-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic; color: rgba(250,247,241,.55);
+      margin-bottom: 28px; animation: sir-up .55s ease .2s both;
+    }
+
+    .sir-sub {
+      font-size: 18px; color: rgba(250,247,241,.7);
+      max-width: 540px; margin: 0 auto 44px; line-height: 1.8;
+      animation: sir-up .55s ease .3s both;
+    }
+    .sir-sub strong { color: var(--cream); font-weight: 600; }
+
+    .sir-hero-btn {
+      display: inline-block;
+      background: var(--gold); color: var(--navy);
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 17px;
+      padding: 18px 52px; border-radius: 10px; text-decoration: none;
+      letter-spacing: .3px; transition: background .2s, transform .15s;
+      box-shadow: 0 6px 28px rgba(201,150,58,.35);
+      animation: sir-up .55s ease .4s both;
+    }
+    .sir-hero-btn:hover { background: var(--gold2); transform: translateY(-2px); }
+
+    .sir-trust-line {
+      margin-top: 14px; font-size: 13px; color: rgba(255,255,255,.3);
+      animation: sir-up .55s ease .5s both;
+    }
+
+    .sir-scroll {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      margin-top: 52px; font-size: 11px; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,.18);
+      animation: sir-up .55s ease .6s both;
+    }
+    .sir-scroll-line {
+      width: 1px; height: 36px;
+      background: linear-gradient(to bottom, rgba(201,150,58,.4), transparent);
+      animation: sir-pulse 2s ease infinite;
+    }
+    @keyframes sir-pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+
+    /* ── MYTH VS REALITY ── */
+    .sir-problem { background: var(--navy); padding: 72px 32px 64px; }
+    .sir-problem-inner { max-width: 860px; margin: 0 auto; }
+
+    .sir-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+    }
+    .sir-h2-dark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      font-weight: 600; color: var(--cream);
+      line-height: 1.25; margin-bottom: 36px;
+    }
+    .sir-h2-dark em { font-style: italic; color: var(--gold2); }
+    .sir-h2-light {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      font-weight: 600; color: var(--dark-blue);
+      line-height: 1.25; margin-bottom: 28px;
+    }
+    .sir-h2-light em { font-style: italic; color: var(--gold); }
+
+    .sir-myth-header {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 8px;
+    }
+    .sir-col-label {
+      padding: 10px 20px; font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase; text-align: center;
+      border-radius: 8px 8px 0 0;
+    }
+    .sir-col-label.myth { background: rgba(224,90,90,.12); color: #e05a5a; }
+    .sir-col-label.reality { background: rgba(201,150,58,.12); color: var(--gold); }
+
+    .sir-myths { display: flex; flex-direction: column; gap: 3px; }
+    .sir-myth-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .sir-cell {
+      padding: 20px 24px; font-size: 16px; line-height: 1.65;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .sir-cell.myth {
+      background: rgba(255,255,255,.02); color: rgba(250,247,241,.5);
+      border: 1px solid rgba(255,255,255,.05); border-radius: 8px 0 0 8px;
+    }
+    .sir-cell.reality {
+      background: rgba(13,45,107,.4); color: rgba(250,247,241,.88);
+      border: 1px solid rgba(201,150,58,.12); border-radius: 0 8px 8px 0;
+    }
+    .sir-cell::before { flex-shrink: 0; font-weight: 700; margin-top: 1px; font-size: 15px; }
+    .sir-cell.myth::before { content: '✗'; color: #e05a5a; }
+    .sir-cell.reality::before { content: '✓'; color: var(--gold); }
+
+    /* ── CREAM SECTIONS ── */
+    .sir-cream { background: var(--cream); }
+    .sir-section { max-width: 860px; margin: 0 auto; padding: 72px 28px; }
+
+    .sir-includes {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0 0 48px;
+    }
+    .sir-include {
+      background: #fff; border: 1px solid #e8e3da;
+      border-radius: 14px; padding: 28px 26px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .sir-include:hover {
+      border-color: rgba(201,150,58,.4);
+      box-shadow: 0 4px 20px rgba(201,150,58,.08);
+    }
+    .sir-include-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
+    .sir-include h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 600; color: var(--dark-blue); margin-bottom: 8px;
+    }
+    .sir-include p { font-size: 15px; color: #7a8090; line-height: 1.75; }
+
+    /* science */
+    .sir-science {
+      background: linear-gradient(135deg, #0f2240, var(--dark-blue));
+      border-radius: 16px; padding: 40px 44px;
+      position: relative; overflow: hidden;
+    }
+    .sir-science::before {
+      content: '🧠'; font-size: 120px; position: absolute;
+      right: -10px; top: -10px; opacity: .06; line-height: 1; pointer-events: none;
+    }
+    .sir-science h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 600; color: var(--cream);
+      margin-bottom: 14px; line-height: 1.3;
+    }
+    .sir-science p {
+      font-size: 16px; color: rgba(250,247,241,.7); line-height: 1.8; margin-bottom: 18px;
+    }
+    .sir-science a {
+      font-size: 15px; font-weight: 700; color: var(--gold);
+      text-decoration: none; letter-spacing: .5px;
+      border-bottom: 1px solid rgba(201,150,58,.4); padding-bottom: 2px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .sir-steps-bg { background: var(--warm); padding: 72px 32px; }
+    .sir-steps-inner { max-width: 860px; margin: 0 auto; }
+    .sir-steps-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      font-weight: 600; color: var(--dark-blue); line-height: 1.25; margin-bottom: 32px;
+    }
+    .sir-steps { display: flex; flex-direction: column; }
+    .sir-step {
+      display: flex; gap: 22px; align-items: flex-start;
+      padding: 26px 0; border-bottom: 1px solid rgba(13,45,107,.1);
+    }
+    .sir-step:last-child { border-bottom: none; }
+    .sir-step-num {
+      flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%;
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600; color: var(--gold);
+      background: var(--cream); margin-top: 2px;
+    }
+    .sir-step h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600; color: var(--dark-blue); margin-bottom: 6px;
+    }
+    .sir-step p { font-size: 16px; color: #4a5a6a; line-height: 1.8; }
+
+    /* ── ABOUT ── */
+    .sir-about-wrap { background: var(--cream); padding: 72px 32px; }
+    .sir-about-inner { max-width: 860px; margin: 0 auto; }
+    .sir-about-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      font-weight: 600; color: var(--dark-blue);
+      line-height: 1.25; margin-bottom: 28px;
+    }
+    .sir-about-h2 em { font-style: italic; color: var(--gold); }
+    .sir-about {
+      display: flex; gap: 32px; align-items: flex-start;
+      background: #fff; border: 1px solid #e8e3da;
+      border-radius: 16px; padding: 36px 40px;
+    }
+    .sir-about-avatar {
+      flex-shrink: 0; width: 110px; height: 110px; border-radius: 50%;
+      border: 3px solid rgba(201,150,58,.4);
+      overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,.15);
+    }
+    .sir-about-avatar img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    }
+    .sir-about h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 600; color: var(--dark-blue); margin-bottom: 4px;
+    }
+    .sir-about-title {
+      font-size: 13px; color: var(--dim); letter-spacing: .5px;
+      text-transform: uppercase; font-weight: 600; margin-bottom: 14px;
+    }
+    .sir-about p { font-size: 16px; color: #4a5a6a; line-height: 1.85; }
+    .sir-about p em { color: var(--gold); font-style: italic; }
+
+    /* ── FINAL CTA ── */
+    .sir-final {
+      background: linear-gradient(135deg, var(--dark-blue) 0%, var(--blue) 100%);
+      padding: 88px 32px; text-align: center;
+    }
+    .sir-final-inner { max-width: 600px; margin: 0 auto; }
+    .sir-final-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+    .sir-final h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 600; color: var(--cream);
+      line-height: 1.15; margin-bottom: 18px;
+    }
+    .sir-final h2 em { font-style: italic; color: var(--gold2); }
+    .sir-final p {
+      font-size: 17px; color: rgba(250,247,241,.7);
+      line-height: 1.8; margin-bottom: 40px;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+    }
+    .sir-final-btn {
+      display: inline-block;
+      background: var(--gold); color: var(--navy);
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 17px;
+      padding: 18px 52px; border-radius: 10px; text-decoration: none;
+      letter-spacing: .3px; transition: background .2s, transform .15s;
+      box-shadow: 0 6px 28px rgba(201,150,58,.35);
+    }
+    .sir-final-btn:hover { background: var(--gold2); transform: translateY(-2px); }
+    .sir-final-note {
+      margin-top: 24px; font-size: 15px;
+      color: rgba(255,255,255,.45); font-weight: 600;
+    }
+    .sir-final-note span {
+      display: inline-flex; align-items: center; gap: 6px; margin: 0 10px;
+    }
+    .sir-final-note span::before { content: '✓'; color: var(--gold); font-weight: 700; }
+
+    /* ── FOOTER ── */
+    .sir-footer {
+      text-align: center; padding: 28px 24px;
+      font-size: 12px; color: rgba(255,255,255,.2);
+      border-top: 1px solid rgba(255,255,255,.06);
+      background: var(--navy);
+    }
+    .sir-footer a { color: var(--gold); text-decoration: none; opacity: .7; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes sir-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 620px) {
+      .sir-nav { padding: 14px 18px; }
+      .sir-hero { padding: 60px 20px 52px; }
+      .sir-problem { padding: 52px 20px; }
+      .sir-myth-row { grid-template-columns: 1fr; }
+      .sir-cell.myth { border-radius: 8px 8px 0 0; }
+      .sir-cell.reality { border-radius: 0 0 8px 8px; }
+      .sir-myth-header { grid-template-columns: 1fr; gap: 4px; }
+      .sir-includes { grid-template-columns: 1fr; }
+      .sir-steps-bg { padding: 52px 20px; }
+      .sir-about-wrap { padding: 52px 20px; }
+      .sir-about { flex-direction: column; padding: 28px 24px; }
+      .sir-science { padding: 28px 24px; }
+      .sir-final { padding: 60px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sir-topbar"></div>
+
+<!-- NAV -->
+<nav class="sir-nav">
+  <a href="https://mentorinrussian.com" class="sir-nav-logo">The <span>Russian</span> Method</a>
+  <a href="https://russian-immersion-lab.systeme.io/trial" class="sir-nav-cta">Start for $5 →</a>
+</nav>
+
+<!-- HERO -->
+<section class="sir-hero">
+  <div class="sir-hero-inner">
+    <div class="sir-eyebrow">
+      <div class="sir-eyebrow-line"></div>
+      <div class="sir-eyebrow-text">The Russian Method — Trial Lesson</div>
+      <div class="sir-eyebrow-line"></div>
+    </div>
+    <h1>Your First Step Into<br><em>Real Russian</em></h1>
+    <div class="sir-tagline">One lesson. One word. One decision that changes everything.</div>
+    <p class="sir-sub">
+      Not grammar. Not vocabulary lists. Not translation.
+      <strong>A genuine immersion experience</strong> — the same mechanism
+      your brain used to acquire your first language, now applied to Russian.
+    </p>
+    <a href="https://russian-immersion-lab.systeme.io/trial" class="sir-hero-btn">Start for $5 →</a>
+    <p class="sir-trust-line">One-time · No subscription · Instant access</p>
+    <div class="sir-scroll">
+      <span>Learn more</span>
+      <div class="sir-scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MYTH VS REALITY -->
+<section class="sir-problem">
+  <div class="sir-problem-inner">
+    <div class="sir-label">Why Most Methods Fail</div>
+    <div class="sir-h2-dark">You're not bad at languages.<br><em>You've been using the wrong tool.</em></div>
+
+    <div class="sir-myth-header">
+      <div class="sir-col-label myth">❌ Myth</div>
+      <div class="sir-col-label reality">✓ Reality</div>
+    </div>
+
+    <div class="sir-myths">
+      <div class="sir-myth-row">
+        <div class="sir-cell myth">Learning a language means memorizing grammar rules and vocabulary lists.</div>
+        <div class="sir-cell reality">Language is not memorized — it is acquired. The brain builds a dedicated speech center that responds automatically, without effort.</div>
+      </div>
+      <div class="sir-myth-row">
+        <div class="sir-cell myth">Adults can't pick up languages naturally — that ability belongs to children.</div>
+        <div class="sir-cell reality">Adults retain the full neural capacity to build a new language center. What changes is the approach — not the brain's underlying ability.</div>
+      </div>
+      <div class="sir-myth-row">
+        <div class="sir-cell myth">To speak Russian you need to think in Russian first.</div>
+        <div class="sir-cell reality">You think in images, feelings, and associations. Russian simply needs to connect directly to those — with no English in between.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<div class="sir-cream">
+  <div class="sir-section">
+    <div class="sir-label" style="color:var(--gold)">What's Included</div>
+    <div class="sir-h2-light">Everything you need to <em>experience</em> the method</div>
+    <div class="sir-includes">
+      <div class="sir-include">
+        <span class="sir-include-icon">🎧</span>
+        <h4>Professional Audio Narration</h4>
+        <p>A native Russian speaker recorded at a pace designed for clear perception — natural in rhythm, accessible in speed. Real Russian from minute one.</p>
+      </div>
+      <div class="sir-include">
+        <span class="sir-include-icon">📖</span>
+        <h4>Bilingual Lesson Text</h4>
+        <p>Russian and English side by side, with a toggle to switch between modes. Key vocabulary highlighted. You control what you see and when.</p>
+      </div>
+      <div class="sir-include">
+        <span class="sir-include-icon">📋</span>
+        <h4>Step-by-Step Practice Assignment</h4>
+        <p>A structured 5-step guide walks you through the immersion process — from first listening through simultaneous repetition to independent recall.</p>
+      </div>
+      <div class="sir-include">
+        <span class="sir-include-icon">🎯</span>
+        <h4>Personal Instructor Feedback</h4>
+        <p>Send your practice recordings directly to Alexander on Telegram. He listens personally and responds with specific, targeted feedback.</p>
+      </div>
+    </div>
+
+    <div class="sir-science">
+      <div class="sir-label">The Neuroscience</div>
+      <h3>In 1997, a Cornell University fMRI study changed everything we know about language in the adult brain.</h3>
+      <p>Researchers discovered that second languages learned in adulthood occupy a separate, dedicated region of Broca's area — distinct from the native language. This region can become just as automatic, just as effortless, and just as truly yours as your first language. The Russian Method is built entirely around activating it.</p>
+      <a href="https://mentorinrussian.com/Why_Adults_Can_Learn_Russian_Like_Children.html" target="_blank">Read the full science behind the method →</a>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="sir-steps-bg">
+  <div class="sir-steps-inner">
+    <div class="sir-label" style="color:var(--gold)">How It Works</div>
+    <div class="sir-steps-h2">After payment — three simple steps</div>
+    <div class="sir-steps">
+      <div class="sir-step">
+        <div class="sir-step-num">1</div>
+        <div>
+          <h4>Access your lesson instantly</h4>
+          <p>After payment you receive an email with your personal access link to Lesson 1 — Любовь (Love). No waiting. Open it in any browser, any time.</p>
+        </div>
+      </div>
+      <div class="sir-step">
+        <div class="sir-step-num">2</div>
+        <div>
+          <h4>Work through the immersion experience</h4>
+          <p>Listen, repeat simultaneously, visualize, feel. Follow the 5-step practice assignment at your own pace. There is no deadline.</p>
+        </div>
+      </div>
+      <div class="sir-step">
+        <div class="sir-step-num">3</div>
+        <div>
+          <h4>Send your recordings — get personal feedback</h4>
+          <p>Record yourself during the assignment and send to Alexander on Telegram. He responds personally with observations and next steps.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="sir-about-wrap">
+  <div class="sir-about-inner">
+    <div class="sir-label" style="color:var(--gold)">Your Instructor</div>
+    <div class="sir-about-h2">Built by someone who <em>lived</em> the method</div>
+    <div class="sir-about">
+      <div class="sir-about-avatar">
+        <img src="https://i.imgur.com/9fUsSyy.png" alt="Alexander" />
+      </div>
+      <div>
+        <h4>Alexander</h4>
+        <div class="sir-about-title">Founder · The Russian Method</div>
+        <p>
+          Alexander moved to the United States with zero English and reached advanced fluency in six months —
+          not through classes or textbooks, but through total immersion.
+          <em>The Russian Method is the systematic version of exactly what worked for him</em>,
+          built on the neuroscience of how the brain naturally acquires language.
+          He has been teaching Russian to adult English speakers on Preply and directly,
+          refining this approach with every student.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<section class="sir-final">
+  <div class="sir-final-inner">
+    <div class="sir-final-eyebrow">One Step Away</div>
+    <h2>One lesson.<br><em>One decision.</em></h2>
+    <p>
+      Your first genuine immersion experience is waiting —
+      the kind that shows you, in under an hour,
+      exactly why everything else felt so hard.
+    </p>
+    <a href="https://russian-immersion-lab.systeme.io/trial" class="sir-final-btn">Begin Your First Lesson — $5 →</a>
+    <div class="sir-final-note">
+      <span>Instant access</span>
+      <span>Personal feedback from Alexander</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="sir-footer">
+  <a href="https://mentorinrussian.com">mentorinrussian.com</a> &nbsp;·&nbsp; The Russian Method by Alexander
+</footer>
+
+</body>
+</html>
